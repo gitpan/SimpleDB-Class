@@ -1,5 +1,5 @@
 package SimpleDB::Class::ResultSet;
-our $VERSION = '0.0001';
+our $VERSION = '0.0100';
 
 
 
@@ -9,7 +9,7 @@ SimpleDB::Class::ResultSet - An iterator of items from a domain.
 
 =head1 VERSION
 
-version 0.0001
+version 0.0100
 
 =head1 DESCRIPTION
 
