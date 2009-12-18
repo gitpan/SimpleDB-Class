@@ -1,7 +1,5 @@
 package SimpleDB::Class::Domain;
-our $VERSION = '0.0100';
-
-
+our $VERSION = '0.0200';
 
 =head1 NAME
 
@@ -9,7 +7,7 @@ SimpleDB::Class::Domain - A schematic representation of a SimpleDB domain.
 
 =head1 VERSION
 
-version 0.0100
+version 0.0200
 
 =head1 DESCRIPTION
 
@@ -25,6 +23,7 @@ use Moose;
 use SimpleDB::Class::Item;
 use SimpleDB::Class::SQL;
 use SimpleDB::Class::ResultSet;
+use SimpleDB::Class::Exception;
 
 
 #--------------------------------------------------------
@@ -166,6 +165,8 @@ sub belongs_to {
 
 Class method. Sets up a 1:N relationship between this class and a child class.
 
+WARNING: With this method you need to be aware that SimpleDB is eventually consistent. See L<SimpleDB::Class/"Eventual Consistency"> for details.
+
 =head3 method
 
 The name of the method in this class you wish to use to access the relationship with the child class.
@@ -230,7 +231,7 @@ Creates this domain in the SimpleDB.
 
 sub create {
     my ($self) = @_;
-    $self->simpledb->send_request('CreateDomain', {
+    $self->simpledb->http->send_request('CreateDomain', {
         DomainName => $self->name,
     });
 }
@@ -245,7 +246,7 @@ Deletes this domain from the SimpleDB.
 
 sub delete {
     my ($self) = @_;
-    $self->simpledb->send_request('DeleteDomain', {
+    $self->simpledb->http->send_request('DeleteDomain', {
         DomainName => $self->name,
     });
 }
@@ -264,12 +265,28 @@ The unique identifier (called ItemName in AWS documentation) of the item to retr
 
 sub find {
     my ($self, $id) = @_;
-    my $result = $self->simpledb->send_request('GetAttributes', {
-        ItemName    => $id,
-        DomainName  => $self->name,
-    });
-    my $list = $result->{GetAttributesResult}{Attribute};
-    return SimpleDB::Class::ResultSet->new(domain=>$self)->handle_item($id, $list);
+    my $cache = $self->simpledb->cache;
+    my $attributes = eval{$cache->get($self->name, $id)};
+    my $e;
+    if (SimpleDB::Class::Exception::ObjectNotFound->caught) {
+        my $result = $self->simpledb->http->send_request('GetAttributes', {
+            ItemName    => $id,
+            DomainName  => $self->name,
+        });
+        my $item = SimpleDB::Class::ResultSet->new(domain=>$self)->handle_item($id, $result->{GetAttributesResult}{Attribute});
+        $cache->set($self->name, $id, $item->to_hashref);
+        return $item;
+    }
+    elsif (my $e = SimpleDB::Class::Exception->caught) {
+        warn $e->error;
+        return $e->rethrow;
+    }
+    elsif (defined $attributes) {
+        return SimpleDB::Class::Item->new(id=>$id, domain=>$self, attributes=>$attributes);
+    }
+    else {
+        SimpleDB::Class::Exception->throw(error=>"An undefined error occured while fetching the item.");
+    }
 }
 
 #--------------------------------------------------------
@@ -305,6 +322,8 @@ sub insert {
 
 Returns an integer indicating how many items are in this domain.
 
+WARNING: With this method you need to be aware that SimpleDB is eventually consistent. See L<SimpleDB::Class/"Eventual Consistency"> for details.
+
 =head3 where
 
 A where clause as defined in L<SimpleDB::Class::SQL> if you want to count only a certain number of items in the domain.
@@ -318,7 +337,7 @@ sub count {
         where       => $clauses,
         output      => 'count(*)',
     );
-    my $result = $self->simpledb->send_request('Select', {
+    my $result = $self->simpledb->http->send_request('Select', {
         SelectExpression    => $select->to_sql,
     });
     return $result->{SelectResult}{Item}{Attribute}{Value};
@@ -328,7 +347,9 @@ sub count {
 
 =head2 search ( where )
 
-Returns a L<SimpleDB::Class::ResultSet> object.
+Returns a L<SimpleDB::Class::ResultSet> object. 
+
+WARNING: With this method you need to be aware that SimpleDB is eventually consistent. See L<SimpleDB::Class/"Eventual Consistency"> for details.
 
 =head3 where
 
@@ -344,15 +365,9 @@ sub search {
         );
 }
 
-=head1 AUTHOR
-
-JT Smith <jt_at_plainblack_com>
-
-I have to give credit where credit is due: SimpleDB::Class is heavily inspired by L<DBIx::Class> by Matt Trout (and others), and the Amazon::SimpleDB class distributed by Amazon itself (not to be confused with Amazon::SimpleDB written by Timothy Appnel).
-
 =head1 LEGAL
 
-SimpleDB::Class is Copyright 2009 Plain Black Corporation and is licensed under the same terms as Perl itself.
+SimpleDB::Class is Copyright 2009 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
 
 =cut
 

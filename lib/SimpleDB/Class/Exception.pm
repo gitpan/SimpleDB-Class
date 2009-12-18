@@ -1,7 +1,5 @@
 package SimpleDB::Class::Exception;
-our $VERSION = '0.0100';
-
-
+our $VERSION = '0.0200';
 
 =head1 NAME
 
@@ -9,7 +7,7 @@ SimpleDB::Class::Exception - Exceptions thrown by SimpleDB::Class.
 
 =head1 VERSION
 
-version 0.0100
+version 0.0200
 
 =head1 DESCRIPTION
 
@@ -21,13 +19,13 @@ The following exceptions are available from this class.
 
 =head2 SimpleDB::Class::Exception
 
-A general error.
+A general error. Isa Exception::Class.
 
 =head2 SimpleDB::Class::Exception::OverrideMe
 
-Used when creating abstract methods.
+Used when creating abstract methods. Isa SimpleDB::Class::Exception.
 
-=head2 SimpleDB::Class::Exception::MethodNotFound
+=head2 SimpleDB::Class::Exception::ObjectNotFound
 
 Thrown when a request object is not found.
 
@@ -35,9 +33,17 @@ Thrown when a request object is not found.
 
 The id of the requested object.
 
+=head2 SimpleDB::Class::Exception::InvalidParam
+
+Thrown when an an object is found, but is corrupt. Isa SimpleDB::Class::Exception::ObjectNotFound.
+
+=head2 SimpleDB::Class::Exception::InvalidObject
+
+Thrown when a request object is found, but is corrupt. Isa SimpleDB::Class::Exception::ObjectNotFound.
+
 =head2 SimpleDB::Class::Exception::Connection
 
-Thrown when exceptions occur connecting to the SimpleDB database at Amazon.
+Thrown when exceptions occur connecting to the SimpleDB database at Amazon, or the memcached server. Isa SimpleDB::Class::Exception.
 
 =head3 status_code
 
@@ -46,10 +52,6 @@ The HTTP status code returned.
 =head2 SimpleDB::Class::Exception::Response
 
 Isa SimpleDB::Class::Exception::Connection. Thrown when SimpleDB reports an error.
-
-=head3 status_code
-
-The HTTP status code returned from the request.
 
 =head3 error_code
 
@@ -79,10 +81,19 @@ use Exception::Class (
         isa             => 'SimpleDB::Class::Exception',
         description     => 'This method should be overridden by subclasses.',
         },
+    'SimpleDB::Class::Exception::InvalidParam' => {
+        isa             => 'SimpleDB::Class::Exception',
+        description     => 'This method should be overridden by subclasses.',
+        fields          => ['name', 'value'],
+        },
     'SimpleDB::Class::Exception::ObjectNotFound' => {
         isa             => 'SimpleDB::Class::Exception',
         description     => "The object you were trying to retrieve does not exist.",
         fields          => ['id'],
+        },
+    'SimpleDB::Class::Exception::InvalidObject' => {
+        isa             => 'SimpleDB::Class::Exception::ObjectNotFound',
+        description     => "The object you were trying to retrieve does not exist.",
         },
     'SimpleDB::Class::Exception::Connection' => {
         isa             => 'SimpleDB::Class::Exception',
@@ -97,15 +108,9 @@ use Exception::Class (
 
 );
 
-=head1 AUTHOR
-
-JT Smith <jt_at_plainblack_com>
-
-I have to give credit where credit is due: SimpleDB::Class is heavily inspired by L<DBIx::Class> by Matt Trout (and others), and the Amazon::SimpleDB class distributed by Amazon itself (not to be confused with Amazon::SimpleDB written by Timothy Appnel).
-
 =head1 LEGAL
 
-SimpleDB::Class is Copyright 2009 Plain Black Corporation and is licensed under the same terms as Perl itself.
+SimpleDB::Class is Copyright 2009 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
 
 =cut
 

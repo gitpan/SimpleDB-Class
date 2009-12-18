@@ -1,7 +1,5 @@
 package SimpleDB::Class::Item;
-our $VERSION = '0.0100';
-
-
+our $VERSION = '0.0200';
 
 =head1 NAME
 
@@ -9,7 +7,7 @@ SimpleDB::Class::Item - An object representation from an item in a SimpleDB doma
 
 =head1 VERSION
 
-version 0.0100
+version 0.0200
 
 =head1 DESCRIPTION
 
@@ -221,7 +219,9 @@ Removes this item from the database.
 sub delete {
     my ($self) = @_;
     my $domain = $self->domain;
-    $domain->simpledb->send_request('DeleteAttributes', {ItemName => $self->id, DomainName=>$domain->name});
+    my $simpledb = $domain->simpledb;
+    eval{$simpledb->cache->delete($domain->name, $self->id)};
+    $simpledb->http->send_request('DeleteAttributes', {ItemName => $self->id, DomainName=>$domain->name});
 }
 
 #--------------------------------------------------------
@@ -238,7 +238,9 @@ sub delete_attribute {
     delete $attributes->{$name};
     $self->attributes($attributes);
     my $domain = $self->domain;
-    $domain->simpledb->send_request('DeleteAttributes', { ItemName => $self->id, DomainName => $domain->name, 'Attribute.0.Name' => $name } );
+    my $simpledb = $domain->simpledb;
+    eval{$simpledb->cache->set($domain->name, $self->id, $attributes)};
+    $simpledb->http->send_request('DeleteAttributes', { ItemName => $self->id, DomainName => $domain->name, 'Attribute.0.Name' => $name } );
 }
 
 #--------------------------------------------------------
@@ -263,18 +265,14 @@ Inserts/updates the current attributes of this Item object to the database.
 
 sub put {
     my ($self) = @_;
-    my $attributes = $self->attributes;
-    my $registered_attributes = $self->attributes;
-
-    foreach my $attribute (keys %{$attributes}) {                                                
-        $self->$attribute($attributes->{$attribute});
-    }
     my $domain = $self->domain;
     my $params = {ItemName => $self->id, DomainName=>$domain->name};
     my $i = 0;
-    my $select = SimpleDB::Class::SQL->new(domain=>$self->domain); 
-    foreach my $name (keys %{$self->attributes}) {
-        my $values = $self->$name;
+    my $select = SimpleDB::Class::SQL->new(domain=>$domain); 
+    my $simpledb = $domain->simpledb;
+    my $attributes = $self->to_hashref;
+    foreach my $name (keys %{$attributes}) {
+        my $values = $attributes->{$name};
         unless ($values eq 'ARRAY') {
             $values = [$values];
         }
@@ -285,19 +283,30 @@ sub put {
             $i++;
         }
     }
-    $domain->simpledb->send_request('PutAttributes', $params);
+    eval{$simpledb->cache->set($domain->name, $self->id, $attributes)};
+    $simpledb->http->send_request('PutAttributes', $params);
 }
 
+#--------------------------------------------------------
 
-=head1 AUTHOR
+=head2 to_hashref ( )
 
-JT Smith <jt_at_plainblack_com>
+Returns a hash reference of the attributes asscoiated with this item.
 
-I have to give credit where credit is due: SimpleDB::Class is heavily inspired by L<DBIx::Class> by Matt Trout (and others), and the Amazon::SimpleDB class distributed by Amazon itself (not to be confused with Amazon::SimpleDB written by Timothy Appnel).
+=cut
+
+sub to_hashref {
+    my ($self) = @_;
+    my %properties;
+    foreach my $attribute (keys %{$self->attributes}) {                                                
+        $properties{$attribute} = $self->$attribute;
+    }
+    return \%properties;
+}
 
 =head1 LEGAL
 
-SimpleDB::Class is Copyright 2009 Plain Black Corporation and is licensed under the same terms as Perl itself.
+SimpleDB::Class is Copyright 2009 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
 
 =cut
 
