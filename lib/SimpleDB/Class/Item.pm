@@ -1,5 +1,5 @@
 package SimpleDB::Class::Item;
-our $VERSION = '0.0200';
+our $VERSION = '0.0201';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Item - An object representation from an item in a SimpleDB doma
 
 =head1 VERSION
 
-version 0.0200
+version 0.0201
 
 =head1 DESCRIPTION
 
@@ -139,6 +139,7 @@ Generates the relationship methods and attribute methods on object construction.
 sub BUILD {
     my ($self) = @_;
     my $domain = $self->domain;
+    my $simpledb = $domain->simpledb;
 
     # add attributes
     my $registered_attributes = $domain->attributes;
@@ -162,10 +163,7 @@ sub BUILD {
         my ($classname, $attribute) = @{$parents->{$parent}};
         has $parent => (
             is      => 'ro',
-            default => sub {
-                my $self = shift;
-                return $domain->simpledb->determine_domain_instance($classname)->find($self->$attribute);
-                },
+            default => sub { return $simpledb->determine_domain_instance($classname)->find($self->$attribute); },
             lazy    => 1,
         );
     }
@@ -176,10 +174,7 @@ sub BUILD {
         my ($classname, $attribute) = @{$children->{$child}};
         has $child => (
             is      => 'ro',
-            default => sub {
-                my $self = shift;
-                return $domain->simpledb->determine_domain_instance($classname)->search({$attribute => $self->$attribute});
-                },
+            default => sub { return $simpledb->determine_domain_instance($classname)->search({$attribute => $self->id}); },
             lazy    => 1,
         );
     }

@@ -1,5 +1,5 @@
 package SimpleDB::Class;
-our $VERSION = '0.0200';
+our $VERSION = '0.0201';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class - An Object Relational Mapper (ORM) for the Amazon SimpleDB serv
 
 =head1 VERSION
 
-version 0.0200
+version 0.0201
 
 =head1 SYNOPSIS
 
@@ -28,7 +28,8 @@ version 0.0200
  __PACKAGE__->set_name('books');
  __PACKAGE__->add_attributes({
      title          => { isa => 'Str', default => 'Untitled' },
-     publish_date   => { isa => 'Int' },
+     publish_date   => { isa => 'Date' },
+     edition        => { isa => 'Int', default => 1 },
      isbn           => { isa => 'Str' },
      publisherId    => { isa => 'Str' },
      author         => { isa => 'Str' },
@@ -381,11 +382,7 @@ Sub-searches from relationships.
 
 =item *
 
-Make puts and deletes asynchronous, since SimpleDB is eventually consistent, there's no reason to wait around for these operations to complete.
-
-=item *
-
-Creating subclasses of a domain based upon an attribute in a domain ( so you could have individuall dog breed object types all in a dogs domain for example).
+Creating subclasses of a domain based upon an attribute in a domain ( so you could have individual dog breed object types all in a dogs domain for example).
 
 =item *
 

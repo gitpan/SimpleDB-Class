@@ -1,14 +1,14 @@
 package SimpleDB::Class::Cache;
-our $VERSION = '0.0200';
+our $VERSION = '0.0201';
 
 
 =head1 NAME
 
-Package SimpleDB::Class::Cache
+SimpleDB::Class::Cache - Memcached interface for SimpleDB.
 
 =head1 VERSION
 
-version 0.0200
+version 0.0201
 
 =head1 DESCRIPTION
 

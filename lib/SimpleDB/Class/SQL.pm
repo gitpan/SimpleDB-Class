@@ -1,5 +1,5 @@
 package SimpleDB::Class::SQL;
-our $VERSION = '0.0200';
+our $VERSION = '0.0201';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::SQL - SQL generation tools for SimpleDB.
 
 =head1 VERSION
 
-version 0.0200
+version 0.0201
 
 =head1 DESCRIPTION
 

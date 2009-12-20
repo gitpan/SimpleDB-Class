@@ -1,5 +1,5 @@
 package SimpleDB::Class::Domain;
-our $VERSION = '0.0200';
+our $VERSION = '0.0201';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Domain - A schematic representation of a SimpleDB domain.
 
 =head1 VERSION
 
-version 0.0200
+version 0.0201
 
 =head1 DESCRIPTION
 
@@ -125,7 +125,7 @@ Returns the hashref of children set by the has_many() method.
 
 =cut
 
-has 'children' => (
+has children => (
     is      => 'rw',
     isa     => 'HashRef',
     default => sub{{}},
