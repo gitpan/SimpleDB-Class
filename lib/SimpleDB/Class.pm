@@ -1,5 +1,5 @@
 package SimpleDB::Class;
-our $VERSION = '0.0201';
+our $VERSION = '0.0300';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class - An Object Relational Mapper (ORM) for the Amazon SimpleDB serv
 
 =head1 VERSION
 
-version 0.0201
+version 0.0300
 
 =head1 SYNOPSIS
 
@@ -20,12 +20,12 @@ version 0.0201
 
  1;
 
- package Library::Books;
+ package Library::Book;
 
  use Moose;
- extends 'SimpleDB::Class::Domain';
+ extends 'SimpleDB::Class::Item';
 
- __PACKAGE__->set_name('books');
+ __PACKAGE__->set_domain_name('book');
  __PACKAGE__->add_attributes({
      title          => { isa => 'Str', default => 'Untitled' },
      publish_date   => { isa => 'Date' },
@@ -34,20 +34,20 @@ version 0.0201
      publisherId    => { isa => 'Str' },
      author         => { isa => 'Str' },
  });
- __PACKAGE__->belongs_to('publisher', 'Library::Publishers', 'publisherId');
+ __PACKAGE__->belongs_to('publisher', 'Library::Publisher', 'publisherId');
 
  1;
 
- package Library::Publishers;
+ package Library::Publisher;
 
  use Moose;
- extends 'SimpleDB::Class::Domain';
+ extends 'SimpleDB::Class::Item';
 
- __PACKAGE__->set_name('publishers');
+ __PACKAGE__->set_domain_name('publisher');
  __PACKAGE__->add_attributes({
      name   => { isa => 'Str' },
  });
- __PACKAGE__->has_many('books', 'Library::Books', 'publisherId');
+ __PACKAGE__->has_many('books', 'Library::Book', 'publisherId');
 
  1;
 
@@ -57,10 +57,10 @@ version 0.0201
 
  my $library = Library->new(access_key => 'xxx', secret_key => 'yyy', cache_servers=>\@servers );
   
- my $specific_book = $library->domain('books')->find('id goes here');
+ my $specific_book = $library->domain('book')->find('id goes here');
 
- my $books = $library->domain('publishers')->books;
- my $books = $library->domain('books')->search({publish_date => DateTime->new(year=>2001)});
+ my $books = $library->domain('publisher')->books;
+ my $books = $library->domain('book')->search({publish_date => DateTime->new(year=>2001)});
  while (my $book = $books->next) {
     say $book->title;
  }
@@ -125,6 +125,7 @@ use Moose;
 use MooseX::ClassAttribute;
 use SimpleDB::Class::Cache;
 use SimpleDB::Class::HTTP;
+use SimpleDB::Class::Domain;
 use Module::Find;
 
 #--------------------------------------------------------
@@ -143,7 +144,29 @@ The access key given to you from Amazon when you sign up for the SimpleDB servic
 
 The secret access key given to you from Amazon.
 
+=head4 cache_servers
+
+An array reference of cache servers. See L<SimpleDB::Class::Cache> for details.
+
 =cut
+
+#--------------------------------------------------------
+
+=head2 load_namespaces ( [ namespace ] )
+
+Class method. Loads all the modules in the current namespace, so if you subclass SimpleDB::Class with a package called Library (as in the example provided), then everything in the Library namespace would be loaded automatically. Should be called to load all the modules you subclass, so you don't have to manually use each of them.
+
+=head3 namespace
+
+Specify a specific namespace like Library::SimpleDB if you don't want everything in the Library namespace to be loaded.
+
+=cut
+
+sub load_namespaces {
+    my ($class, $namespace) = @_;
+    $namespace ||= $class; # if no namespace is set
+    useall $namespace;
+}
 
 #--------------------------------------------------------
 
@@ -235,103 +258,22 @@ class_has 'domain_names' => (
 
 #--------------------------------------------------------
 
-=head2 domain_classes ( [ list ] )
-
-Class method. Returns a hashref of the domain class names and instances registered from subclassing L<SimpleDB::Class::Domain> and calling set_name. 
-
-=cut
-
-class_has 'domain_instances' => (
-    is      => 'rw',
-    default => sub{{}},
-);
-
-#--------------------------------------------------------
-
-=head2 load_namespaces ( [ namespace ] )
-
-Class method. Loads all the modules in the current namespace, so if you subclass SimpleDB::Class with a package called Library (as in the example provided), then everything in the Library namespace would be loaded automatically. Should be called to load all the modules you subclass, so you don't have to manually use each of them.
-
-=head3 namespace
-
-Specify a specific namespace like Library::SimpleDB if you don't want everything in the Library namespace to be loaded.
-
-=cut
-
-sub load_namespaces {
-    my ($class, $namespace) = @_;
-    $namespace ||= $class; # if no namespace is set
-    useall $namespace;
-}
-
-#--------------------------------------------------------
-sub _add_domain {
-    my ($class, $name, $object) = @_;
-    my $classname = ref $object;
-    my $names = $class->domain_names;
-    $names->{$name} = $classname;
-    __PACKAGE__->domain_names($names);
-    my $instances = $class->domain_instances;
-    $instances->{$classname} = $object;
-    __PACKAGE__->domain_instances($instances);
-    return $names;
-}
-
-#--------------------------------------------------------
-
-=head2 determine_domain_class ( moniker ) 
-
-Given a domain name or class name, returns the class name associated with it.
-
-=head2 moniker
-
-A class name or a domain name that is a subclass of L<SimpleDB::Class::Domain>. In the above example Library::Books or books would both return Library::Books.
-
-=cut
-
-sub determine_domain_class {
-    my ($self, $moniker) = @_;
-    my $class = $self->domain_names->{$moniker};
-    unless ($class) {
-        $class = $moniker;
-    }
-    return $class;
-}
-
-#--------------------------------------------------------
-
-=head2 determine_domain_instance ( classname )
-
-Returns an instanciated L<SimpleDB::Class::Domain> based upon it's class name. 
-
-=head3 classname
-
-The classname to fetch an instance for. In the above example, Library::Books or Library::Publishers would both work.
-
-=cut
-
-sub determine_domain_instance {
-    my ($self, $classname) = @_;
-    my $domain = $self->domain_instances->{$classname};
-    $domain->simpledb($self);
-    return $domain;
-}
-
-#--------------------------------------------------------
-
 =head2 domain ( moniker )
 
-Returns an instanciated L<SimpleDB::Class::Domain> based upon it's classname or domain name.
+Returns an instanciated L<SimpleDB::Class::Domain> based upon its L<SimpleDB::Class::Item> classname or its domain name.
 
 =head3 moniker
 
-See determine_domain_class() for details.
+Can either be the L<SimpleDB::Class::Item> subclass name, or the domain name.
 
 =cut
 
 sub domain {
     my ($self, $moniker) = @_;
-    return $self->determine_domain_instance($self->determine_domain_class($moniker));
+    my $class = $self->domain_names->{$moniker};
+    $class ||= $moniker;
+    my $d = SimpleDB::Class::Domain->new(simpledb=>$self, item_class=>$class);
+    return $d;
 }
 
 #--------------------------------------------------------
@@ -359,6 +301,7 @@ This package requires the following modules:
 L<XML::Simple>
 L<AnyEvent::HTTP>
 L<Net::SSLeay>
+L<Sub::Name>
 L<DateTime>
 L<DateTime::Format::Strptime>
 L<Moose>

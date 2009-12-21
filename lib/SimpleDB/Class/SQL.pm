@@ -1,5 +1,5 @@
 package SimpleDB::Class::SQL;
-our $VERSION = '0.0201';
+our $VERSION = '0.0300';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::SQL - SQL generation tools for SimpleDB.
 
 =head1 VERSION
 
-version 0.0201
+version 0.0300
 
 =head1 DESCRIPTION
 
@@ -33,9 +33,9 @@ Constructor.
 
 A hash of options you can pass in to the constructor.
 
-=head4 domain
+=head4 item_class
 
-A L<SimpleDB::Class::Domain> object. This is required.
+A L<SimpleDB::Class::Item> subclass name. This is required.
 
 =head4 output
 
@@ -125,20 +125,20 @@ Returns what was passed into the constructor for the output field.
 
 =cut
 
-has 'output' => (
+has output => (
     is              => 'ro',
     default         => '*',
 );
 
 #--------------------------------------------------------
 
-=head2 domain ()
+=head2 item_class ()
 
-Returns what was passed into the constructor for the domain field.
+Returns what was passed into the constructor for the item_class field.
 
 =cut
 
-has 'domain' => (
+has item_class => (
     is              => 'ro',
     required        => 1,
 );
@@ -155,7 +155,7 @@ Returns a boolean indicating whether a where clause has been set.
 
 =cut
 
-has 'where' => (
+has where => (
     is              => 'ro',
     predicate       => 'has_where',
 );
@@ -172,7 +172,7 @@ Returns a boolean indicating whether an order by clause has been set.
 
 =cut
 
-has 'order_by' => (
+has order_by => (
     is              => 'ro',
     predicate       => 'has_order_by',
 );
@@ -187,7 +187,7 @@ Returns what was passed into the constructor for the output field.
 
 =cut
 
-has 'limit' => (
+has limit => (
     is              => 'ro',
     predicate       => 'has_limit',
 );
@@ -243,7 +243,12 @@ A string in the format of YY-MM-DD HH:MM:SS NNNNNNN +ZZZZ where NNNNNNN represen
 
 sub parse_datetime {
     my ($self, $value) = @_;
-    return DateTime::Format::Strptime::strptime('%Y-%m-%d %H:%M:%S %N %z',$value) || DateTime->now;
+    if ($value =~ m/\d{4}-\d\d-\d\d \d\d:\d\d:\d\d \d+ +\d{4}/) {
+        return DateTime::Format::Strptime::strptime('%Y-%m-%d %H:%M:%S %N %z',$value);
+    }
+    else {
+        return DateTime->now;
+    }
 }
 
 #--------------------------------------------------------
@@ -260,6 +265,7 @@ A string that is composed of an integer + 1000000000 and then padded to have pre
 
 sub parse_int {
     my ($self, $value) = @_;
+    $value ||= 0;
     return $value-1000000000;
 }
 
@@ -281,9 +287,9 @@ The current stringified value to parse.
 
 sub parse_value {
     my ($self, $name, $value) = @_;
-    my $registered_attributes = $self->domain->attributes;
+    my $registered_attributes = $self->item_class->attributes;
     # set default value
-    $value ||= $registered_attributes->{$name};
+    $value ||= $registered_attributes->{$name}{default};
     # find isa
     my $isa = $registered_attributes->{$name}{isa} || '';
     # pad integers
@@ -311,6 +317,7 @@ A L<DateTime> object.
 
 sub format_datetime {
     my ($self, $value) = @_;
+    $value ||= DateTime->now;
     return DateTime::Format::Strptime::strftime('%Y-%m-%d %H:%M:%S %N %z',$value);
 }
 
@@ -353,9 +360,9 @@ A boolean indicating whether or not to skip calling the quote_value function on 
 
 sub format_value {
     my ($self, $name, $value, $skip_quotes) = @_;
-    my $registered_attributes = $self->domain->attributes;
+    my $registered_attributes = $self->item_class->attributes;
     # set default value
-    $value ||= $registered_attributes->{$name};
+    $value ||= $registered_attributes->{$name}{default};
     # find isa
     my $isa = $registered_attributes->{$name}{isa} || '';
     # pad integers
@@ -503,7 +510,7 @@ sub to_sql {
         $limit = ' limit '.$self->limit;
     }
 
-    return 'select '.$output.' from '.$self->quote_attribute($self->domain->name).$where.$sort.$limit;
+    return 'select '.$output.' from '.$self->quote_attribute($self->item_class->can('domain_name')->()).$where.$sort.$limit;
 }
 
 

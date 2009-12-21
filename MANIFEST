@@ -16,7 +16,5 @@ lib/SimpleDB/Class/SQL.pm
 t/01.HTTP.t
 t/02.Cache.t
 t/03.Class.t
-t/05.Domain.t
-t/07.Item.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
