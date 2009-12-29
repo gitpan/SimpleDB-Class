@@ -1,5 +1,5 @@
 package SimpleDB::Class::Item;
-our $VERSION = '0.0300';
+our $VERSION = '0.0400';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Item - An object representation from an item in a SimpleDB doma
 
 =head1 VERSION
 
-version 0.0300
+version 0.0400
 
 =head1 DESCRIPTION
 
@@ -73,7 +73,7 @@ The attribute name is key in the hashref.
 
 =head4 isa
 
-The type of data represented by this attribute. Defaults to 'Str' if left out. Options are 'Str', 'Int', and 'DateTime'.
+The type of data represented by this attribute. Defaults to 'Str' if left out. Options are 'Str', 'Int', 'HashRef', and 'DateTime'.
 
 =head4 default
 

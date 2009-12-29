@@ -1,5 +1,5 @@
 package SimpleDB::Class;
-our $VERSION = '0.0300';
+our $VERSION = '0.0400';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class - An Object Relational Mapper (ORM) for the Amazon SimpleDB serv
 
 =head1 VERSION
 
-version 0.0300
+version 0.0400
 
 =head1 SYNOPSIS
 
@@ -26,14 +26,14 @@ version 0.0300
  extends 'SimpleDB::Class::Item';
 
  __PACKAGE__->set_domain_name('book');
- __PACKAGE__->add_attributes({
+ __PACKAGE__->add_attributes(
      title          => { isa => 'Str', default => 'Untitled' },
      publish_date   => { isa => 'Date' },
      edition        => { isa => 'Int', default => 1 },
      isbn           => { isa => 'Str' },
      publisherId    => { isa => 'Str' },
      author         => { isa => 'Str' },
- });
+ );
  __PACKAGE__->belongs_to('publisher', 'Library::Publisher', 'publisherId');
 
  1;

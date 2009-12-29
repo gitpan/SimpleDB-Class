@@ -1,5 +1,5 @@
 package SimpleDB::Class::HTTP;
-our $VERSION = '0.0300';
+our $VERSION = '0.0400';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::HTTP - The network interface to the SimpleDB service.
 
 =head1 VERSION
 
-version 0.0300
+version 0.0400
 
 =head1 SYNOPSIS
 
@@ -165,7 +165,7 @@ sub send_request {
         if ($headers->{Status} >= 500 && $headers->{Status} < 600) {
             if ($retries < 5) {
                 my $sleeper = AnyEvent->condvar;
-                AnyEvent->timer( after => ((4 ** $retries) / 10), cb => sub { $sleeper->send });
+                my $w = AnyEvent->timer( after => ((4 ** $retries) / 10), cb => sub { $sleeper->send });
                 $retries++;
                 $sleeper->recv;
             }
@@ -207,7 +207,7 @@ sub handle_response {
     # choked reconstituing the XML, probably because it wasn't XML
     if ($@) {
         SimpleDB::Class::Exception::Response->throw(
-            error       => 'Response was garbage. Are you sure you installed Net::SSLeay?', 
+            error       => 'Response was garbage. Confirm Net::SSLeay, XML::Parser, and XML::Simple installations.', 
             status_code => $headers->{Status},
             response    => [$body, $headers],
         );

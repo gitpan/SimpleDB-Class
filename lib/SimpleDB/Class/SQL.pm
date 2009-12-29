@@ -1,5 +1,5 @@
 package SimpleDB::Class::SQL;
-our $VERSION = '0.0300';
+our $VERSION = '0.0400';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::SQL - SQL generation tools for SimpleDB.
 
 =head1 VERSION
 
-version 0.0300
+version 0.0400
 
 =head1 DESCRIPTION
 
@@ -20,6 +20,7 @@ The following methods are available from this class.
 =cut
 
 use Moose;
+use JSON;
 use DateTime;
 use DateTime::Format::Strptime;
 
@@ -253,13 +254,37 @@ sub parse_datetime {
 
 #--------------------------------------------------------
 
+=head2 parse_hashref ( string ) 
+
+Parses a JSON formatted string and returns an actual hash reference.
+
+=head3 string
+
+A string that is composed of a JSONified hash reference. 
+
+=cut
+
+sub parse_hashref {
+    my ($self, $value) = @_;
+    if ($value eq '') {
+        return {};
+    }
+    else {
+        return JSON::from_json($value);
+    }
+}
+
+#--------------------------------------------------------
+
 =head2 parse_int ( string ) 
 
 Parses an integer formatted string and returns an actual integer.
 
+B<Warning:> SimpleDB::Class only supports 15 digit positive integers and 9 digit negative integers.
+
 =head3 string
 
-A string that is composed of an integer + 1000000000 and then padded to have preceding zeros so that it's always 10 characters long.
+A string that is composed of an integer + 1000000000 and then padded to have preceding zeros so that it's always 15 characters long.
 
 =cut
 
@@ -292,11 +317,15 @@ sub parse_value {
     $value ||= $registered_attributes->{$name}{default};
     # find isa
     my $isa = $registered_attributes->{$name}{isa} || '';
-    # pad integers
+    # unpad integers
     if ($isa eq 'Int') {
         $value = $self->parse_int($value); 
     }
-    # stringify dates
+    # unjsonify hash refs
+    elsif ($isa eq 'HashRef') {
+        $value = $self->parse_hashref($value);
+    }
+    # unstringify dates
     elsif ($isa eq 'DateTime') {
         $value = $self->parse_datetime($value);
     }
@@ -323,9 +352,33 @@ sub format_datetime {
 
 #--------------------------------------------------------
 
+=head2 format_hashref ( value )
+
+Returns a json formatted hashref. Example: C<{"foo":"bar"}>. See parse_hashref as this is the reverse of that. 
+
+B<Warning:> The total length of your hash reference after it's turned into JSON cannot exceed 1024 characters, as that's the field size limit for SimpleDB. Failing to heed this warning will result in corrupt data.
+
+=head3 value
+
+A hash reference.
+
+=cut
+
+sub format_hashref {
+    my ($self, $value) = @_;
+    unless (ref $value eq 'HASH') {
+        $value = {};
+    }
+    return JSON::to_json($value);
+}
+
+#--------------------------------------------------------
+
 =head2 format_int ( value )
 
-Returns a string formatted integer. Example: 0003495839. See parse_integer as this is the reverse of that.
+Returns a string formatted integer. Example: 000000003495839. See parse_integer as this is the reverse of that. 
+
+B<Warning:> SimpleDB::Class only supports 15 digit positive integers and 9 digit negative integers.
 
 =head3 value
 
@@ -335,7 +388,8 @@ An integer.
 
 sub format_int {
     my ($self, $value) = @_;
-    return sprintf("%010d",$value+1000000000);
+    $value ||= 0; # init
+    return sprintf("%015d",$value+1000000000);
 }
 
 #--------------------------------------------------------
@@ -368,6 +422,10 @@ sub format_value {
     # pad integers
     if ($isa eq 'Int') {
         $value = $self->format_int($value); 
+    }
+    # jsonify hashrefs
+    elsif ($isa eq 'HashRef') {
+        $value = $self->format_hashref($value); 
     }
     # stringify dates
     elsif ($isa eq 'DateTime') {
