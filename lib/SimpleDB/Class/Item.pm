@@ -1,5 +1,5 @@
 package SimpleDB::Class::Item;
-our $VERSION = '0.0400';
+our $VERSION = '0.0500';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Item - An object representation from an item in a SimpleDB doma
 
 =head1 VERSION
 
-version 0.0400
+version 0.0500
 
 =head1 DESCRIPTION
 
@@ -79,17 +79,34 @@ The type of data represented by this attribute. Defaults to 'Str' if left out. O
 
 The default value for this attribute. This should be specified even if it is 'None' or 'Undefined' or 'Null', because actuall null queries are slow in SimpleDB.
 
+=head4 trigger
+
+A sub reference that will be called like a method (has reference to $self), and is also passed the new and old values of this attribute. Works just like a L<Moose> trigger. See also L<Moose::Manual::Attributes/"Triggers">.
+
 =cut
 
 sub add_attributes {
     my ($class, %attributes) = @_;
     foreach my $name (keys %attributes) {
+        # i wish i could actually use Moose attributes here, but unfortunately
+        # Moose calls 'has' on __PACKAGE__ rather than $class, so it would insert
+        # the attributes into this class rather than each subclass
+        my $trigger = $attributes{$name}{trigger};
         my $accessor = sub { 
-                my ($self, $val) = @_; 
+                my ($self, $new) = @_; 
                 my $attr = $self->attribute_data;
-                if (defined $val) {
-                    $attr->{$name} = $val;
+                if (defined $new) {
+                    my $has_old = exists $attr->{name};
+                    my $old = $attr->{name};
+                    $attr->{$name} = $new;
                     $self->attribute_data($attr);
+                    if (defined $trigger) {
+                        my @params = ($self, $new);
+                        if ($has_old) {
+                            push @params, $old;
+                        }
+                        $trigger->(@params);
+                    }
                 }
                 return $attr->{$name};
         };
@@ -236,7 +253,7 @@ has simpledb => (
 
 =head2 id ( )
 
-Returns the unique id of this item.
+Returns the unique id of this item. B<Note:> Even though the primary key C<ItemName> (or C<id> as we call it) is a special property of an item, an C<id> attribute is also automatically added to every item when C<put> is called, which contains the same value as the C<ItemName>. This is so you can perform searches based upon the id, which is not something you can normally do with a C<Select> in SimpleDB.
 
 =cut
 
@@ -324,6 +341,8 @@ Inserts/updates the current attributes of this Item object to the database.  Ret
 
 sub put {
     my ($self) = @_;
+
+    # build the parameter list
     my $params = {ItemName => $self->id, DomainName=>$self->domain_name};
     my $i = 0;
     my $select = SimpleDB::Class::SQL->new(item_class=>ref($self)); 
@@ -341,6 +360,12 @@ sub put {
             $i++;
         }
     }
+
+    # add the id, so we can search on it
+    $params->{'Attribute.'.$i.'.Name'} = 'id';
+    $params->{'Attribute.'.$i.'.Value'} = $self->id;
+
+    # push changes
     my $simpledb = $self->simpledb;
     eval{$simpledb->cache->set($self->domain_name, $self->id, $attributes)};
     $simpledb->http->send_request('PutAttributes', $params);
