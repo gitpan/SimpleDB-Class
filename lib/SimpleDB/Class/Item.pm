@@ -1,5 +1,5 @@
 package SimpleDB::Class::Item;
-our $VERSION = '0.0500';
+our $VERSION = '0.0501';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Item - An object representation from an item in a SimpleDB doma
 
 =head1 VERSION
 
-version 0.0500
+version 0.0501
 
 =head1 DESCRIPTION
 
@@ -357,12 +357,14 @@ sub put {
             $value = $select->format_value($name, $value, 1);
             $params->{'Attribute.'.$i.'.Name'} = $name;
             $params->{'Attribute.'.$i.'.Value'} = $value;
+            $params->{'Attribute.'.$i.'.Replace'} = 'true';
             $i++;
         }
     }
 
     # add the id, so we can search on it
     $params->{'Attribute.'.$i.'.Name'} = 'id';
+    $params->{'Attribute.'.$i.'.Replace'} = 'true';
     $params->{'Attribute.'.$i.'.Value'} = $self->id;
 
     # push changes
