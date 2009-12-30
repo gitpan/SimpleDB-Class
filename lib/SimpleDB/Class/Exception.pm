@@ -1,5 +1,5 @@
 package SimpleDB::Class::Exception;
-our $VERSION = '0.0501';
+our $VERSION = '0.0502';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Exception - Exceptions thrown by SimpleDB::Class.
 
 =head1 VERSION
 
-version 0.0501
+version 0.0502
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ The id of the requested object.
 
 =head2 SimpleDB::Class::Exception::InvalidParam
 
-Thrown when an an object is found, but is corrupt. Isa SimpleDB::Class::Exception::ObjectNotFound.
+Thrown when a parameter isn't passed when it should have been, or if it's left undefined. Isa SimpleDB::Class::Exception::ObjectNotFound.
 
 =head2 SimpleDB::Class::Exception::InvalidObject
 

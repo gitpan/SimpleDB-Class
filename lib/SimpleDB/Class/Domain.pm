@@ -1,5 +1,5 @@
 package SimpleDB::Class::Domain;
-our $VERSION = '0.0501';
+our $VERSION = '0.0502';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Domain - A schematic representation of a SimpleDB domain.
 
 =head1 VERSION
 
-version 0.0501
+version 0.0502
 
 =head1 DESCRIPTION
 
@@ -133,6 +133,7 @@ The unique identifier (called ItemName in AWS documentation) of the item to retr
 
 sub find {
     my ($self, $id) = @_;
+    SimpleDB::Class::Exception::InvalidParam->throw(name=>'id', value=>undef) unless defined $id;
     my $cache = $self->simpledb->cache;
     my $attributes = eval{$cache->get($self->name, $id)};
     my $e;
@@ -144,7 +145,9 @@ sub find {
         my $item = SimpleDB::Class::ResultSet
             ->new(simpledb=>$self->simpledb, item_class=>$self->item_class)
             ->handle_item($id, $result->{GetAttributesResult}{Attribute});
-        $cache->set($self->name, $id, $item->to_hashref);
+        if (defined $item) {
+            $cache->set($self->name, $id, $item->to_hashref);
+        }
         return $item;
     }
     elsif (my $e = SimpleDB::Class::Exception->caught) {
