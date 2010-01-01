@@ -12,6 +12,7 @@ lib/SimpleDB/Class/Exception.pm
 lib/SimpleDB/Class/HTTP.pm
 lib/SimpleDB/Class/Item.pm
 lib/SimpleDB/Class/ResultSet.pm
+lib/SimpleDB/Class/Role/Itemized.pm
 lib/SimpleDB/Class/SQL.pm
 t/01.HTTP.t
 t/02.Cache.t
