@@ -1,5 +1,5 @@
 package SimpleDB::Class::SQL;
-our $VERSION = '0.0600';
+our $VERSION = '0.0700';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::SQL - SQL generation tools for SimpleDB.
 
 =head1 VERSION
 
-version 0.0600
+version 0.0700
 
 =head1 DESCRIPTION
 
@@ -111,6 +111,12 @@ Null comparisons. These are very slow. Try inserting 'Null' or 'None' into a fie
 =head4 order_by
 
 An attribute to order the result set by, defaults to ascending order. Can also pass in an array ref containing an attribute and 'desc' or 'asc'. If an array ref is passed in containing only an attribute name it is an implied descending order.
+
+ "foo"
+
+ ["foo","desc"]
+
+ ["foo"]
 
 =head4 limit
 
@@ -471,19 +477,19 @@ sub recurse_where {
             if (ref $value eq 'ARRAY') {
                 my $cmp = shift @{$value};
                 if ($cmp eq '>') {
-                    push @sets, $attribute.'>'.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' > '.$self->format_value($key, $value->[0]);
                 }
                 elsif ($cmp eq '<') {
-                    push @sets, $attribute.'<'.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' < '.$self->format_value($key, $value->[0]);
                 }
                 elsif ($cmp eq '<=') {
-                    push @sets, $attribute.'<='.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' <= '.$self->format_value($key, $value->[0]);
                 }
                 elsif ($cmp eq '>=') {
-                    push @sets, $attribute.'>='.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' >= '.$self->format_value($key, $value->[0]);
                 }
                 elsif ($cmp eq '!=') {
-                    push @sets, $attribute.'!='.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' != '.$self->format_value($key, $value->[0]);
                 }
                 elsif ($cmp eq 'like') {
                     push @sets, $attribute.' like '.$self->format_value($key, $value->[0]);
@@ -512,7 +518,7 @@ sub recurse_where {
                     push @sets, $attribute.' is not null';
                 }
                 else {
-                    push @sets, $attribute.'='.$self->format_value($key, $value);
+                    push @sets, $attribute.' = '.$self->format_value($key, $value);
                 }
             }
         }

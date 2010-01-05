@@ -1,5 +1,5 @@
 package SimpleDB::Class::ResultSet;
-our $VERSION = '0.0600';
+our $VERSION = '0.0700';
 
 =head1 NAME
 
@@ -7,11 +7,15 @@ SimpleDB::Class::ResultSet - An iterator of items from a domain.
 
 =head1 VERSION
 
-version 0.0600
+version 0.0700
 
 =head1 DESCRIPTION
 
 This class is an iterator to walk to the items passed back from a query. 
+
+B<Warning:> Once you have a result set and you start calling methods on it, it will begin iterating over the result set. Therefore you can't call both C<next> and C<search>, or any other combinations of methods on an existing result set.
+
+B<Warning:> If you call a method like C<search> on a result set which causes another query to be run, know that the original result set must be very small. This is because there is a limit of 20 comparisons per request as a limitation of SimpleDB.
 
 =head1 METHODS
 
@@ -153,6 +157,44 @@ sub fetch_result {
 
 #--------------------------------------------------------
 
+=head2 count ( [ where ] )
+
+Counts the items in the result set. Returns an integer. 
+
+=head3 where
+
+A where clause as defined by L<SimpleDB::Class::SQL>. If this is specified, then an additional query is executed before counting the items in the result set.
+
+=cut
+
+sub count {
+    my ($self, $where) = @_;
+    my @ids;
+    while (my $item = $self->next) {
+        push @ids, $item->id;
+    }
+    if ($where) {
+        my $clauses = { 
+            id      => ['in',@ids], 
+            '-and'  => $where,
+        };
+        my $select = SimpleDB::Class::SQL->new(
+            item_class  => $self->item_class,
+            where       => $clauses,
+            output      => 'count(*)',
+        );
+        my $result = $self->simpledb->http->send_request('Select', {
+            SelectExpression    => $select->to_sql,
+        });
+        return $result->{SelectResult}{Item}{Attribute}{Value};
+    }
+    else {
+        return scalar @ids;
+    }
+}
+
+#--------------------------------------------------------
+
 =head2 search ( where )
 
 Just like L<SimpleDB::Class::Domain/"search">, but searches within the confines of the current result set, and then returns a new result set.
@@ -169,11 +211,14 @@ sub search {
     while (my $item = $self->next) {
         push @ids, $item->id;
     }
-    my %composed_where = ( id => ['in',@ids], %{$where});
+    my $clauses = { 
+        id      => ['in',@ids], 
+        '-and'  => $where,
+    };
     return $self->new(
         simpledb    => $self->simpledb,
         item_class  => $self->item_class,
-        where       => \%composed_where,
+        where       => $clauses,
         );
 }
 
@@ -253,7 +298,7 @@ sub next {
     my $attributes = eval{$cache->get($self->item_class->domain_name, $item->{Name})}; 
     my $e;
     if ($e = SimpleDB::Class::Exception::ObjectNotFound->caught) {
-        my $itemobj = $self->handle_item($item->{Name}, $item->{Attribute});
+        my $itemobj = $self->parse_item($item->{Name}, $item->{Attribute});
         if (defined $itemobj) {
             eval{$cache->set($self->item_class->domain_name, $item->{Name}, $itemobj->to_hashref)};
         }
@@ -269,70 +314,6 @@ sub next {
     else {
         SimpleDB::Class::Exception->throw(error=>"An undefined error occured while fetching the item from cache.");
     }
-}
-
-#--------------------------------------------------------
-
-=head2 handle_item ( id , attributes ) 
-
-Converts the attributes section of an item in a result set into a L<SimpleDB::Class::Item> object.
-
-=cut
-
-sub handle_item {
-    my ($self, $id, $list) = @_;
-    unless (ref $list eq 'ARRAY') {
-        $list = [$list];
-    }
-
-    # format the data into a reasonable structure
-    my $attributes = {};
-    foreach my $attribute (@{$list}) {
-
-        # get attribute name
-        unless (exists $attribute->{Name}) {
-            return undef; # empty result set
-        }
-        my $name = $attribute->{Name};
-
-        # skip handling the 'id' field
-        next if $name eq 'id';
-
-        # get value
-        my $value = $attribute->{Value};
-
-        # create expected hashref
-        if (exists $attributes->{$name}) {
-            if (ref $attributes->{$name} ne 'ARRAY') {
-                $attributes->{$name} = [$attributes->{$name}];
-            }
-            push @{$attributes->{$name}}, $value;
-        }
-        else {
-            $attributes->{$name} = $value;
-        }
-    }
-
-    # now we can determine the item's class from attributes if necessary
-    my $item_class = $self->determine_item_class($attributes);
-
-    # and appropriately format it's attribute values
-    my $select = SimpleDB::Class::SQL->new(item_class=>$item_class); 
-    foreach my $name (keys %{$attributes}) {
-        if (ref $attributes->{$name} eq 'ARRAY') {
-            my $i = 0;
-            foreach my $value (@{$attributes->{$name}}) {
-                $attributes->{$name}[$i] = $select->parse_value($name, $value);
-                $i++;
-            }
-        }
-        else {
-            $attributes->{$name} = $select->parse_value($name, $attributes->{$name});
-        }
-    }
-
-    # now we're ready to instantiate
-    return $item_class->new(simpledb=>$self->simpledb, name=>$id)->update($attributes);
 }
 
 =head1 LEGAL

@@ -1,5 +1,5 @@
 package SimpleDB::Class::HTTP;
-our $VERSION = '0.0600';
+our $VERSION = '0.0700';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::HTTP - The network interface to the SimpleDB service.
 
 =head1 VERSION
 
-version 0.0600
+version 0.0700
 
 =head1 SYNOPSIS
 
@@ -89,7 +89,7 @@ Returns a string that contains the HTTP post data ready to make a request to Sim
 
 =head3 action
 
-The action to perform on SimpleDB. See the "Operations" section of the guide located at L<<a href="http://docs.amazonwebservices.com/AmazonSimpleDB/2009-04-15/DeveloperGuide/">http://docs.amazonwebservices.com/AmazonSimpleDB/2009-04-15/DeveloperGuide/</a>>.
+The action to perform on SimpleDB. See the "Operations" section of the guide located at L<http://docs.amazonwebservices.com/AmazonSimpleDB/2009-04-15/DeveloperGuide/>.
 
 =head3 params
 

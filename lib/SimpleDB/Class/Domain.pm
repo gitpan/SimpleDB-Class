@@ -1,5 +1,5 @@
 package SimpleDB::Class::Domain;
-our $VERSION = '0.0600';
+our $VERSION = '0.0700';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Domain - A schematic representation of a SimpleDB domain.
 
 =head1 VERSION
 
-version 0.0600
+version 0.0700
 
 =head1 DESCRIPTION
 
@@ -144,9 +144,7 @@ sub find {
             ItemName    => $id,
             DomainName  => $self->name,
         });
-        my $item = SimpleDB::Class::ResultSet
-            ->new(simpledb=>$self->simpledb, item_class=>$self->item_class)
-            ->handle_item($id, $result->{GetAttributesResult}{Attribute});
+        my $item = $self->parse_item($id, $result->{GetAttributesResult}{Attribute});
         if (defined $item) {
             $cache->set($self->name, $id, $item->to_hashref);
         }
@@ -214,7 +212,83 @@ sub count {
 
 #--------------------------------------------------------
 
-=head2 search ( where )
+=head2 max ( attribute, [ where ] )
+
+Returns the maximum value of an attribute.
+
+=head3 attribute
+
+The name of the attribute to find the maximum value of.
+
+=head3 where
+
+A where clause as defined by L<SimpleDB::Class::SQL>. An optional clause to limit the range of the maximum value.
+
+=cut
+
+sub max {
+    my ($self, $attribute, $clauses) = @_;
+    my $where = {
+        $attribute => ['!=','-1000001'],
+    };
+    if (ref $clauses eq 'HASH') {
+        $where->{'-and'} = $clauses;
+    }
+    my $select = SimpleDB::Class::SQL->new(
+        item_class  => $self->item_class,
+        where       => $where,
+        limit       => 1,
+        order_by    => [$attribute],
+        output      => $attribute,
+    );
+    my $result = $self->simpledb->http->send_request('Select', {
+        SelectExpression    => $select->to_sql,
+    });
+    my $value = $result->{SelectResult}{Item}{Attribute}{Value};
+    return $select->parse_value($attribute, $value);
+}
+
+#--------------------------------------------------------
+
+=head2 min ( attribute, [ where ] )
+
+Returns the minimum value of an attribute.
+
+=head3 attribute
+
+The name of the attribute to find the minimum value of.
+
+=head3 where
+
+A where clause as defined by L<SimpleDB::Class::SQL>. An optional clause to limit the range of the minimum value.
+
+=cut
+
+sub min {
+    my ($self, $attribute, $clauses) = @_;
+    my $where = {
+        $attribute => ['!=','-1000001'],
+    };
+    if (ref $clauses eq 'HASH') {
+        $where->{'-and'} = $clauses;
+    }
+    my $select = SimpleDB::Class::SQL->new(
+        item_class  => $self->item_class,
+        where       => $where,
+        limit       => 1,
+        order_by    => $attribute,
+        output      => $attribute,
+    );
+    my $result = $self->simpledb->http->send_request('Select', {
+        SelectExpression    => $select->to_sql,
+    });
+    my $value = $result->{SelectResult}{Item}{Attribute}{Value};
+    return $select->parse_value($attribute, $value);
+}
+
+#--------------------------------------------------------
+
+=head2 search ( where, [ order_by, limit ] )
 
 Returns a L<SimpleDB::Class::ResultSet> object. 
 
@@ -224,14 +298,24 @@ WARNING: With this method you need to be aware that SimpleDB is eventually consi
 
 A where clause as defined by L<SimpleDB::Class::SQL>.
 
+=head3 order_by
+
+An order by clause as defined by L<SimpleDB::Class::SQL>.
+
+=head3 limit
+
+A limit clause as defined by L<SimpleDB::Class::SQL>.
+
 =cut
 
 sub search {
-    my ($self, $where) = @_;
+    my ($self, $where, $order_by, $limit) = @_;
     return SimpleDB::Class::ResultSet->new(
         simpledb    => $self->simpledb,
         item_class  => $self->item_class,
         where       => $where,
+        order_by    => $order_by,
+        limit       => $limit,
         );
 }
 
