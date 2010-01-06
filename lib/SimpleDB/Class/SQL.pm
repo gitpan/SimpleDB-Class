@@ -1,5 +1,5 @@
 package SimpleDB::Class::SQL;
-our $VERSION = '0.0700';
+our $VERSION = '0.0701';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::SQL - SQL generation tools for SimpleDB.
 
 =head1 VERSION
 
-version 0.0700
+version 0.0701
 
 =head1 DESCRIPTION
 
@@ -296,7 +296,7 @@ A string that is composed of an integer + 1000000000 and then padded to have pre
 
 sub parse_int {
     my ($self, $value) = @_;
-    $value ||= 0;
+    $value ||= '000001000000000';
     return $value-1000000000;
 }
 
