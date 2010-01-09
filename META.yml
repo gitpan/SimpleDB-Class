@@ -9,20 +9,21 @@ meta-spec:
   version: 1.4
 name: SimpleDB-Class
 requires:
-  AnyEvent::HTTP: 1.44
+  Crypt::SSLeay: 0.57
   DateTime: 0
   DateTime::Format::Strptime: 0
   Digest::SHA: 0
   Exception::Class: 0
+  LWP: 5.834
   Memcached::libmemcached: 0.3102
   Module::Find: 0
   Moose: 0.93
   MooseX::ClassAttribute: 0
-  Net::SSLeay: 1.35
   Sub::Name: 0.04
   Test::Deep: 0
   Test::More: 0
+  Time::HiRes: 1.9719
   URI: 0
   UUID::Tiny: 0
   XML::Simple: 0
-version: 0.0701
+version: 0.0702
