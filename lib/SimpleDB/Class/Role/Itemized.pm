@@ -1,5 +1,5 @@
 package SimpleDB::Class::Role::Itemized;
-our $VERSION = '0.0702';
+our $VERSION = '0.0801';
 
 use Moose::Role;
 use SimpleDB::Class::SQL;
@@ -12,7 +12,7 @@ SimpleDB::Class::Role::Itemized - Provides utility methods to classes that need 
 
 =head1 VERSION
 
-version 0.0702
+version 0.0801
 
 =head1 SYNOPSIS
 

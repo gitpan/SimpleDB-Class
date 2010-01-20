@@ -1,5 +1,5 @@
 package SimpleDB::Class::Item;
-our $VERSION = '0.0702';
+our $VERSION = '0.0801';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Item - An object representation from an item in a SimpleDB doma
 
 =head1 VERSION
 
-version 0.0702
+version 0.0801
 
 =head1 DESCRIPTION
 
@@ -414,6 +414,7 @@ sub to_hashref {
     my ($self) = @_;
     my %properties;
     foreach my $attribute (keys %{$self->attributes}) {                                                
+        next if $attribute eq 'id';
         $properties{$attribute} = $self->$attribute;
     }
     return \%properties;

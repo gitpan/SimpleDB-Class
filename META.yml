@@ -26,4 +26,4 @@ requires:
   URI: 0
   UUID::Tiny: 0
   XML::Simple: 0
-version: 0.0702
+version: 0.0801
