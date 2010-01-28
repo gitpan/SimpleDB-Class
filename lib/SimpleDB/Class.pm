@@ -1,5 +1,5 @@
 package SimpleDB::Class;
-our $VERSION = '0.0801';
+our $VERSION = '0.0802';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class - An Object Relational Mapper (ORM) for the Amazon SimpleDB serv
 
 =head1 VERSION
 
-version 0.0801
+version 0.0802
 
 =head1 SYNOPSIS
 
@@ -164,6 +164,10 @@ The secret access key given to you from Amazon.
 
 An array reference of cache servers. See L<SimpleDB::Class::Cache> for details.
 
+=head4 simpledb_uri
+
+An optional L<URI> object to connect to an alternate SimpleDB server. See also L<SimpleDB::Class::HTTP/"simpledb_uri">.
+
 =cut
 
 #--------------------------------------------------------
@@ -244,6 +248,25 @@ has 'secret_key' => (
 
 #--------------------------------------------------------
 
+=head2 simpledb_uri ( )
+
+Returns the L<URI> object passed into the constructor, if any. See also L<SimpleDB::Class::HTTP/"simpledb_uri">.
+
+=head2 has_simpledb_uri ( )
+
+Returns a boolean indicating whether the user has overridden the URI.
+
+=cut
+
+has simpledb_uri => (
+    is          => 'ro',
+    predicate   => 'has_simpledb_uri',
+    default     => undef,
+);
+
+
+#--------------------------------------------------------
+
 =head2 http ( )
 
 Returns the L<SimpleDB::Class::HTTP> instance used to connect to the SimpleDB service.
@@ -255,7 +278,11 @@ has http => (
     lazy            => 1,
     default         => sub { 
                         my $self = shift; 
-                        return SimpleDB::Class::HTTP->new(access_key=>$self->access_key, secret_key=>$self->secret_key);
+                        my %params = (access_key=>$self->access_key, secret_key=>$self->secret_key);
+                        if ($self->has_simpledb_uri) {
+                            $params{simpledb_uri} = $self->simpledb_uri;
+                        }
+                        return SimpleDB::Class::HTTP->new(%params);
                         },
 );
 
@@ -329,6 +356,7 @@ L<Module::Find>
 L<UUID::Tiny>
 L<Exception::Class>
 L<Memcached::libmemcached>
+L<Clone>
 
 =head1 TODO
 
@@ -385,6 +413,8 @@ A complete and nicely functional low level library made by Amazon itself.
 A low level SimpleDB accessor that's in its infancy and may be abandoned, but appears to be pretty functional, and of the same scope as Amazon's own module.
 
 =back
+
+In addition to clients, there is at least one other API compatible server out there that basically lets you host your own SimpleDB if you don't want to put it in Amazon's cloud. It's called M/DB. You can read more about it here: L<http://gradvs1.mgateway.com/main/index.html?path=mdb>. Though I haven't tested it, since it's API compatible, you should be able to use SimpleDB::Class with it.
 
 =head1 AUTHOR
 

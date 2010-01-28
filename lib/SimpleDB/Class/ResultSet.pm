@@ -1,5 +1,5 @@
 package SimpleDB::Class::ResultSet;
-our $VERSION = '0.0801';
+our $VERSION = '0.0802';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::ResultSet - An iterator of items from a domain.
 
 =head1 VERSION
 
-version 0.0801
+version 0.0802
 
 =head1 DESCRIPTION
 
@@ -278,7 +278,7 @@ sub next {
         if (exists $result->{SelectResult}{NextToken}) {
             $self->iterator(0);
             $iterator = 0;
-            $result = $self->fetch_results;
+            $result = $self->fetch_result;
         }
         else {
             return undef;

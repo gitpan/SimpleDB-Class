@@ -1,5 +1,5 @@
 package SimpleDB::Class::SQL;
-our $VERSION = '0.0801';
+our $VERSION = '0.0802';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::SQL - SQL generation tools for SimpleDB.
 
 =head1 VERSION
 
-version 0.0801
+version 0.0802
 
 =head1 DESCRIPTION
 
@@ -23,6 +23,7 @@ use Moose;
 use JSON;
 use DateTime;
 use DateTime::Format::Strptime;
+use Clone qw(clone);
 
 #--------------------------------------------------------
 
@@ -550,7 +551,7 @@ sub to_sql {
     # where
     my $where='';
     if ($self->has_where) {
-        $where = $self->recurse_where($self->where);
+        $where = $self->recurse_where(clone($self->where));
         if ($where ne '') {
             $where = ' where '.$where;
         }

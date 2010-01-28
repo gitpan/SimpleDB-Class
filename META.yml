@@ -9,6 +9,7 @@ meta-spec:
   version: 1.4
 name: SimpleDB-Class
 requires:
+  Clone: 0.31
   Crypt::SSLeay: 0.57
   DateTime: 0
   DateTime::Format::Strptime: 0
@@ -26,4 +27,4 @@ requires:
   URI: 0
   UUID::Tiny: 0
   XML::Simple: 0
-version: 0.0801
+version: 0.0802
