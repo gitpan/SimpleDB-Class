@@ -1,5 +1,5 @@
 package SimpleDB::Class::HTTP;
-our $VERSION = '0.0802';
+our $VERSION = '1.0000';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::HTTP - The network interface to the SimpleDB service.
 
 =head1 VERSION
 
-version 0.0802
+version 1.0000
 
 =head1 SYNOPSIS
 
@@ -113,11 +113,7 @@ Returns the L<LWP::UserAgent> object that is used to connect to SimpleDB. It's c
 
 has user_agent => (
     is      => 'ro',
-    default => sub { 
-        my $ua = LWP::UserAgent->new;
-        $ua->timeout(30);
-        return $ua;
-    },
+    default => sub { LWP::UserAgent->new(timeout=>30, keep_alive=>1); },
 );
 
 #--------------------------------------------------------
@@ -233,7 +229,7 @@ The HTTP headers.
 
 sub handle_response {
     my ($self, $response) = @_;
-    my $content = eval {XML::Simple::XMLin($response->content)};
+    my $content = eval {XML::Simple::XMLin($response->content, ForceArray => ['Item'])};
 
     # choked reconstituing the XML, probably because it wasn't XML
     if ($@) {
@@ -264,7 +260,7 @@ sub handle_response {
 
 =head1 LEGAL
 
-SimpleDB::Class is Copyright 2009 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
+SimpleDB::Class is Copyright 2009-2010 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
 
 =cut
 

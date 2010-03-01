@@ -1,5 +1,5 @@
 package SimpleDB::Class::SQL;
-our $VERSION = '0.0802';
+our $VERSION = '1.0000';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::SQL - SQL generation tools for SimpleDB.
 
 =head1 VERSION
 
-version 0.0802
+version 1.0000
 
 =head1 DESCRIPTION
 
@@ -39,6 +39,10 @@ A hash of options you can pass in to the constructor.
 
 A L<SimpleDB::Class::Item> subclass name. This is required.
 
+=head4 simpledb
+
+A reference to the L<SimpleDB::Class> object. This is required.
+
 =head4 output
 
 Defaults to '*'. Alternatively you can pass a string of 'count(*)' or an attribute. Or you can pass an array ref of attributes.
@@ -46,6 +50,8 @@ Defaults to '*'. Alternatively you can pass a string of 'count(*)' or an attribu
 =head4 where
 
 A hash reference containing a series of clauses. Here are some examples and what the resulting queries would be. You can of course combine all these options to create your own queries.
+
+B<NOTE:> If you want to search on an item's id (or ItemName) then you should use the C<itemName()> function as the id doesn't actually exist in the item's data.
 
 Direct comparison.
 
@@ -140,6 +146,19 @@ has output => (
 
 #--------------------------------------------------------
 
+=head2 simpledb ()
+
+Returns the reference passed into the constructor.
+
+=cut
+
+has simpledb => (
+    is          => 'ro',
+    required    => 1,
+);
+
+#--------------------------------------------------------
+
 =head2 item_class ()
 
 Returns what was passed into the constructor for the item_class field.
@@ -204,7 +223,8 @@ has limit => (
 
 =head2 quote_value ( string )
 
-Escapes ' and " in values.
+Escapes ' and " in values.  If C<itemName()> is what's passed in, it will not be quoted.
+
 
 =head3 string
 
@@ -223,7 +243,7 @@ sub quote_value {
 
 =head2 quote_attribute ( string )
 
-Escapes an attribute with so that it can contain spaces and other special characters by wrapping it in backticks `.
+Escapes an attribute with so that it can contain spaces and other special characters by wrapping it in backticks `. If C<itemName()> is what's passed in, it will not be quoted.
 
 =head3 string
 
@@ -233,213 +253,11 @@ The attribute name to escape.
 
 sub quote_attribute {
     my ($self, $string) = @_;
+    if ($string eq 'itemName()') {
+        return $string;
+    }
     $string =~ s/`/``/g;
     return "`".$string."`";
-}
-
-#--------------------------------------------------------
-
-=head2 parse_datetime ( string )
-
-Parses a date time string and returns a L<DateTime> object.
-
-=head3 string
-
-A string in the format of YY-MM-DD HH:MM:SS NNNNNNN +ZZZZ where NNNNNNN represents nanoseconds and +ZZZZ represents an ISO timezone.
-
-=cut
-
-sub parse_datetime {
-    my ($self, $value) = @_;
-    if ($value =~ m/\d{4}-\d\d-\d\d \d\d:\d\d:\d\d \d+ +\d{4}/) {
-        return DateTime::Format::Strptime::strptime('%Y-%m-%d %H:%M:%S %N %z',$value);
-    }
-    else {
-        return DateTime->now;
-    }
-}
-
-#--------------------------------------------------------
-
-=head2 parse_hashref ( string ) 
-
-Parses a JSON formatted string and returns an actual hash reference.
-
-=head3 string
-
-A string that is composed of a JSONified hash reference. 
-
-=cut
-
-sub parse_hashref {
-    my ($self, $value) = @_;
-    if ($value eq '') {
-        return {};
-    }
-    else {
-        return JSON::from_json($value);
-    }
-}
-
-#--------------------------------------------------------
-
-=head2 parse_int ( string ) 
-
-Parses an integer formatted string and returns an actual integer.
-
-B<Warning:> SimpleDB::Class only supports 15 digit positive integers and 9 digit negative integers.
-
-=head3 string
-
-A string that is composed of an integer + 1000000000 and then padded to have preceding zeros so that it's always 15 characters long.
-
-=cut
-
-sub parse_int {
-    my ($self, $value) = @_;
-    $value ||= '000001000000000';
-    return $value-1000000000;
-}
-
-#--------------------------------------------------------
-
-=head2 parse_value ( name, value ) 
-
-Returns a value that has been passed through one of the parse_* methods in this class.
-
-=head3 name
-
-The name of the attribute to parse.
-
-=head3 value
-
-The current stringified value to parse.
-
-=cut
-
-sub parse_value {
-    my ($self, $name, $value) = @_;
-    my $registered_attributes = $self->item_class->attributes;
-    # set default value
-    $value ||= $registered_attributes->{$name}{default};
-    # find isa
-    my $isa = $registered_attributes->{$name}{isa} || '';
-    # unpad integers
-    if ($isa eq 'Int') {
-        $value = $self->parse_int($value); 
-    }
-    # unjsonify hash refs
-    elsif ($isa eq 'HashRef') {
-        $value = $self->parse_hashref($value);
-    }
-    # unstringify dates
-    elsif ($isa eq 'DateTime') {
-        $value = $self->parse_datetime($value);
-    }
-    return $value;
-}
-
-#--------------------------------------------------------
-
-=head2 format_datetime ( value )
-
-Returns a string formatted datetime object. Example: 2009-12-01 10:43:01 04939911 +0600. See parse_datetime, as this is the reverse of that.
-
-=head3 value
-
-A L<DateTime> object.
-
-=cut
-
-sub format_datetime {
-    my ($self, $value) = @_;
-    $value ||= DateTime->now;
-    return DateTime::Format::Strptime::strftime('%Y-%m-%d %H:%M:%S %N %z',$value);
-}
-
-#--------------------------------------------------------
-
-=head2 format_hashref ( value )
-
-Returns a json formatted hashref. Example: C<{"foo":"bar"}>. See parse_hashref as this is the reverse of that. 
-
-B<Warning:> The total length of your hash reference after it's turned into JSON cannot exceed 1024 characters, as that's the field size limit for SimpleDB. Failing to heed this warning will result in corrupt data.
-
-=head3 value
-
-A hash reference.
-
-=cut
-
-sub format_hashref {
-    my ($self, $value) = @_;
-    unless (ref $value eq 'HASH') {
-        $value = {};
-    }
-    return JSON::to_json($value);
-}
-
-#--------------------------------------------------------
-
-=head2 format_int ( value )
-
-Returns a string formatted integer. Example: 000000003495839. See parse_integer as this is the reverse of that. 
-
-B<Warning:> SimpleDB::Class only supports 15 digit positive integers and 9 digit negative integers.
-
-=head3 value
-
-An integer.
-
-=cut
-
-sub format_int {
-    my ($self, $value) = @_;
-    $value ||= 0; # init
-    return sprintf("%015d",$value+1000000000);
-}
-
-#--------------------------------------------------------
-
-=head2 format_value ( name, value, [ skip_quotes ] )
-
-Formats an attribute as a string using one of the format_* methods in this class. See parse_value, as this is the reverse of that.
-
-=head3 name
-
-The name of the attribute to format.
-
-=head3 value
-
-The value to format.
-
-=head3 skip_quotes
-
-A boolean indicating whether or not to skip calling the quote_value function on the whole thing.
-
-=cut
-
-sub format_value {
-    my ($self, $name, $value, $skip_quotes) = @_;
-    my $registered_attributes = $self->item_class->attributes;
-    # set default value
-    $value ||= $registered_attributes->{$name}{default};
-    # find isa
-    my $isa = $registered_attributes->{$name}{isa} || '';
-    # pad integers
-    if ($isa eq 'Int') {
-        $value = $self->format_int($value); 
-    }
-    # jsonify hashrefs
-    elsif ($isa eq 'HashRef') {
-        $value = $self->format_hashref($value); 
-    }
-    # stringify dates
-    elsif ($isa eq 'DateTime') {
-        $value = $self->format_datetime($value);
-    }
-    # quote it
-    return ($skip_quotes) ? $value : $self->quote_value($value);
 }
 
 #--------------------------------------------------------
@@ -474,40 +292,42 @@ sub recurse_where {
         }
         else {
             my $value = $constraints->{$key};
+            my $item_class = $self->item_class;
             my $attribute = $self->quote_attribute($key);
             if (ref $value eq 'ARRAY') {
                 my $cmp = shift @{$value};
                 if ($cmp eq '>') {
-                    push @sets, $attribute.' > '.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' > '.$self->quote_value($item_class->stringify_value($key, $value->[0]));
                 }
                 elsif ($cmp eq '<') {
-                    push @sets, $attribute.' < '.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' < '.$self->quote_value($item_class->stringify_value($key, $value->[0]));
                 }
                 elsif ($cmp eq '<=') {
-                    push @sets, $attribute.' <= '.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' <= '.$self->quote_value($item_class->stringify_value($key, $value->[0]));
                 }
                 elsif ($cmp eq '>=') {
-                    push @sets, $attribute.' >= '.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' >= '.$self->quote_value($item_class->stringify_value($key, $value->[0]));
                 }
                 elsif ($cmp eq '!=') {
-                    push @sets, $attribute.' != '.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' != '.$self->quote_value($item_class->stringify_value($key, $value->[0]));
                 }
                 elsif ($cmp eq 'like') {
-                    push @sets, $attribute.' like '.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' like '.$self->quote_value($item_class->stringify_value($key, $value->[0]));
                 }
                 elsif ($cmp eq 'not like') {
-                    push @sets, $attribute.' not like '.$self->format_value($key, $value->[0]);
+                    push @sets, $attribute.' not like '.$self->quote_value($item_class->stringify_value($key, $value->[0]));
                 }
                 elsif ($cmp eq 'in') {
-                    my @values = map {$self->format_value($key, $_)} @{$value};
+                    my @values = map {$self->quote_value($item_class->stringify_value($key, $_))} @{$value};
                     push @sets, $attribute.' in ('.join(', ', @values).')';
                 }
                 elsif ($cmp eq 'every') {
-                    my @values = map {$self->format_value($key, $_)} @{$value};
+                    my @values = map {$self->quote_value($item_class->stringify_value($key, $_))} @{$value};
                     push @sets, 'every('.$attribute.') in ('.join(', ', @values).')';
                 }
                 elsif ($cmp eq 'between') {
-                    push @sets, $attribute.' between '.$self->format_value($key, $value->[0]).' and '.$self->format_value($key, $value->[1])
+                    push @sets, $attribute.' between '.$self->quote_value($item_class->stringify_value($key, $value->[0]))
+                        .' and '.$self->quote_value($item_class->stringify_value($key, $value->[1]));
                 }
             }
             else {
@@ -519,7 +339,7 @@ sub recurse_where {
                     push @sets, $attribute.' is not null';
                 }
                 else {
-                    push @sets, $attribute.' = '.$self->format_value($key, $value);
+                    push @sets, $attribute.' = '.$self->quote_value($item_class->stringify_value($key, $value));
                 }
             }
         }
@@ -575,13 +395,13 @@ sub to_sql {
         $limit = ' limit '.$self->limit;
     }
 
-    return 'select '.$output.' from '.$self->quote_attribute($self->item_class->can('domain_name')->()).$where.$sort.$limit;
+    return 'select '.$output.' from '.$self->quote_attribute($self->simpledb->add_domain_prefix($self->item_class->domain_name)).$where.$sort.$limit;
 }
 
 
 =head1 LEGAL
 
-SimpleDB::Class is Copyright 2009 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
+SimpleDB::Class is Copyright 2009-2010 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
 
 =cut
 

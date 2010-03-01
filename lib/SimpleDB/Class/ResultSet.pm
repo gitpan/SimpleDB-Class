@@ -1,5 +1,5 @@
 package SimpleDB::Class::ResultSet;
-our $VERSION = '0.0802';
+our $VERSION = '1.0000';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::ResultSet - An iterator of items from a domain.
 
 =head1 VERSION
 
-version 0.0802
+version 1.0000
 
 =head1 DESCRIPTION
 
@@ -52,6 +52,10 @@ A result as returned from the send_request() method from L<SimpleDB::Class::HTTP
 
 A where clause as defined in L<SimpleDB::Class::SQL>. Either this or a result is required.
 
+=head4 consistent
+
+A boolean that if set true will get around Eventual Consistency, but at a reduced performance.
+
 =cut
 
 #--------------------------------------------------------
@@ -68,6 +72,19 @@ has item_class => (
 );
 
 with 'SimpleDB::Class::Role::Itemized';
+
+#--------------------------------------------------------
+
+=head2 consistent ( )
+
+Returns the consistent value passed into the constructor.
+
+=cut
+
+has consistent => (
+    is      => 'ro',
+    default => 0,
+);
 
 #--------------------------------------------------------
 
@@ -141,9 +158,13 @@ sub fetch_result {
     my ($self) = @_;
     my $select = SimpleDB::Class::SQL->new(
         item_class  => $self->item_class,
+        simpledb    => $self->simpledb,
         where       => $self->where,
     );
     my %params = (SelectExpression => $select->to_sql);
+    if ($self->consistent) {
+        $params{ConsistentRead} = 'true';
+    }
 
     # if we're fetching and we already have a result, we can assume we're getting the next batch
     if ($self->has_result) { 
@@ -157,36 +178,43 @@ sub fetch_result {
 
 #--------------------------------------------------------
 
-=head2 count ( [ where ] )
+=head2 count (  [ options ]  )
 
 Counts the items in the result set. Returns an integer. 
 
-=head3 where
+=head3 options
+
+A hash of extra options you can pass to modify the count.
+
+=head4 where
 
 A where clause as defined by L<SimpleDB::Class::SQL>. If this is specified, then an additional query is executed before counting the items in the result set.
 
 =cut
 
 sub count {
-    my ($self, $where) = @_;
+    my ($self, %options) = @_;
     my @ids;
     while (my $item = $self->next) {
         push @ids, $item->id;
     }
-    if ($where) {
+    if ($options{where}) {
         my $clauses = { 
-            id      => ['in',@ids], 
-            '-and'  => $where,
+            'itemName()'    => ['in',@ids], 
+            '-and'          => $options{where},
         };
         my $select = SimpleDB::Class::SQL->new(
             item_class  => $self->item_class,
+            simpledb    => $self->simpledb,
             where       => $clauses,
             output      => 'count(*)',
         );
-        my $result = $self->simpledb->http->send_request('Select', {
-            SelectExpression    => $select->to_sql,
-        });
-        return $result->{SelectResult}{Item}{Attribute}{Value};
+        my %params = ( SelectExpression    => $select->to_sql );
+        if ($self->consistent) {
+            $params{ConsistentRead} = 'true';
+        }
+        my $result = $self->simpledb->http->send_request('Select', \%params);
+        return $result->{SelectResult}{Item}[0]{Attribute}{Value};
     }
     else {
         return scalar @ids;
@@ -195,30 +223,35 @@ sub count {
 
 #--------------------------------------------------------
 
-=head2 search ( where )
+=head2 search ( options )
 
 Just like L<SimpleDB::Class::Domain/"search">, but searches within the confines of the current result set, and then returns a new result set.
 
-=head3 where
+=head3 options
+
+A hash of extra options to modify the search.
+
+=head4 where
 
 A where clause as defined by L<SimpleDB::Class::SQL>.
 
 =cut
 
 sub search {
-    my ($self, $where) = @_;
+    my ($self, %options) = @_;
     my @ids;
     while (my $item = $self->next) {
         push @ids, $item->id;
     }
     my $clauses = { 
-        id      => ['in',@ids], 
-        '-and'  => $where,
+        'itemName()'      => ['in',@ids], 
+        '-and'  => $options{where},
     };
     return $self->new(
         simpledb    => $self->simpledb,
         item_class  => $self->item_class,
         where       => $clauses,
+        consistent  => $self->consistent,
         );
 }
 
@@ -268,7 +301,8 @@ sub next {
     my ($self) = @_;
     # get the current results
     my $result = ($self->has_result) ? $self->result : $self->fetch_result;
-    my $items = (ref $result->{SelectResult}{Item} eq 'ARRAY') ? $result->{SelectResult}{Item} : [$result->{SelectResult}{Item}];
+    my $items = $result->{SelectResult}{Item};
+    return undef unless defined $items;
     my $num_items = scalar @{$items};
     return undef unless $num_items > 0;
 
@@ -292,15 +326,17 @@ sub next {
     $self->iterator($iterator);
 
     # make the item object
-    my $cache = $self->simpledb->cache;
+    my $db = $self->simpledb;
+    my $domain_name = $db->add_domain_prefix($self->item_class->domain_name);
+    my $cache = $db->cache;
     ## fetch from cache even though we've already pulled it back from the db, because the one in cache
     ## might be more up to date than the one from the DB
-    my $attributes = eval{$cache->get($self->item_class->domain_name, $item->{Name})}; 
+    my $attributes = eval{$cache->get($domain_name, $item->{Name})}; 
     my $e;
     if ($e = SimpleDB::Class::Exception::ObjectNotFound->caught) {
         my $itemobj = $self->parse_item($item->{Name}, $item->{Attribute});
         if (defined $itemobj) {
-            eval{$cache->set($self->item_class->domain_name, $item->{Name}, $itemobj->to_hashref)};
+            eval{$cache->set($domain_name, $item->{Name}, $itemobj->to_hashref)};
         }
         return $itemobj;
     }
@@ -318,7 +354,7 @@ sub next {
 
 =head1 LEGAL
 
-SimpleDB::Class is Copyright 2009 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
+SimpleDB::Class is Copyright 2009-2010 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
 
 =cut
 

@@ -1,8 +1,8 @@
 package SimpleDB::Class::Role::Itemized;
-our $VERSION = '0.0802';
+our $VERSION = '1.0000';
 
 use Moose::Role;
-use SimpleDB::Class::SQL;
+use SimpleDB::Class::Types ':all';
 
 requires 'item_class';
 
@@ -12,7 +12,7 @@ SimpleDB::Class::Role::Itemized - Provides utility methods to classes that need 
 
 =head1 VERSION
 
-version 0.0802
+version 1.0000
 
 =head1 SYNOPSIS
 
@@ -75,6 +75,9 @@ sub determine_item_class {
     my $castor = $class->_castor_attribute;
     if ($castor) {
         my $reclass = $attributes->{$castor};
+        if (ref $reclass eq 'ARRAY') {
+            $reclass = $reclass->[0];
+        }
         if ($reclass) {
             return $reclass;
         }
@@ -120,35 +123,12 @@ sub parse_item {
         # get value
         my $value = $attribute->{Value};
 
-        # create expected hashref
-        if (exists $attributes->{$name}) {
-            if (ref $attributes->{$name} ne 'ARRAY') {
-                $attributes->{$name} = [$attributes->{$name}];
-            }
-            push @{$attributes->{$name}}, $value;
-        }
-        else {
-            $attributes->{$name} = $value;
-        }
+        # store attribute list
+        push @{$attributes->{$name}}, $value;
     }
 
     # now we can determine the item's class from attributes if necessary
     my $item_class = $self->determine_item_class($attributes);
-
-    # and appropriately format it's attribute values
-    my $select = SimpleDB::Class::SQL->new(item_class=>$item_class); 
-    foreach my $name (keys %{$attributes}) {
-        if (ref $attributes->{$name} eq 'ARRAY') {
-            my $i = 0;
-            foreach my $value (@{$attributes->{$name}}) {
-                $attributes->{$name}[$i] = $select->parse_value($name, $value);
-                $i++;
-            }
-        }
-        else {
-            $attributes->{$name} = $select->parse_value($name, $attributes->{$name});
-        }
-    }
 
     # now we're ready to instantiate
     return $item_class->new(simpledb=>$self->simpledb, id=>$id)->update($attributes);
@@ -156,7 +136,7 @@ sub parse_item {
 
 =head1 LEGAL
 
-SimpleDB::Class is Copyright 2009 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
+SimpleDB::Class is Copyright 2009-2010 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
 
 =cut
 

@@ -1,5 +1,5 @@
 package SimpleDB::Class;
-our $VERSION = '0.0802';
+our $VERSION = '1.0000';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class - An Object Relational Mapper (ORM) for the Amazon SimpleDB serv
 
 =head1 VERSION
 
-version 0.0802
+version 1.0000
 
 =head1 SYNOPSIS
 
@@ -60,7 +60,7 @@ version 0.0802
  my $specific_book = $library->domain('book')->find('id goes here');
 
  my $books = $library->domain('publisher')->find($id)->books;
- my $books = $library->domain('book')->search({publish_date => ['between', DateTime->new(year=>2001), DateTime->new(year=>2003)]});
+ my $books = $library->domain('book')->search( where => {publish_date => ['between', DateTime->new(year=>2001), DateTime->new(year=>2003)]} );
  while (my $book = $books->next) {
     say $book->title;
  }
@@ -87,7 +87,7 @@ It automatically formats dates and integers for sortability in SimpleDB.
 
 =item *
 
-It automatically casts date fields as DateTime objects. 
+It automatically casts date fields as L<DateTime> objects. 
 
 =item *
 
@@ -100,6 +100,10 @@ It uses L<Moose> for everything, which makes it easy to use Moose's introspectio
 =item *
 
 It automatically generates UUID based ItemNames (unique IDs) if you don't want to supply an ID yourself. 
+
+=item *
+
+It has built in domain prefixing to account for the fact that you can't create multiple SimpleDB instances under the same account.
 
 =item *
 
@@ -126,6 +130,8 @@ It lets you search within a subset of a domain, by letting you do a secondary C<
 =head2 Eventual Consistency
 
 SimpleDB is eventually consistent, which means that if you do a write, and then read directly after the write you may not get what you just wrote. L<SimpleDB::Class> gets around this problem for the post part because it caches all L<SimpleDB::Class::Item>s in memcached. That is to say that if an object can be read from cache, it will be. The one area where this falls short are some methods in L<SimpleDB::Class::Domain> and L<SimpleDB::Class::ResultSet> that perform searches on the database which look up items based upon their attributes rather than based upon id. Even in those cases, once an object is located we try to pull it from cache rather than using the data SimpleDB gave us, simply because the cache may be more current. However, a search result may return too few (inserts pending) or too many (deletes pending) results in L<SimpleDB::Class::ResultSet>, or it may return an object which no longer fits certain criteria that you just searched for (updates pending). As long as you're aware of it, and write your programs accordingly, there shouldn't be a problem.
+
+At the end of February 2010 Amazon added a C<ConsistentRead> option to SimpleDB, which means you don't have to care about eventual consistency if you wish to sacrifice some performance. We have exposed this as an option for you to turn on in the methods like C<search> in L<SimpleDB::Class::Domain> where you have to be concerned about eventual consistency. 
 
 Does all this mean that this module makes SimpleDB as ACID compliant as a traditional RDBMS? No it does not. There are still no locks on domains (think tables), or items (think rows). So you probably shouldn't be storing sensitive financial transactions in this. We just provide an easy to use API that will allow you to more easily and a little more safely take advantage of Amazon's excellent SimpleDB service for things like storing logs, metadata, and game data.
 
@@ -167,6 +173,10 @@ An array reference of cache servers. See L<SimpleDB::Class::Cache> for details.
 =head4 simpledb_uri
 
 An optional L<URI> object to connect to an alternate SimpleDB server. See also L<SimpleDB::Class::HTTP/"simpledb_uri">.
+
+=head4 domain_prefix
+
+An optional string that is prepended to all domain names wherever they are used in the system.
 
 =cut
 
@@ -267,6 +277,47 @@ has simpledb_uri => (
 
 #--------------------------------------------------------
 
+=head2 domain_prefix ( )
+
+Returns the value passed into the constructor.
+
+=head2 has_domain_prefix ( )
+
+Returns a boolean indicating whether the user has specified a domain_prefix.
+
+=cut
+
+has domain_prefix => (
+    is          => 'ro',
+    predicate   => 'has_domain_prefix',
+    default     => undef,
+);
+
+#--------------------------------------------------------
+
+=head2 add_domain_prefix ( domain ) 
+
+If the domain_prefix is set, this method will apply it do a passed in domain name. If it's not, it will simply return the domain anme as is.
+
+B<NOTE:> This is used mostly internally to SimpleDB::Class, so unless you're extending SimpleDB::Class itself, rather than just using it, you don't have to use this method.
+
+=head3 domain
+
+The domain to apply the prefix to.
+
+=cut
+
+sub add_domain_prefix {
+    my ($self, $domain) = @_;
+    if ($self->has_domain_prefix) {
+        return $self->domain_prefix . $domain;
+    }
+    return $domain;
+}
+
+
+#--------------------------------------------------------
+
 =head2 http ( )
 
 Returns the L<SimpleDB::Class::HTTP> instance used to connect to the SimpleDB service.
@@ -343,12 +394,14 @@ This package requires the following modules:
 
 L<XML::Simple>
 L<LWP>
+L<JSON>
 L<TimeHiRes>
 L<Crypt::SSLeay>
 L<Sub::Name>
 L<DateTime>
 L<DateTime::Format::Strptime>
 L<Moose>
+L<MooseX::Types>
 L<MooseX::ClassAttribute>
 L<Digest::SHA>
 L<URI>
@@ -424,7 +477,7 @@ I have to give credit where credit is due: SimpleDB::Class is heavily inspired b
 
 =head1 LEGAL
 
-SimpleDB::Class is Copyright 2009 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
+SimpleDB::Class is Copyright 2009-2010 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
 
 =cut
 

@@ -1,5 +1,5 @@
 package SimpleDB::Class::Exception;
-our $VERSION = '0.0802';
+our $VERSION = '1.0000';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Exception - Exceptions thrown by SimpleDB::Class.
 
 =head1 VERSION
 
-version 0.0802
+version 1.0000
 
 =head1 DESCRIPTION
 
@@ -110,7 +110,7 @@ use Exception::Class (
 
 =head1 LEGAL
 
-SimpleDB::Class is Copyright 2009 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
+SimpleDB::Class is Copyright 2009-2010 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
 
 =cut
 

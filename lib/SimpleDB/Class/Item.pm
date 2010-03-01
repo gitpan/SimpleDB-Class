@@ -1,5 +1,5 @@
 package SimpleDB::Class::Item;
-our $VERSION = '0.0802';
+our $VERSION = '1.0000';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Item - An object representation from an item in a SimpleDB doma
 
 =head1 VERSION
 
-version 0.0802
+version 1.0000
 
 =head1 DESCRIPTION
 
@@ -21,7 +21,7 @@ The following methods are available from this class.
 
 use Moose;
 use UUID::Tiny;
-use SimpleDB::Class::SQL;
+use SimpleDB::Class::Types ':all';
 use Sub::Name ();
 
 #--------------------------------------------------------
@@ -43,7 +43,7 @@ The domain name to set.
 
 =head2 domain_name ( )
 
-After set_domain_name() has been called, there will be a domain_name method, that will return the value of the domain name.
+Class method. After set_domain_name() has been called, there will be a domain_name method, that will return the value of the domain name.
 
 =cut
 
@@ -73,7 +73,7 @@ The attribute name is key in the hashref.
 
 =head4 isa
 
-The type of data represented by this attribute. Defaults to 'Str' if left out. Options are 'Str', 'Int', 'HashRef', and 'DateTime'.
+The type of data represented by this attribute. See L<SimpleDB::Class::Types> for the available types.
 
 =head4 default
 
@@ -81,45 +81,40 @@ The default value for this attribute. This should be specified even if it is 'No
 
 =head4 trigger
 
-A sub reference that will be called like a method (has reference to $self), and is also passed the new and old values of this attribute. Works just like a L<Moose> trigger. See also L<Moose::Manual::Attributes/"Triggers">.
+A sub reference that will be called like a method (has reference to $self), and is also passed the new and old values of this attribute. Behind the scenes is a L<Moose> trigger. See also L<Moose::Manual::Attributes/"Triggers">.
 
 =cut
 
 sub add_attributes {
     my ($class, %attributes) = @_;
+    my %defaults = (
+        Str                 => '',
+        DateTime            => sub { DateTime->now() },
+        Int                 => 0,
+        ArrayRefOfInt       => sub { [] },
+        ArrayRefOfStr       => sub { [] },
+        ArrayRefOfDateTime  => sub { [] },
+        HashRef             => sub { {} },
+        MediumStr           => '',
+        );
     foreach my $name (keys %attributes) {
-        # i wish i could actually use Moose attributes here, but unfortunately
-        # Moose calls 'has' on __PACKAGE__ rather than $class, so it would insert
-        # the attributes into this class rather than each subclass
-        my $trigger = $attributes{$name}{trigger};
-        my $accessor = sub { 
-                my ($self, $new) = @_; 
-                my $attr = $self->attribute_data;
-                if (defined $new) {
-                    my $has_old = exists $attr->{name};
-                    my $old = $attr->{name};
-                    $attr->{$name} = $new;
-                    $self->attribute_data($attr);
-                    if (defined $trigger) {
-                        my @params = ($self, $new);
-                        if ($has_old) {
-                            push @params, $old;
-                        }
-                        $trigger->(@params);
-                    }
-                }
-                return $attr->{$name};
-        };
-        _install_sub($class.'::'.$name, $accessor);
+        my $type = $attributes{$name}{isa} || 'Str';
+        my $isa = 'SimpleDB::Class::Types::Sdb'.$type;
+        my %properties = (
+            is      => 'rw',
+            isa     => $isa,
+            coerce  => 1,
+            default => $attributes{$name}{default} || $defaults{$type},
+            );
+        if (defined $attributes{$name}{trigger}) {
+            $properties{trigger} = $attributes{$name}{trigger};
+        }
+        $class->meta->add_attribute($name, \%properties);
     }
     my %new = (%{$class->attributes}, %attributes);
     _install_sub($class.'::attributes', sub { return \%new; });
 }
 
-has attribute_data => (
-    is      => 'rw',
-    default => sub {{}},
-);
 
 #--------------------------------------------------------
 
@@ -145,7 +140,7 @@ The attribute in the child class that represents this class' id.
 
 sub has_many {
     my ($class, $name, $classname, $attribute) = @_;
-    _install_sub($class.'::'.$name, sub { my $self = shift; return $self->simpledb->domain($classname)->search({$attribute => $self->id}); });
+    _install_sub($class.'::'.$name, sub { my $self = shift; return $self->simpledb->domain($classname)->search(where=>{$attribute => $self->id}); });
 }
 
 #--------------------------------------------------------
@@ -154,9 +149,13 @@ sub has_many {
 
 Class method. Adds a 1:N relationship between another class and this one.
 
+B<Note:> The generated method will return C<undef> if the attribute specified has no value at the time it is called.
+
 =head3 method
 
 The method name to create to represent this relationship in this class.
+
+B<NOTE:> A C<clear_*()> method will be created as well, which will uncache the result. This method will be automatically called if a new value is set for the attribute.
 
 =head3 class
 
@@ -168,9 +167,27 @@ The attribute in this class' attribute list that represents the id of the parent
 
 =cut
 
+
 sub belongs_to {
     my ($class, $name, $classname, $attribute) = @_;
-    _install_sub($class.'::'.$name, sub { my $self = shift; return $self->simpledb->domain($classname)->find($self->$attribute); });
+    my $clearer = 'clear_'.$name;
+    $class->meta->add_attribute($name, {
+        is      => 'rw',
+        lazy    => 1,
+        default => sub {
+                my $self = shift;
+                my $id = $self->$attribute;
+                return undef unless ($id ne '');
+                $self->simpledb->domain($classname)->find($id);
+            },
+        clearer => $clearer,
+        });
+    $class->meta->add_after_method_modifier($attribute, sub {
+        my ($self, $value) = @_;
+        if (defined $value) {
+            $self->$clearer;
+        }
+    });
 };
 
 #--------------------------------------------------------
@@ -250,18 +267,6 @@ The unique identifier (ItemName) of the item represented by this class. If you d
 
 Required. A L<SimpleDB::Class> object.
 
-=head4 attributes
-
-Required. A hashref containing the names and values of the attributes associated with this item.
-
-=head2 {attribute} ( [ value ] )
-
-For each attribute passed into the constructor, an accessor / mutator will be added to this class allowing you to get or set it's current value.
-
-=head3
-
-If specified, sets the current value of the attribute. Note, that this doesn't update the database, for that you must call the put() method.
-
 =cut
 
 #--------------------------------------------------------
@@ -281,12 +286,13 @@ has simpledb => (
 
 =head2 id ( )
 
-Returns the unique id of this item. B<Note:> Even though the primary key C<ItemName> (or C<id> as we call it) is a special property of an item, an C<id> attribute is also automatically added to every item when C<put> is called, which contains the same value as the C<ItemName>. This is so you can perform searches based upon the id, which is not something you can normally do with a C<Select> in SimpleDB.
+Returns the unique id of this item. B<Note:> The primary key C<ItemName> (or C<id> as we call it) is a special property of an item that doesn't exist in it's own data. So if you want to search on the id, you have to use C<itemName()> in your queries as the attribute name.
 
 =cut
 
 has id => (
     is          => 'ro',
+    isa         => SdbStr,
     builder     => 'generate_uuid',
     lazy        => 1,
 );
@@ -309,8 +315,11 @@ sub copy {
     foreach my $name (keys %{$self->attributes}) {
         $properties{$name} = $self->$name;
     }
-    my $new = $self->new(simpledb => $self->simpledb, attributes => \%properties, id=>$id);
-    $new->put;
+    my %params = (simpledb => $self->simpledb);
+    if (defined $id) {
+        $params{id} = $id;
+    }
+    my $new = $self->new(\%params)->update(\%properties)->put;
     return $new;
 }
 
@@ -324,9 +333,10 @@ Removes this item from the database.
 
 sub delete {
     my ($self) = @_;
-    my $simpledb = $self->simpledb;
-    eval{$simpledb->cache->delete($self->domain_name, $self->id)};
-    $simpledb->http->send_request('DeleteAttributes', {ItemName => $self->id, DomainName=>$self->domain_name});
+    my $db = $self->simpledb;
+    my $domain_name = $db->add_domain_prefix($self->domain_name);
+    eval{$db->cache->delete($domain_name, $self->id)};
+    $db->http->send_request('DeleteAttributes', {ItemName => $self->id, DomainName=>$domain_name});
 }
 
 #--------------------------------------------------------
@@ -342,9 +352,10 @@ sub delete_attribute {
     my $attributes = $self->attributes;
     delete $attributes->{$name};
     $self->attributes($attributes);
-    my $simpledb = $self->simpledb;
-    eval{$simpledb->cache->set($self->domain_name, $self->id, $attributes)};
-    $simpledb->http->send_request('DeleteAttributes', { ItemName => $self->id, DomainName => $self->domain_name, 'Attribute.0.Name' => $name } );
+    my $db = $self->simpledb;
+    my $domain_name = $db->add_domain_prefix($self->domain_name);
+    eval{$db->cache->set($domain_name, $self->id, $attributes)};
+    $db->http->send_request('DeleteAttributes', { ItemName => $self->id, DomainName => $domain_name, 'Attribute.0.Name' => $name } );
 }
 
 #--------------------------------------------------------
@@ -369,20 +380,19 @@ Inserts/updates the current attributes of this Item object to the database.  Ret
 
 sub put {
     my ($self) = @_;
+    my $db = $self->simpledb;
+    my $domain_name = $db->add_domain_prefix($self->domain_name);
+    my $i = 0;
+    my $attributes = $self->to_hashref;
 
     # build the parameter list
-    my $params = {ItemName => $self->id, DomainName=>$self->domain_name};
-    my $i = 0;
-    my $select = SimpleDB::Class::SQL->new(item_class=>ref($self)); 
-    my $attributes = $self->to_hashref;
-    foreach my $name (keys %{$attributes}) {
-        my $values = $attributes->{$name};
-        next unless defined $values; # don't store null values
-        unless ($values eq 'ARRAY') {
+    my $params = {ItemName => $self->id, DomainName=>$domain_name};
+    foreach my $name (keys %{$attributes}) {                                                
+        my $values = $self->stringify_values($name, $self->$name);
+        unless (ref $values eq 'ARRAY') {
             $values = [$values];
         }
         foreach my $value (@{$values}) {
-            $value = $select->format_value($name, $value, 1);
             $params->{'Attribute.'.$i.'.Name'} = $name;
             $params->{'Attribute.'.$i.'.Value'} = $value;
             $params->{'Attribute.'.$i.'.Replace'} = 'true';
@@ -390,15 +400,9 @@ sub put {
         }
     }
 
-    # add the id, so we can search on it
-    $params->{'Attribute.'.$i.'.Name'} = 'id';
-    $params->{'Attribute.'.$i.'.Replace'} = 'true';
-    $params->{'Attribute.'.$i.'.Value'} = $self->id;
-
     # push changes
-    my $simpledb = $self->simpledb;
-    eval{$simpledb->cache->set($self->domain_name, $self->id, $attributes)};
-    $simpledb->http->send_request('PutAttributes', $params);
+    eval{$db->cache->set($domain_name, $self->id, $attributes)};
+    $db->http->send_request('PutAttributes', $params);
     return $self;
 }
 
@@ -420,9 +424,126 @@ sub to_hashref {
     return \%properties;
 }
 
+#--------------------------------------------------------
+
+=head2 parse_value ( name, value ) 
+
+Class method. Returns the proper type for an attribute value in this class. So it could take a date string and turn it into a L<DateTime> object. See C<stringify_value> for the opposite.
+
+=head3 name
+
+The name of the attribute to parse.
+
+=head3 value
+
+The current stringified value to parse.
+
+=cut
+
+sub parse_value {
+    my ($class, $name, $value) = @_;
+    return $name if ($name eq 'itemName()');
+
+    # find type
+    my $attribute = $class->meta->find_attribute_by_name($name);
+    SimpleDB::Class::Exception::InvalidParam->throw(
+        name    => 'name',
+        value   => $name,
+        error   => q{There is no attribute called '}.$name.q{'.},
+        ) unless defined $attribute;
+    my $isa = $attribute->type_constraint;
+
+    # coerce
+    $isa->coerce($value);
+}
+
+#--------------------------------------------------------
+
+=head2 stringify_value ( name, value )
+
+Class method. Formats an attribute as a string using one of the L<SimpleDB::Class::Types> to_* functions in this class. See C<parse_value>, as this is the reverse of that.
+
+=head3 name
+
+The name of the attribute to format.
+
+=head3 value
+
+The value to format.
+
+=cut
+
+sub stringify_value {
+    my ($class, $name, $value) = @_;
+    return $value if ($name eq 'itemName()');
+
+    # find type
+    my $attribute = $class->meta->find_attribute_by_name($name);
+    SimpleDB::Class::Exception::InvalidParam->throw(
+        name    => 'name',
+        value   => $name,
+        error   => q{There is no attribute called '}.$name.q{'.},
+        ) unless defined $attribute;
+    my $isa = $attribute->type_constraint;
+
+    # coerce
+    # special cases for int stuff because technically ints are already strings
+    if ($isa =~ /Int$/) {
+        return to_SdbIntAsStr($value); 
+    }
+    else {
+        return to_SdbStr($value);
+    }
+}
+
+#--------------------------------------------------------
+
+=head2 stringify_values ( name, values )
+
+Class method. Same as C<stringify_value>, but takes into account array types in addition to scalars.
+
+=head3 name
+
+The name of the attribute to format.
+
+=head3 values
+
+The value to format.
+
+=cut
+
+sub stringify_values {
+    my ($class, $name, $value) = @_;
+    return $name if ($name eq 'itemName()');
+
+    # find type
+    my $attribute = $class->meta->find_attribute_by_name($name);
+    SimpleDB::Class::Exception::InvalidParam->throw(
+        name    => 'name',
+        value   => $name,
+        error   => q{There is no attribute called '}.$name.q{'.},
+        ) unless defined $attribute;
+    my $isa = $attribute->type_constraint;
+
+    # coerce
+    # special cases for int stuff because technically ints are already strings
+    if ($isa eq 'SimpleDB::Class::Types::SdbArrayRefOfInt') {
+        return to_SdbArrayRefOfIntAsStr($value);
+    }
+    elsif ($isa eq 'SimpleDB::Class::Types::SdbInt') {
+        return to_SdbIntAsStr($value); 
+    }
+    elsif ($isa =~ m/ArrayRefOf|HashRef|MediumStr/) {
+        return to_SdbArrayRefOfStr($value);
+    }
+    else {
+        return to_SdbStr($value);
+    }
+}
+
 =head1 LEGAL
 
-SimpleDB::Class is Copyright 2009 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
+SimpleDB::Class is Copyright 2009-2010 Plain Black Corporation (L<http://www.plainblack.com/>) and is licensed under the same terms as Perl itself.
 
 =cut
 
