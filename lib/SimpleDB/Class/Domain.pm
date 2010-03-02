@@ -1,5 +1,5 @@
 package SimpleDB::Class::Domain;
-our $VERSION = '1.0001';
+our $VERSION = '1.0100';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Domain - A schematic representation of a SimpleDB domain.
 
 =head1 VERSION
 
-version 1.0001
+version 1.0100
 
 =head1 DESCRIPTION
 
@@ -375,14 +375,18 @@ A boolean that if set true will get around Eventual Consistency, but at a reduce
 
 sub search {
     my ($self, %options) = @_;
-    return SimpleDB::Class::ResultSet->new(
+    my %params = (
         simpledb    => $self->simpledb,
         item_class  => $self->item_class,
         where       => $options{where},
-        order_by    => $options{order_by},
-        limit       => $options{limit},
         consistent  => $options{consistent},
-        );
+    );
+    foreach my $option (qw(order_by limit)) {
+        if (exists $options{$option}) {
+            $params{$option} = $options{$option};
+        }
+    }
+    return SimpleDB::Class::ResultSet->new(%params);
 }
 
 =head1 LEGAL

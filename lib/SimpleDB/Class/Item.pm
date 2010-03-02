@@ -1,5 +1,5 @@
 package SimpleDB::Class::Item;
-our $VERSION = '1.0001';
+our $VERSION = '1.0100';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Item - An object representation from an item in a SimpleDB doma
 
 =head1 VERSION
 
-version 1.0001
+version 1.0100
 
 =head1 DESCRIPTION
 

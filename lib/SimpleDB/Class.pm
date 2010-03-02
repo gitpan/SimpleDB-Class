@@ -1,5 +1,5 @@
 package SimpleDB::Class;
-our $VERSION = '1.0001';
+our $VERSION = '1.0100';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class - An Object Relational Mapper (ORM) for the Amazon SimpleDB serv
 
 =head1 VERSION
 
-version 1.0001
+version 1.0100
 
 =head1 SYNOPSIS
 
@@ -92,6 +92,10 @@ It automatically casts date fields as L<DateTime> objects.
 =item *
 
 It automatically serializes hashes into JSON so they can be stored in SimpleDB domain attributes, and deserializes on retrieval. 
+
+=item *
+
+It gives you an easy way to handle pagination of data. See L<SimpleDB::Class::ResultSet/"paginate">.
 
 =item *
 
