@@ -11,7 +11,7 @@ WriteMakefile(
   NAME      => 'SimpleDB::Class',
   AUTHOR    => "JT\ Smith\ \<RIZEN\@cpan\.org\>",
   ABSTRACT  => "An\ Object\ Relational\ Mapper\ \(ORM\)\ for\ the\ Amazon\ SimpleDB\ service\.",
-  VERSION   => '1.0000',
+  VERSION   => '1.0001',
   EXE_FILES => [ qw() ],
   (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
   PREREQ_PM    => {

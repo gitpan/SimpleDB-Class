@@ -1,5 +1,5 @@
 package SimpleDB::Class::Role::Itemized;
-our $VERSION = '1.0000';
+our $VERSION = '1.0001';
 
 use Moose::Role;
 use SimpleDB::Class::Types ':all';
@@ -12,7 +12,7 @@ SimpleDB::Class::Role::Itemized - Provides utility methods to classes that need 
 
 =head1 VERSION
 
-version 1.0000
+version 1.0001
 
 =head1 SYNOPSIS
 
@@ -122,6 +122,9 @@ sub parse_item {
 
         # get value
         my $value = $attribute->{Value};
+        if (ref $value eq 'HASH' && !(keys %{$value})) { # undef comes back as an empty hash for some reason
+            next; # no need to store undef
+        }
 
         # store attribute list
         push @{$attributes->{$name}}, $value;
