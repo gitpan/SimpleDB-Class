@@ -1,5 +1,5 @@
 package SimpleDB::Class::ResultSet;
-our $VERSION = '1.0100';
+our $VERSION = '1.0101';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::ResultSet - An iterator of items from a domain.
 
 =head1 VERSION
 
-version 1.0100
+version 1.0101
 
 =head1 DESCRIPTION
 
@@ -392,18 +392,19 @@ sub next {
     my ($self) = @_;
     # get the current results
     my $result = ($self->has_result) ? $self->result : $self->fetch_result;
-    my $items = $result->{SelectResult}{Item};
-    return undef unless defined $items;
-    my $num_items = scalar @{$items};
-    return undef unless $num_items > 0;
+    my $items = [];
+    if (ref $result->{SelectResult}{Item} eq 'ARRAY') {
+        $items = $result->{SelectResult}{Item};
+    }
 
     # fetch more results if needed
     my $iterator = $self->iterator;
-    if ($iterator >= $num_items) {
+    if ($iterator >= scalar @{$items}) {
         if (exists $result->{SelectResult}{NextToken}) {
             $self->iterator(0);
             $iterator = 0;
             $result = $self->fetch_result($result->{SelectResult}{NextToken});
+            $items = $result->{SelectResult}{Item};
         }
         else {
             return undef;

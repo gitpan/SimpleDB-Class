@@ -4,6 +4,17 @@ MANIFEST
 META.yml
 Makefile.PL
 README
+author.t/01.HTTP.t
+author.t/02.Cache.t
+author.t/03.Class.t
+author.t/04.Select.t
+author.t/05.Domain_and_Item.t
+author.t/06.Domain_Prefix.t
+author.t/lib/Foo.pm
+author.t/lib/Foo/Child.pm
+author.t/lib/Foo/Domain.pm
+author.t/lib/Foo/Parent.pm
+author.t/lib/Foo/SubChild.pm
 dist.ini
 lib/SimpleDB/Class.pm
 lib/SimpleDB/Class/Cache.pm
