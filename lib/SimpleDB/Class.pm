@@ -1,5 +1,5 @@
 package SimpleDB::Class;
-our $VERSION = '1.0101';
+our $VERSION = '1.0102';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class - An Object Relational Mapper (ORM) for the Amazon SimpleDB serv
 
 =head1 VERSION
 
-version 1.0101
+version 1.0102
 
 =head1 SYNOPSIS
 
