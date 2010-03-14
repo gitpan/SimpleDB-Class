@@ -1,5 +1,5 @@
 package SimpleDB::Class::ResultSet;
-our $VERSION = '1.0103';
+our $VERSION = '1.0200';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::ResultSet - An iterator of items from a domain.
 
 =head1 VERSION
 
-version 1.0103
+version 1.0200
 
 =head1 DESCRIPTION
 
@@ -64,6 +64,10 @@ A limit clause as defined in L<SimpleDB::Class::SQL>. Optional.
 
 A boolean that if set true will get around Eventual Consistency, but at a reduced performance. Optional.
 
+=head4 set
+
+A hash reference of attribute names and values, which will be set on the item as C<next> is called. Doing so helps to prevent stale object references.
+
 =cut
 
 #--------------------------------------------------------
@@ -76,6 +80,7 @@ Returns the item_class passed into the constructor.
 
 has item_class => (
     is          => 'ro',
+    isa         => 'ClassName',
     required    => 1,
 );
 
@@ -91,7 +96,22 @@ Returns the consistent value passed into the constructor.
 
 has consistent => (
     is      => 'ro',
+    isa     => 'Bool',
     default => 0,
+);
+
+#--------------------------------------------------------
+
+=head2 set ( )
+
+Returns the set value passed into the constructor.
+
+=cut
+
+has set => (
+    is      => 'ro',
+    isa         => 'HashRef',
+    default => sub { {} },
 );
 
 #--------------------------------------------------------
@@ -117,6 +137,7 @@ Returns the order_by passed into the constructor.
 
 has order_by => (
     is          => 'ro',
+    isa         => 'Str | ArrayRef[Str]',
     predicate   => 'has_order_by',
 );
 
@@ -130,6 +151,7 @@ Returns the limit passed into the constructor.
 
 has limit => (
     is          => 'rw',
+    isa         => 'Str',
     predicate   => 'has_limit',
 );
 
@@ -176,6 +198,7 @@ Returns an integer which represents the current position in the result set as tr
 
 has iterator => (
     is          => 'rw',
+    isa         => 'Int',
     default     => 0,
 );
 
@@ -297,6 +320,7 @@ sub search {
         item_class  => $self->item_class,
         where       => $clauses,
         consistent  => $self->consistent,
+        set         => $self->set,
         );
 }
 
@@ -425,23 +449,31 @@ sub next {
     ## might be more up to date than the one from the DB
     my $attributes = eval{$cache->get($domain_name, $item->{Name})}; 
     my $e;
+    my $itemobj;
     if ($e = SimpleDB::Class::Exception::ObjectNotFound->caught) {
-        my $itemobj = $self->parse_item($item->{Name}, $item->{Attribute});
+        $itemobj = $self->parse_item($item->{Name}, $item->{Attribute});
         if (defined $itemobj) {
             eval{$cache->set($domain_name, $item->{Name}, $itemobj->to_hashref)};
         }
-        return $itemobj;
     }
     elsif ($e = SimpleDB::Class::Exception->caught) {
         warn $e->error;
-        return $e->rethrow;
+        $e->rethrow;
     }
     elsif (defined $attributes) {
-        return $self->instantiate_item($attributes,$item->{Name});
+        $itemobj = $self->instantiate_item($attributes,$item->{Name});
     }
     else {
         SimpleDB::Class::Exception->throw(error=>"An undefined error occured while fetching the item from cache.");
     }
+
+    # process the 'set' option
+    my %set = %{$self->set};
+    foreach my $attribute (keys %set) {
+        $itemobj->$attribute( $set{$attribute} );
+    }
+
+    return $itemobj;
 }
 
 =head1 LEGAL

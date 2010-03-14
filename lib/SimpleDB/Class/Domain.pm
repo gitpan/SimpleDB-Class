@@ -1,5 +1,5 @@
 package SimpleDB::Class::Domain;
-our $VERSION = '1.0103';
+our $VERSION = '1.0200';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Domain - A schematic representation of a SimpleDB domain.
 
 =head1 VERSION
 
-version 1.0103
+version 1.0200
 
 =head1 DESCRIPTION
 
@@ -56,6 +56,7 @@ Returns the L<SimpleDB::Class::Item> subclass name passed into the constructor.
 
 has item_class => (
     is          => 'ro',
+    isa         => 'Str',
     required    => 1,
     trigger     => sub {
         my ($self, $item, $old) = @_;
@@ -75,6 +76,7 @@ Returns the name determined automatically by the item_class passed into the cons
 
 has name => (
     is          => 'rw',
+    isa         => 'Str',
     default     => undef,
 );
 
@@ -141,6 +143,10 @@ A hash which allows options to modify the retrieval.
 
 A boolean that if set true will get around Eventual Consistency, but at a reduced performance. Note that since L<SimpleDB::Class> fetches requests by id (like this one) directly from memcached, this option should never be needed. It is provided only for completeness. 
 
+=head4 set
+
+A hash reference of attribute names paired with values that should be set as soon as the item is instantiated. This is useful for prefilling cache attributes, and is used by the C<belongs_to> method for that purpose. Doing so prevents stale object references.
+
 =cut
 
 sub find {
@@ -149,8 +155,11 @@ sub find {
     my $db = $self->simpledb;
     my $cache = $db->cache;
     my $name = $db->add_domain_prefix($self->name);
+
+    # instantiate item
     my $attributes = eval{$cache->get($name, $id)};
     my $e;
+    my $item;
     if (SimpleDB::Class::Exception::ObjectNotFound->caught) {
         my %params = ( 
             ItemName    => $id,
@@ -160,22 +169,28 @@ sub find {
             $params{ConsistentRead} = 'true';
         }
         my $result = $db->http->send_request('GetAttributes', \%params);
-        my $item = $self->parse_item($id, $result->{GetAttributesResult}{Attribute});
+        $item = $self->parse_item($id, $result->{GetAttributesResult}{Attribute});
         if (defined $item) {
             $cache->set($name, $id, $item->to_hashref);
         }
-        return $item;
     }
     elsif (my $e = SimpleDB::Class::Exception->caught) {
         warn $e->error;
-        return $e->rethrow;
+        $e->rethrow;
     }
     elsif (defined $attributes) {
-        return $self->instantiate_item($attributes, $id);
+        $item = $self->instantiate_item($attributes, $id);
     }
     else {
         SimpleDB::Class::Exception->throw(error=>"An undefined error occured while fetching the item.");
     }
+
+    # process the 'set' option
+    foreach my $attribute (keys %{$options{set}}) {
+        $item->$attribute( $options{set}{$attribute} );
+    }
+
+    return $item;
 }
 
 #--------------------------------------------------------
@@ -196,11 +211,22 @@ A hash of extra options to modify the put.
 
 Optionally specify a unqiue id for this item.
 
+=head4 set 
+
+A hash reference of attribute names paired with values that should be set as soon as the item is instantiated. This is useful for prefilling cache attributes to prevent stale object references.
+
 =cut
 
 sub insert {
     my ($self, $attributes, %options) = @_;
-    return $self->instantiate_item($attributes, $options{id})->put;
+    my $item = $self->instantiate_item($attributes, $options{id})->put;
+
+    # process 'set' option
+    foreach my $attribute (keys %{$options{set}}) {
+        $item->$attribute( $options{set}{$attribute} );
+    }
+
+    return $item;
 }
 
 #--------------------------------------------------------
@@ -371,22 +397,17 @@ A limit clause as defined by L<SimpleDB::Class::SQL>.
 
 A boolean that if set true will get around Eventual Consistency, but at a reduced performance.
 
+=head4 set 
+
+A hash reference of attribute names paired with values that should be set as soon as the item is instantiated. This is useful for prefilling cache attributes as items come off the result set, and is used by the C<has_many> method for that purpose. Doing so prevents stale object references.
+
 =cut
 
 sub search {
     my ($self, %options) = @_;
-    my %params = (
-        simpledb    => $self->simpledb,
-        item_class  => $self->item_class,
-        where       => $options{where},
-        consistent  => $options{consistent},
-    );
-    foreach my $option (qw(order_by limit)) {
-        if (exists $options{$option}) {
-            $params{$option} = $options{$option};
-        }
-    }
-    return SimpleDB::Class::ResultSet->new(%params);
+    $options{simpledb} = $self->simpledb;
+    $options{item_class} = $self->item_class;
+    return SimpleDB::Class::ResultSet->new(%options);
 }
 
 =head1 LEGAL
