@@ -1,5 +1,5 @@
 package SimpleDB::Class::Domain;
-our $VERSION = '1.0102';
+our $VERSION = '1.0103';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Domain - A schematic representation of a SimpleDB domain.
 
 =head1 VERSION
 
-version 1.0102
+version 1.0103
 
 =head1 DESCRIPTION
 

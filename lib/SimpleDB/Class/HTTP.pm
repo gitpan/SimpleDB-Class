@@ -1,5 +1,5 @@
 package SimpleDB::Class::HTTP;
-our $VERSION = '1.0102';
+our $VERSION = '1.0103';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::HTTP - The network interface to the SimpleDB service.
 
 =head1 VERSION
 
-version 1.0102
+version 1.0103
 
 =head1 SYNOPSIS
 

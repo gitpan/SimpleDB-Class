@@ -30,4 +30,4 @@ requires:
   URI: 0
   UUID::Tiny: 0
   XML::Simple: 0
-version: 1.0102
+version: 1.0103
