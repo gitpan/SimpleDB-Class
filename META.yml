@@ -11,7 +11,10 @@ meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: SimpleDB-Class
-no_index: {}
+no_index:
+  directory:
+    - author.t
+    - bin
 requires:
   Clone: 0.31
   Crypt::SSLeay: 0.57
@@ -33,4 +36,4 @@ requires:
   URI: 0
   UUID::Tiny: 0
   XML::Simple: 0
-version: 1.0200
+version: 1.0300
