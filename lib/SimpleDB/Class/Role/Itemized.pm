@@ -1,5 +1,5 @@
 package SimpleDB::Class::Role::Itemized;
-our $VERSION = '1.0300';
+our $VERSION = '1.0400';
 
 use Moose::Role;
 use SimpleDB::Class::Types ':all';
@@ -12,7 +12,7 @@ SimpleDB::Class::Role::Itemized - Provides utility methods to classes that need 
 
 =head1 VERSION
 
-version 1.0300
+version 1.0400
 
 =head1 SYNOPSIS
 
@@ -97,7 +97,7 @@ The ItemName of the item to create.
 
 =head3 attributes
 
-An array of attributes as returned by L<SimpleDB::Class::HTTP>.
+An array of attributes as returned by L<SimpleDB::Client>.
 
 =cut
 

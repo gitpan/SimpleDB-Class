@@ -4,7 +4,6 @@ MANIFEST
 META.yml
 Makefile.PL
 README
-author.t/01.HTTP.t
 author.t/02.Cache.t
 author.t/03.Class.t
 author.t/04.Select.t
@@ -21,13 +20,11 @@ lib/SimpleDB/Class/Cache.pm
 lib/SimpleDB/Class/Domain.pm
 lib/SimpleDB/Class/Exception.pm
 lib/SimpleDB/Class/FAQ.pod
-lib/SimpleDB/Class/HTTP.pm
 lib/SimpleDB/Class/Item.pm
 lib/SimpleDB/Class/ResultSet.pm
 lib/SimpleDB/Class/Role/Itemized.pm
 lib/SimpleDB/Class/SQL.pm
 lib/SimpleDB/Class/Types.pm
-t/01.HTTP.t
 t/02.Cache.t
 t/03.Class.t
 t/04.Types.t

@@ -1,3 +1,10 @@
+1.0400 2010-04-07
+ - Added to_array_ref() in ResultSet.
+ - Fixed undefined value exception calling find() on non-existant item.
+ - Fixed long MediumString, long HashRef problem. 
+ - SimpleDB::Class::HTTP has been replaced with SimpleDB::Client.
+ - Fixed a pagination / limit bug. Limits are now enforced the way you'd expect, rather than the way SimpleDB does it.
+
 1.0300 2010-03-15
  - Added options to the has_many and belongs_to methods for consistency and other things.
  - Added runtime options for has_many generated methods.

@@ -1,5 +1,5 @@
 package SimpleDB::Class::ResultSet;
-our $VERSION = '1.0300';
+our $VERSION = '1.0400';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::ResultSet - An iterator of items from a domain.
 
 =head1 VERSION
 
-version 1.0300
+version 1.0400
 
 =head1 DESCRIPTION
 
@@ -46,7 +46,7 @@ Required. A L<SimpleDB::Class::Item> subclass name.
 
 =head4 result
 
-A result as returned from the send_request() method from L<SimpleDB::Class::HTTP>. Either this or a where is required.
+A result as returned from the send_request() method from L<SimpleDB::Client>. Either this or a where is required.
 
 =head4 where
 
@@ -58,7 +58,7 @@ An order_by clause as defined in L<SimpleDB::Class::SQL>. Optional.
 
 =head4 limit
 
-A limit clause as defined in L<SimpleDB::Class::SQL>. Optional.
+A limit clause as defined in L<SimpleDB::Class::SQL>. Optional. B<NOTE:>SimpleDB defines a limit as the number of results to limit to each Next Token, but SimpleDB::Class::ResultSet enforces the limit to be more like a traditional relational database, so calling C<next()> after the limit will return C<undef> just as if there were no more results left to display.
 
 =head4 consistent
 
@@ -192,7 +192,7 @@ has result => (
 
 =head2 iterator ( )
 
-Returns an integer which represents the current position in the result set as traversed by next().
+Returns an integer which represents the current position in the result set as traversed by C<next()>.
 
 =cut
 
@@ -202,12 +202,25 @@ has iterator => (
     default     => 0,
 );
 
+#--------------------------------------------------------
+
+=head2 limit_counter ( )
+
+Returns an integer representing how many items have been traversed so far by C<next()>. When this reaches the value of C<limit> then no more results will be returned by C<next()>.
+
+=cut
+
+has limit_counter => (
+    is          => 'rw',
+    isa         => 'Int',
+    default     => 0,
+);
 
 #--------------------------------------------------------
 
 =head2 fetch_result ( [ next ] )
 
-Fetches a result, based on a where clause passed into a constructor, and then makes it accessible via the result() method.
+Fetches a result, based on a where clause passed into a constructor, and then makes it accessible via the C<result()> method.
 
 =head3 next
 
@@ -414,6 +427,12 @@ Returns the next result in the result set. Also fetches th next partial result s
 
 sub next {
     my ($self) = @_;
+
+    # handle limit counter
+    if ($self->has_limit && $self->limit_counter >= $self->limit) {
+        return undef;
+    }
+
     # get the current results
     my $result = ($self->has_result) ? $self->result : $self->fetch_result;
     my $items = [];
@@ -473,8 +492,29 @@ sub next {
         $itemobj->$attribute( $set{$attribute} );
     }
 
+    # increment limit counter
+    $self->limit_counter($self->limit_counter + 1);
+
     return $itemobj;
 }
+
+#--------------------------------------------------------
+
+=head2 to_array_ref ()
+
+Returns an array reference containing all the objects in the result set. If the result set has already been partially walked, then only the remaining objects will be returned.
+
+=cut
+
+sub to_array_ref {
+    my ($self) = @_;
+    my @all;
+    while (my $object = $self->next) {
+        push @all, $object;
+    }
+    return \@all;
+}
+
 
 =head1 LEGAL
 

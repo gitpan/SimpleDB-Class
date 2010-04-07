@@ -17,23 +17,18 @@ no_index:
     - bin
 requires:
   Clone: 0.31
-  Crypt::SSLeay: 0.57
   DateTime: 0
   DateTime::Format::Strptime: 0
-  Digest::SHA: 0
   Exception::Class: 0
   JSON: 2.16
-  LWP: 5.834
   Memcached::libmemcached: 0.3102
   Module::Find: 0
   Moose: 0.93
   MooseX::ClassAttribute: 0
   MooseX::Types: 0.20
+  SimpleDB::Client: 1.0400
   Sub::Name: 0.04
   Test::Deep: 0
   Test::More: 0
-  Time::HiRes: 1.9719
-  URI: 0
   UUID::Tiny: 0
-  XML::Simple: 0
-version: 1.0300
+version: 1.0400
