@@ -31,4 +31,4 @@ requires:
   Test::Deep: 0
   Test::More: 0
   UUID::Tiny: 0
-version: 1.0400
+version: 1.0500

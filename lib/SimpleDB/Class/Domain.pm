@@ -1,5 +1,5 @@
 package SimpleDB::Class::Domain;
-our $VERSION = '1.0400';
+our $VERSION = '1.0500';
 
 =head1 NAME
 
@@ -7,7 +7,7 @@ SimpleDB::Class::Domain - A schematic representation of a SimpleDB domain.
 
 =head1 VERSION
 
-version 1.0400
+version 1.0500
 
 =head1 DESCRIPTION
 
@@ -266,6 +266,49 @@ sub count {
     }
     my $result = $self->simpledb->http->send_request('Select', \%params);
     return $result->{SelectResult}{Item}[0]{Attribute}{Value};
+}
+
+#--------------------------------------------------------
+
+=head2 fetch_ids ( [ options ] ) 
+
+Returns an array reference of ids (itemName()s) in the domain.
+
+WARNING: With this method you need to be aware that SimpleDB is eventually consistent. See L<SimpleDB::Class/"Eventual Consistency"> for details.
+
+=head3 options
+
+A hash containing options to modify the array reference.
+
+=head4 where
+
+A where clause as defined in L<SimpleDB::Class::SQL> if you want to fetch only a certain number of items in the domain.
+
+=head4 consistent
+
+Defaults to 0. A boolean that if set true will get around Eventual Consistency, but at a reduced performance.
+
+=cut
+
+sub fetch_ids {
+    my ($self, %options) = @_;
+    my $select = SimpleDB::Class::SQL->new(
+        item_class  => $self->item_class,
+        simpledb    => $self->simpledb,
+        where       => $options{where},
+        output      => 'itemName()',
+    );
+    my %params = ( SelectExpression    => $select->to_sql );
+    if ($options{consistent}) {
+        $params{ConsistentRead} = 'true';
+    }
+    my $result = $self->simpledb->http->send_request('Select', \%params);
+    my $items = $result->{SelectResult}{Item};
+    my @ids;
+    foreach my $item (@{$items}) {
+        push @ids, $item->{Name};
+    }
+    return \@ids;
 }
 
 #--------------------------------------------------------

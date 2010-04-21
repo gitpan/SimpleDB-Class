@@ -1,5 +1,5 @@
 package Foo::Parent;
-our $VERSION = '1.0400';
+our $VERSION = '1.0500';
 
 use Moose;
 extends 'SimpleDB::Class::Item';
