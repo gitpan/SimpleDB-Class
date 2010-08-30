@@ -1,0 +1,21 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+}
+subgraph cluster_MooseX_AttributeHelpers_Number {
+	label="MooseX::AttributeHelpers::Number";
+	"MooseX::AttributeHelpers::Number::BEGIN@11";
+	"MooseX::AttributeHelpers::Number::BEGIN@2";
+}
+subgraph cluster_MooseX_AttributeHelpers {
+	label="MooseX::AttributeHelpers";
+	"MooseX::AttributeHelpers::BEGIN@24";
+}
+"MooseX::AttributeHelpers::Number::BEGIN@11" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+"MooseX::AttributeHelpers::Number::BEGIN@2" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+"MooseX::AttributeHelpers::BEGIN@24" -> "MooseX::AttributeHelpers::Number::BEGIN@2";
+"MooseX::AttributeHelpers::BEGIN@24" -> "MooseX::AttributeHelpers::Number::BEGIN@11";
+}

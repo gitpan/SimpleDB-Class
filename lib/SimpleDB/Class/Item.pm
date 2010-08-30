@@ -1,5 +1,7 @@
 package SimpleDB::Class::Item;
-our $VERSION = '1.0500';
+BEGIN {
+  $SimpleDB::Class::Item::VERSION = '1.0502';
+}
 
 =head1 NAME
 
@@ -7,7 +9,7 @@ SimpleDB::Class::Item - An object representation from an item in a SimpleDB doma
 
 =head1 VERSION
 
-version 1.0500
+version 1.0502
 
 =head1 DESCRIPTION
 
@@ -106,6 +108,9 @@ sub add_attributes {
             coerce  => 1,
             default => $attributes{$name}{default} || $defaults{$type},
             );
+        if ($type ne 'Str') { # don't do any work we don't have to
+            $properties{lazy} = 1;
+        }
         if (defined $attributes{$name}{trigger}) {
             $properties{trigger} = $attributes{$name}{trigger};
         }

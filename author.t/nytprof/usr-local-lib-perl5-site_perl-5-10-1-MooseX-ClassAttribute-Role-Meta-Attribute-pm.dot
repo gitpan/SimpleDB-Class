@@ -1,0 +1,71 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_MooseX_ClassAttribute_Role_Meta_Class {
+	label="MooseX::ClassAttribute::Role::Meta::Class";
+	"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@7";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::extends";
+}
+subgraph cluster_MooseX_ClassAttribute_Meta_Method_Accessor {
+	label="MooseX::ClassAttribute::Meta::Method::Accessor";
+	"MooseX::ClassAttribute::Meta::Method::Accessor::BEGIN@120";
+	"MooseX::ClassAttribute::Meta::Method::Accessor::BEGIN@3";
+	"MooseX::ClassAttribute::Meta::Method::Accessor::BEGIN@4";
+	"MooseX::ClassAttribute::Meta::Method::Accessor::BEGIN@6";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Class_MOP_Class_ {
+	label="Class::MOP::Class:";
+	"Class::MOP::Class:::around";
+}
+subgraph cluster_Class_MOP_Class___ANON___SERIAL_2 {
+	label="Class::MOP::Class::__ANON__::SERIAL::2";
+	"Class::MOP::Class::__ANON__::SERIAL::2::default";
+	"Class::MOP::Class::__ANON__::SERIAL::2::set_value";
+}
+subgraph cluster_Class_MOP_Mixin_AttributeCore {
+	label="Class::MOP::Mixin::AttributeCore";
+	"Class::MOP::Mixin::AttributeCore::has_default";
+}
+subgraph cluster_MooseX_ClassAttribute_Role_Meta_Attribute {
+	label="MooseX::ClassAttribute::Role::Meta::Attribute";
+	"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@6";
+	"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@3";
+	"MooseX::ClassAttribute::Role::Meta::Attribute::_initialize";
+	"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@4";
+	"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@138";
+	"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@8";
+}
+"MooseX::ClassAttribute::Role::Meta::Attribute::_initialize" -> "Class::MOP::Mixin::AttributeCore::has_default";
+"MooseX::ClassAttribute::Role::Meta::Attribute::_initialize" -> "Class::MOP::Class::__ANON__::SERIAL::2::default";
+"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@138" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@7" -> "MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@138";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@7" -> "MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@8";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@7" -> "MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@4";
+"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@6" -> "Moose::extends";
+"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@6" -> "MooseX::ClassAttribute::Meta::Method::Accessor::BEGIN@3";
+"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@6" -> "MooseX::ClassAttribute::Meta::Method::Accessor::BEGIN@6";
+"MooseX::ClassAttribute::Role::Meta::Attribute::_initialize" -> "Class::MOP::Class::__ANON__::SERIAL::2::set_value";
+"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@4" -> "warnings::import";
+"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@6" -> "MooseX::ClassAttribute::Meta::Method::Accessor::BEGIN@120";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@7" -> "MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@3";
+"Class::MOP::Class:::around" -> "MooseX::ClassAttribute::Role::Meta::Attribute::_initialize";
+"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@6" -> "MooseX::ClassAttribute::Meta::Method::Accessor::BEGIN@4";
+"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@8" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@7" -> "MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@6";
+"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@3" -> "strict::import";
+}

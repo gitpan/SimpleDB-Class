@@ -1,0 +1,124 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_MooseX_AttributeHelpers_Collection_Hash {
+	label="MooseX::AttributeHelpers::Collection::Hash";
+	"MooseX::AttributeHelpers::Collection::Hash::method_constructors";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Moose_Util_TypeConstraints {
+	label="Moose::Util::TypeConstraints";
+	"Moose::Util::TypeConstraints::BEGIN@39";
+}
+subgraph cluster_utf8 {
+	label="utf8";
+	"utf8::AUTOLOAD";
+	"utf8::SWASHNEW";
+}
+subgraph cluster_SimpleDB_Class_ResultSet {
+	label="SimpleDB::Class::ResultSet";
+	"SimpleDB::Class::ResultSet::result";
+	"SimpleDB::Class::ResultSet::limit_counter";
+	"SimpleDB::Class::ResultSet::limit";
+	"SimpleDB::Class::ResultSet::new";
+	"SimpleDB::Class::ResultSet::iterator";
+}
+subgraph cluster_Class_MOP_Class___ANON___SERIAL_1 {
+	label="Class::MOP::Class::__ANON__::SERIAL::1";
+	"Class::MOP::Class::__ANON__::SERIAL::1::_class_attribute_values";
+}
+subgraph cluster_SimpleDB_Class_Domain {
+	label="SimpleDB::Class::Domain";
+	"SimpleDB::Class::Domain::new";
+	"SimpleDB::Class::Domain::name";
+}
+subgraph cluster_HashRef_Moose_Meta {
+	label="HashRef[Moose::Meta";
+	"HashRef[Moose::Meta::Attribute]";
+}
+subgraph cluster_Foo_Domain {
+	label="Foo::Domain";
+	"Foo::Domain::properties";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Class_MOP {
+	label="Class::MOP";
+	"Class::MOP::is_class_loaded";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Moose_Util_TypeConstraints_OptimizedConstraints {
+	label="Moose::Util::TypeConstraints::OptimizedConstraints";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::CORE:match";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@7";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@6";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::ClassName";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@26";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@3";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::HashRef";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@4";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::Str";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::ArrayRef";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::Int";
+}
+subgraph cluster_SimpleDB_Class_Types {
+	label="SimpleDB::Class::Types";
+	"SimpleDB::Class::Types::SdbInt";
+	"SimpleDB::Class::Types::SdbMediumStr";
+	"SimpleDB::Class::Types::SdbIntAsStr";
+	"SimpleDB::Class::Types::SdbArrayRefOfStr";
+	"SimpleDB::Class::Types::SdbStr";
+	"SimpleDB::Class::Types::SdbArrayRefOfDateTime";
+}
+subgraph cluster_Moose_Meta_TypeConstraint {
+	label="Moose::Meta::TypeConstraint";
+	"Moose::Meta::TypeConstraint::check";
+}
+subgraph cluster_Moose_Meta_TypeCoercion {
+	label="Moose::Meta::TypeCoercion";
+	"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]";
+}
+"Moose::Meta::TypeConstraint::check" -> "Moose::Util::TypeConstraints::OptimizedConstraints::HashRef";
+"MooseX::AttributeHelpers::Collection::Hash::method_constructors" -> "Moose::Util::TypeConstraints::OptimizedConstraints::HashRef";
+"SimpleDB::Class::ResultSet::result" -> "Moose::Util::TypeConstraints::OptimizedConstraints::HashRef";
+"HashRef[Moose::Meta::Attribute]" -> "Moose::Util::TypeConstraints::OptimizedConstraints::HashRef";
+"SimpleDB::Class::ResultSet::new" -> "Moose::Util::TypeConstraints::OptimizedConstraints::HashRef";
+"Foo::Domain::properties" -> "Moose::Util::TypeConstraints::OptimizedConstraints::HashRef";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "Moose::Util::TypeConstraints::OptimizedConstraints::HashRef";
+"Class::MOP::Class::__ANON__::SERIAL::1::_class_attribute_values" -> "Moose::Util::TypeConstraints::OptimizedConstraints::HashRef";
+"Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@7" -> "Exporter::import";
+"Moose::Util::TypeConstraints::BEGIN@39" -> "Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@4";
+"Moose::Util::TypeConstraints::OptimizedConstraints::Int" -> "Moose::Util::TypeConstraints::OptimizedConstraints::CORE:match";
+"Moose::Util::TypeConstraints::BEGIN@39" -> "Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@6";
+"SimpleDB::Class::Types::SdbArrayRefOfStr" -> "Moose::Util::TypeConstraints::OptimizedConstraints::ArrayRef";
+"SimpleDB::Class::Types::SdbArrayRefOfDateTime" -> "Moose::Util::TypeConstraints::OptimizedConstraints::ArrayRef";
+"Moose::Util::TypeConstraints::BEGIN@39" -> "Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@7";
+"Moose::Util::TypeConstraints::OptimizedConstraints::CORE:match" -> "Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@26";
+"Moose::Util::TypeConstraints::BEGIN@39" -> "Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@3";
+"Moose::Util::TypeConstraints::OptimizedConstraints::ClassName" -> "Class::MOP::is_class_loaded";
+"SimpleDB::Class::ResultSet::limit" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Str";
+"SimpleDB::Class::Domain::new" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Str";
+"SimpleDB::Class::Domain::name" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Str";
+"Moose::Meta::TypeConstraint::check" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Str";
+"SimpleDB::Class::Types::SdbMediumStr" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Str";
+"SimpleDB::Class::Types::SdbIntAsStr" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Str";
+"SimpleDB::Class::ResultSet::new" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Str";
+"SimpleDB::Class::Types::SdbStr" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Str";
+"SimpleDB::Class::Types::SdbInt" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Int";
+"SimpleDB::Class::ResultSet::limit_counter" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Int";
+"SimpleDB::Class::ResultSet::new" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Int";
+"SimpleDB::Class::ResultSet::iterator" -> "Moose::Util::TypeConstraints::OptimizedConstraints::Int";
+"Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@4" -> "warnings::import";
+"Moose::Util::TypeConstraints::OptimizedConstraints::CORE:match" -> "utf8::AUTOLOAD";
+"Moose::Util::TypeConstraints::OptimizedConstraints::CORE:match" -> "utf8::SWASHNEW";
+"SimpleDB::Class::ResultSet::new" -> "Moose::Util::TypeConstraints::OptimizedConstraints::ClassName";
+"Moose::Meta::TypeConstraint::check" -> "Moose::Util::TypeConstraints::OptimizedConstraints::ClassName";
+"Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@3" -> "strict::import";
+}

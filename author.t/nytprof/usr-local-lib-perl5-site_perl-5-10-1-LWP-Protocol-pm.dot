@@ -1,0 +1,112 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_IO_Socket_INET {
+	label="IO::Socket::INET";
+	"IO::Socket::INET::BEGIN@11";
+	"IO::Socket::INET::BEGIN@14";
+	"IO::Socket::INET::BEGIN@13";
+	"IO::Socket::INET::BEGIN@9";
+	"IO::Socket::INET::BEGIN@15";
+	"IO::Socket::INET::BEGIN@12";
+}
+subgraph cluster_LWP_UserAgent {
+	label="LWP::UserAgent";
+	"LWP::UserAgent::handlers";
+	"LWP::UserAgent::send_request";
+	"LWP::UserAgent::BEGIN@15";
+	"LWP::UserAgent::run_handlers";
+	"LWP::UserAgent::progress";
+}
+subgraph cluster_LWP_Protocol {
+	label="LWP::Protocol";
+	"LWP::Protocol::BEGIN@10";
+	"LWP::Protocol::collect";
+	"LWP::Protocol::BEGIN@7";
+	"LWP::Protocol::implementor";
+	"LWP::Protocol::create";
+	"LWP::Protocol::BEGIN@8";
+	"LWP::Protocol::CORE:match";
+	"LWP::Protocol::__ANON__[LWP/Protocol.pm:139]";
+	"LWP::Protocol::CORE:subst";
+	"LWP::Protocol::BEGIN@9";
+	"LWP::Protocol::new";
+	"LWP::Protocol::BEGIN@62";
+}
+subgraph cluster_LWP_Protocol_http_Socket {
+	label="LWP::Protocol::http::Socket";
+	"LWP::Protocol::http::Socket::BEGIN@472";
+}
+subgraph cluster_HTTP_Message {
+	label="HTTP::Message";
+	"HTTP::Message::add_content";
+	"HTTP::Message::__ANON__[HTTP/Message.pm:622]";
+	"HTTP::Message::AUTOLOAD";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_Net_HTTP {
+	label="Net::HTTP";
+	"Net::HTTP::BEGIN@4";
+	"Net::HTTP::BEGIN@3";
+}
+subgraph cluster_IO_Socket {
+	label="IO::Socket";
+	"IO::Socket::register_domain";
+}
+subgraph cluster_LWP_Protocol_http {
+	label="LWP::Protocol::http";
+	"LWP::Protocol::http::BEGIN@3";
+	"LWP::Protocol::http::BEGIN@9";
+	"LWP::Protocol::http::__ANON__[LWP/Protocol/http.pm:394]";
+	"LWP::Protocol::http::request";
+	"LWP::Protocol::http::BEGIN@216";
+}
+subgraph cluster_Net_HTTP_Methods {
+	label="Net::HTTP::Methods";
+	"Net::HTTP::Methods::BEGIN@5";
+	"Net::HTTP::Methods::BEGIN@6";
+	"Net::HTTP::Methods::BEGIN@98";
+	"Net::HTTP::Methods::BEGIN@555";
+}
+"LWP::UserAgent::BEGIN@15" -> "LWP::Protocol::BEGIN@7";
+"LWP::Protocol::__ANON__[LWP/Protocol.pm:139]" -> "HTTP::Message::add_content";
+"LWP::Protocol::implementor" -> "IO::Socket::INET::BEGIN@14";
+"LWP::Protocol::implementor" -> "IO::Socket::INET::BEGIN@12";
+"LWP::Protocol::implementor" -> "Net::HTTP::Methods::BEGIN@555";
+"LWP::Protocol::implementor" -> "Net::HTTP::Methods::BEGIN@5";
+"LWP::Protocol::collect" -> "HTTP::Message::__ANON__[HTTP/Message.pm:622]";
+"LWP::Protocol::implementor" -> "Net::HTTP::Methods::BEGIN@98";
+"LWP::Protocol::collect" -> "LWP::UserAgent::run_handlers";
+"LWP::UserAgent::send_request" -> "LWP::Protocol::create";
+"LWP::Protocol::implementor" -> "LWP::Protocol::http::BEGIN@3";
+"LWP::Protocol::create" -> "LWP::Protocol::new";
+"LWP::Protocol::http::request" -> "LWP::Protocol::collect";
+"LWP::Protocol::implementor" -> "IO::Socket::INET::BEGIN@11";
+"LWP::UserAgent::BEGIN@15" -> "LWP::Protocol::BEGIN@10";
+"LWP::Protocol::implementor" -> "Net::HTTP::Methods::BEGIN@6";
+"LWP::Protocol::collect" -> "LWP::UserAgent::progress";
+"LWP::Protocol::create" -> "LWP::Protocol::implementor";
+"LWP::Protocol::collect" -> "HTTP::Message::AUTOLOAD";
+"LWP::Protocol::implementor" -> "IO::Socket::INET::BEGIN@9";
+"LWP::Protocol::implementor" -> "LWP::Protocol::http::Socket::BEGIN@472";
+"LWP::UserAgent::BEGIN@15" -> "LWP::Protocol::BEGIN@62";
+"LWP::Protocol::implementor" -> "IO::Socket::INET::BEGIN@15";
+"LWP::Protocol::implementor" -> "LWP::Protocol::CORE:subst";
+"LWP::Protocol::implementor" -> "IO::Socket::register_domain";
+"LWP::Protocol::implementor" -> "Net::HTTP::BEGIN@4";
+"LWP::Protocol::BEGIN@62" -> "strict::unimport";
+"LWP::UserAgent::BEGIN@15" -> "LWP::Protocol::BEGIN@8";
+"LWP::UserAgent::BEGIN@15" -> "LWP::Protocol::BEGIN@9";
+"LWP::Protocol::implementor" -> "Net::HTTP::BEGIN@3";
+"LWP::Protocol::implementor" -> "IO::Socket::INET::BEGIN@13";
+"LWP::Protocol::collect" -> "LWP::Protocol::__ANON__[LWP/Protocol.pm:139]";
+"LWP::Protocol::implementor" -> "LWP::Protocol::CORE:match";
+"LWP::Protocol::collect" -> "LWP::UserAgent::handlers";
+"LWP::Protocol::collect" -> "LWP::Protocol::http::__ANON__[LWP/Protocol/http.pm:394]";
+"LWP::Protocol::implementor" -> "LWP::Protocol::http::BEGIN@216";
+"LWP::Protocol::implementor" -> "LWP::Protocol::http::BEGIN@9";
+"LWP::Protocol::BEGIN@7" -> "strict::import";
+}

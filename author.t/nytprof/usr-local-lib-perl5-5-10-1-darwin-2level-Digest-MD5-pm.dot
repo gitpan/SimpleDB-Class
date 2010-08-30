@@ -1,0 +1,36 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_SimpleDB_Class_Item {
+	label="SimpleDB::Class::Item";
+	"SimpleDB::Class::Item::BEGIN@18";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_UUID_Tiny {
+	label="UUID::Tiny";
+	"UUID::Tiny::_digest_as_octets";
+	"UUID::Tiny::BEGIN@7";
+}
+subgraph cluster_Digest_MD5 {
+	label="Digest::MD5";
+	"Digest::MD5::BEGIN@3";
+	"Digest::MD5::digest";
+	"Digest::MD5::add";
+	"Digest::MD5::new";
+	"Digest::MD5::BEGIN@4";
+}
+"UUID::Tiny::BEGIN@7" -> "Digest::MD5::BEGIN@4";
+"UUID::Tiny::_digest_as_octets" -> "Digest::MD5::new";
+"SimpleDB::Class::Item::BEGIN@18" -> "Digest::MD5::new";
+"UUID::Tiny::_digest_as_octets" -> "Digest::MD5::add";
+"Digest::MD5::BEGIN@4" -> "vars::import";
+"UUID::Tiny::BEGIN@7" -> "Digest::MD5::BEGIN@3";
+"Digest::MD5::BEGIN@3" -> "strict::import";
+"UUID::Tiny::_digest_as_octets" -> "Digest::MD5::digest";
+}

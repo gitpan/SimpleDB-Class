@@ -1,0 +1,91 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Config {
+	label="Config";
+	"Config::BEGIN@35";
+	"Config::CORE:subst";
+	"Config::TIEHASH";
+	"Config::CORE:match";
+	"Config::BEGIN@5";
+	"Config::fetch_string";
+	"Config::AUTOLOAD";
+	"Config::import";
+	"Config::CORE:pack";
+	"Config::launcher";
+	"Config::BEGIN@9";
+	"Config::CORE:substcont";
+	"Config::CORE:unpack";
+	"Config::FETCH";
+}
+subgraph cluster_DynaLoader {
+	label="DynaLoader";
+	"DynaLoader::BEGIN@25";
+}
+subgraph cluster_Module_Find {
+	label="Module::Find";
+	"Module::Find::BEGIN@8";
+}
+subgraph cluster_LWP_UserAgent {
+	label="LWP::UserAgent";
+	"LWP::UserAgent::BEGIN@12";
+}
+subgraph cluster_Test_Builder {
+	label="Test::Builder";
+	"Test::Builder::BEGIN@18";
+	"Test::Builder::BEGIN@19";
+}
+subgraph cluster_Errno {
+	label="Errno";
+	"Errno::BEGIN@8";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_Time_Local {
+	label="Time::Local";
+	"Time::Local::BEGIN@5";
+}
+subgraph cluster_main {
+	label="main";
+	"main::BEGIN@3";
+}
+subgraph cluster_lib {
+	label="lib";
+	"lib::BEGIN@6";
+}
+subgraph cluster_LWP_Protocol_http {
+	label="LWP::Protocol::http";
+	"LWP::Protocol::http::BEGIN@216";
+}
+"Config::AUTOLOAD" -> "Config::CORE:match";
+"Config::AUTOLOAD" -> "Config::CORE:pack";
+"Test::Builder::BEGIN@19" -> "Config::BEGIN@35";
+"Config::AUTOLOAD" -> "Config::CORE:substcont";
+"Config::FETCH" -> "Config::fetch_string";
+"Test::Builder::BEGIN@19" -> "Config::TIEHASH";
+"Time::Local::BEGIN@5" -> "Config::import";
+"lib::BEGIN@6" -> "Config::import";
+"Errno::BEGIN@8" -> "Config::import";
+"DynaLoader::BEGIN@25" -> "Config::import";
+"Test::Builder::BEGIN@19" -> "Config::import";
+"Test::Builder::BEGIN@19" -> "Config::BEGIN@9";
+"Config::FETCH" -> "Config::AUTOLOAD";
+"Config::BEGIN@35" -> "strict::unimport";
+"Config::FETCH" -> "Config::launcher";
+"Config::AUTOLOAD" -> "Config::CORE:unpack";
+"Config::AUTOLOAD" -> "Config::BEGIN@5";
+"Test::Builder::BEGIN@18" -> "Config::FETCH";
+"Module::Find::BEGIN@8" -> "Config::FETCH";
+"LWP::UserAgent::BEGIN@12" -> "Config::FETCH";
+"main::BEGIN@3" -> "Config::FETCH";
+"base::import" -> "Config::FETCH";
+"LWP::Protocol::http::BEGIN@216" -> "Config::FETCH";
+"Config::AUTOLOAD" -> "Config::CORE:subst";
+"Config::BEGIN@9" -> "strict::import";
+}

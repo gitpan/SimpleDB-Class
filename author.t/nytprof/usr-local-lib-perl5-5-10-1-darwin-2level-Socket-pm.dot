@@ -1,0 +1,47 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_IO_Socket_INET {
+	label="IO::Socket::INET";
+	"IO::Socket::INET::configure";
+	"IO::Socket::INET::_get_addr";
+	"IO::Socket::INET::peerport";
+	"IO::Socket::INET::peerhost";
+	"IO::Socket::INET::peeraddr";
+}
+subgraph cluster_Socket {
+	label="Socket";
+	"Socket::BEGIN@365";
+	"Socket::BEGIN@178";
+	"Socket::inet_ntoa";
+	"Socket::unpack_sockaddr_in";
+	"Socket::BEGIN@182";
+	"Socket::pack_sockaddr_in";
+	"Socket::BEGIN@179";
+	"Socket::inet_aton";
+	"Socket::sockaddr_in";
+}
+subgraph cluster_warnings_register {
+	label="warnings::register";
+	"warnings::register::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_IO_Socket {
+	label="IO::Socket";
+	"IO::Socket::BEGIN@12";
+}
+"Socket::BEGIN@178" -> "Exporter::import";
+"IO::Socket::BEGIN@12" -> "Socket::BEGIN@179";
+"IO::Socket::INET::_get_addr" -> "Socket::inet_aton";
+"IO::Socket::INET::peerhost" -> "Socket::inet_ntoa";
+"IO::Socket::BEGIN@12" -> "Socket::BEGIN@182";
+"IO::Socket::INET::peerport" -> "Socket::sockaddr_in";
+"IO::Socket::INET::peeraddr" -> "Socket::sockaddr_in";
+"IO::Socket::INET::configure" -> "Socket::pack_sockaddr_in";
+"Socket::BEGIN@179" -> "warnings::register::import";
+"IO::Socket::BEGIN@12" -> "Socket::BEGIN@178";
+"Socket::sockaddr_in" -> "Socket::unpack_sockaddr_in";
+"IO::Socket::BEGIN@12" -> "Socket::BEGIN@365";
+}

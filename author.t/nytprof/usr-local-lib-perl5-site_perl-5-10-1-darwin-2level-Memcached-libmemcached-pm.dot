@@ -1,0 +1,72 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SimpleDB_Class_Cache {
+	label="SimpleDB::Class::Cache";
+	"SimpleDB::Class::Cache::__ANON__[../lib/SimpleDB/Class/Cache.pm:106]";
+	"SimpleDB::Class::Cache::get";
+	"SimpleDB::Class::Cache::BEGIN@31";
+	"SimpleDB::Class::Cache::set";
+	"SimpleDB::Class::Cache::flush";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_Memcached_libmemcached {
+	label="Memcached::libmemcached";
+	"Memcached::libmemcached::memcached_set";
+	"Memcached::libmemcached::memcached_server_add";
+	"Memcached::libmemcached::memcached_flush";
+	"Memcached::libmemcached::errstr";
+	"Memcached::libmemcached::memcached_get";
+	"Memcached::libmemcached::DESTROY";
+	"Memcached::libmemcached::BEGIN@4";
+	"Memcached::libmemcached::BEGIN@19";
+	"Memcached::libmemcached::BEGIN@3";
+	"Memcached::libmemcached::memcached_create";
+	"Memcached::libmemcached::BEGIN@18";
+	"Memcached::libmemcached::BEGIN@21";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_main {
+	label="main";
+	"main::NULL";
+}
+subgraph cluster_Memcached_libmemcached_API {
+	label="Memcached::libmemcached::API";
+	"Memcached::libmemcached::API::BEGIN@23";
+	"Memcached::libmemcached::API::CORE:sort";
+}
+"SimpleDB::Class::Cache::__ANON__[../lib/SimpleDB/Class/Cache.pm:106]" -> "Memcached::libmemcached::memcached_server_add";
+"Memcached::libmemcached::BEGIN@21" -> "Exporter::import";
+"Memcached::libmemcached::BEGIN@18" -> "Exporter::import";
+"SimpleDB::Class::Cache::BEGIN@31" -> "Memcached::libmemcached::BEGIN@4";
+"SimpleDB::Class::Cache::BEGIN@31" -> "Memcached::libmemcached::BEGIN@19";
+"SimpleDB::Class::Cache::BEGIN@31" -> "Memcached::libmemcached::BEGIN@21";
+"SimpleDB::Class::Cache::BEGIN@31" -> "Memcached::libmemcached::BEGIN@3";
+"SimpleDB::Class::Cache::get" -> "Memcached::libmemcached::errstr";
+"SimpleDB::Class::Cache::set" -> "Memcached::libmemcached::errstr";
+"SimpleDB::Class::Cache::flush" -> "Memcached::libmemcached::errstr";
+"SimpleDB::Class::Cache::flush" -> "Memcached::libmemcached::memcached_flush";
+"SimpleDB::Class::Cache::get" -> "Memcached::libmemcached::memcached_get";
+"Memcached::libmemcached::BEGIN@21" -> "Memcached::libmemcached::API::CORE:sort";
+"Memcached::libmemcached::BEGIN@19" -> "base::import";
+"Memcached::libmemcached::BEGIN@3" -> "warnings::import";
+"SimpleDB::Class::Cache::__ANON__[../lib/SimpleDB/Class/Cache.pm:106]" -> "Memcached::libmemcached::memcached_create";
+"SimpleDB::Class::Cache::set" -> "Memcached::libmemcached::memcached_set";
+"SimpleDB::Class::Cache::BEGIN@31" -> "Memcached::libmemcached::BEGIN@18";
+"Memcached::libmemcached::BEGIN@21" -> "Memcached::libmemcached::API::BEGIN@23";
+"main::NULL" -> "Memcached::libmemcached::DESTROY";
+"Memcached::libmemcached::BEGIN@4" -> "strict::import";
+}

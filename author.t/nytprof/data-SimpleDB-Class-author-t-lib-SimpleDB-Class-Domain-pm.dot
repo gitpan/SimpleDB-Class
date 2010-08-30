@@ -1,0 +1,211 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SimpleDB_Class_Cache {
+	label="SimpleDB::Class::Cache";
+	"SimpleDB::Class::Cache::get";
+	"SimpleDB::Class::Cache::set";
+}
+subgraph cluster_Foo_Child {
+	label="Foo::Child";
+	"Foo::Child::domain_name";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+}
+subgraph cluster_SimpleDB_Class_Item {
+	label="SimpleDB::Class::Item";
+	"SimpleDB::Class::Item::__ANON__[../lib/SimpleDB/Class/Item.pm:280]";
+	"SimpleDB::Class::Item::parse_value";
+	"SimpleDB::Class::Item::to_hashref";
+	"SimpleDB::Class::Item::put";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::with";
+	"Moose::has";
+}
+subgraph cluster_SimpleDB_Class_Role_Itemized {
+	label="SimpleDB::Class::Role::Itemized";
+	"SimpleDB::Class::Role::Itemized::parse_item";
+	"SimpleDB::Class::Role::Itemized::instantiate_item";
+}
+subgraph cluster_SimpleDB_Class {
+	label="SimpleDB::Class";
+	"SimpleDB::Class::add_domain_prefix";
+	"SimpleDB::Class::BEGIN@141";
+	"SimpleDB::Class::cache";
+	"SimpleDB::Class::http";
+}
+subgraph cluster_SimpleDB_Client {
+	label="SimpleDB::Client";
+	"SimpleDB::Client::send_request";
+}
+subgraph cluster_SimpleDB_Class_ResultSet {
+	label="SimpleDB::Class::ResultSet";
+	"SimpleDB::Class::ResultSet::BEGIN@21";
+	"SimpleDB::Class::ResultSet::BEGIN@22";
+	"SimpleDB::Class::ResultSet::new";
+	"SimpleDB::Class::ResultSet::meta";
+	"SimpleDB::Class::ResultSet::BEGIN@520";
+}
+subgraph cluster_SimpleDB_Class_Domain {
+	label="SimpleDB::Class::Domain";
+	"SimpleDB::Class::Domain::__ANON__[../lib/SimpleDB/Class/Domain.pm:59]";
+	"SimpleDB::Class::Domain::count";
+	"SimpleDB::Class::Domain::delete";
+	"SimpleDB::Class::Domain::fetch_ids";
+	"SimpleDB::Class::Domain::BEGIN@458";
+	"SimpleDB::Class::Domain::max";
+	"SimpleDB::Class::Domain::simpledb";
+	"SimpleDB::Class::Domain::BEGIN@18";
+	"SimpleDB::Class::Domain::new";
+	"SimpleDB::Class::Domain::min";
+	"SimpleDB::Class::Domain::create";
+	"SimpleDB::Class::Domain::name";
+	"SimpleDB::Class::Domain::BEGIN@19";
+	"SimpleDB::Class::Domain::insert";
+	"SimpleDB::Class::Domain::item_class";
+	"SimpleDB::Class::Domain::find";
+	"SimpleDB::Class::Domain::BEGIN@20";
+	"SimpleDB::Class::Domain::BEGIN@17";
+	"SimpleDB::Class::Domain::search";
+}
+subgraph cluster_Foo_Parent {
+	label="Foo::Parent";
+	"Foo::Parent::domain_name";
+	"Foo::Parent::domains";
+}
+subgraph cluster_Foo_Domain {
+	label="Foo::Domain";
+	"Foo::Domain::children";
+	"Foo::Domain::parent";
+	"Foo::Domain::domain_name";
+}
+subgraph cluster_Class_MOP_Class {
+	label="Class::MOP::Class";
+	"Class::MOP::Class::make_immutable";
+}
+subgraph cluster_Moose_Object {
+	label="Moose::Object";
+	"Moose::Object::DESTROY";
+}
+subgraph cluster_SimpleDB_Class_SQL {
+	label="SimpleDB::Class::SQL";
+	"SimpleDB::Class::SQL::BEGIN@403";
+	"SimpleDB::Class::SQL::new";
+	"SimpleDB::Class::SQL::BEGIN@19";
+	"SimpleDB::Class::SQL::meta";
+	"SimpleDB::Class::SQL::BEGIN@20";
+	"SimpleDB::Class::SQL::BEGIN@21";
+	"SimpleDB::Class::SQL::BEGIN@17";
+	"SimpleDB::Class::SQL::BEGIN@18";
+	"SimpleDB::Class::SQL::to_sql";
+}
+subgraph cluster_main {
+	label="main";
+	"main::RUNTIME";
+}
+subgraph cluster_Exception_Class_Base {
+	label="Exception::Class::Base";
+	"Exception::Class::Base::caught";
+	"Exception::Class::Base::__ANON__[Exception/Class/Base.pm:30]";
+}
+"SimpleDB::Class::Domain::__ANON__[../lib/SimpleDB/Class/Domain.pm:59]" -> "Foo::Domain::domain_name";
+"main::RUNTIME" -> "SimpleDB::Class::Domain::count";
+"SimpleDB::Class::Domain::BEGIN@18" -> "SimpleDB::Class::SQL::BEGIN@17";
+"main::RUNTIME" -> "SimpleDB::Class::Domain::fetch_ids";
+"main::RUNTIME" -> "SimpleDB::Class::Domain::max";
+"SimpleDB::Class::Domain::min" -> "SimpleDB::Class::Domain::simpledb";
+"SimpleDB::Class::Domain::create" -> "SimpleDB::Class::Domain::simpledb";
+"SimpleDB::Class::Domain::count" -> "SimpleDB::Class::Domain::simpledb";
+"SimpleDB::Class::Domain::delete" -> "SimpleDB::Class::Domain::simpledb";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::Domain::simpledb";
+"SimpleDB::Class::Domain::fetch_ids" -> "SimpleDB::Class::Domain::simpledb";
+"SimpleDB::Class::Domain::max" -> "SimpleDB::Class::Domain::simpledb";
+"SimpleDB::Class::Domain::search" -> "SimpleDB::Class::Domain::simpledb";
+"SimpleDB::Class::Domain::BEGIN@18" -> "SimpleDB::Class::SQL::BEGIN@21";
+"SimpleDB::Class::Domain::BEGIN@458" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+"SimpleDB::Class::Domain::find" -> "Exception::Class::Base::caught";
+"SimpleDB::Class::Domain::create" -> "SimpleDB::Class::http";
+"SimpleDB::Class::Domain::min" -> "SimpleDB::Class::http";
+"SimpleDB::Class::Domain::count" -> "SimpleDB::Class::http";
+"SimpleDB::Class::Domain::delete" -> "SimpleDB::Class::http";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::http";
+"SimpleDB::Class::Domain::fetch_ids" -> "SimpleDB::Class::http";
+"SimpleDB::Class::Domain::max" -> "SimpleDB::Class::http";
+"main::RUNTIME" -> "SimpleDB::Class::Domain::delete";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::Cache::get";
+"SimpleDB::Class::Domain::create" -> "SimpleDB::Client::send_request";
+"SimpleDB::Class::Domain::min" -> "SimpleDB::Client::send_request";
+"SimpleDB::Class::Domain::count" -> "SimpleDB::Client::send_request";
+"SimpleDB::Class::Domain::delete" -> "SimpleDB::Client::send_request";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Client::send_request";
+"SimpleDB::Class::Domain::fetch_ids" -> "SimpleDB::Client::send_request";
+"SimpleDB::Class::Domain::max" -> "SimpleDB::Client::send_request";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::Cache::set";
+"main::RUNTIME" -> "SimpleDB::Class::Domain::insert";
+"SimpleDB::Class::Domain::insert" -> "SimpleDB::Class::Item::put";
+"SimpleDB::Class::Domain::BEGIN@19" -> "SimpleDB::Class::ResultSet::BEGIN@21";
+"main::RUNTIME" -> "SimpleDB::Class::Domain::min";
+"SimpleDB::Class::Domain::BEGIN@18" -> "SimpleDB::Class::SQL::BEGIN@18";
+"SimpleDB::Class::Domain::new" -> "SimpleDB::Class::Domain::__ANON__[../lib/SimpleDB/Class/Domain.pm:59]";
+"SimpleDB::Class::BEGIN@141" -> "SimpleDB::Class::Domain::BEGIN@18";
+"SimpleDB::Class::Domain::BEGIN@19" -> "Moose::with";
+"SimpleDB::Class::Domain::insert" -> "SimpleDB::Class::Role::Itemized::instantiate_item";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::Role::Itemized::instantiate_item";
+"SimpleDB::Class::Domain::BEGIN@18" -> "SimpleDB::Class::SQL::BEGIN@20";
+"SimpleDB::Class::Domain::fetch_ids" -> "SimpleDB::Class::Domain::item_class";
+"SimpleDB::Class::Domain::min" -> "SimpleDB::Class::Domain::item_class";
+"SimpleDB::Class::Domain::count" -> "SimpleDB::Class::Domain::item_class";
+"SimpleDB::Class::Domain::max" -> "SimpleDB::Class::Domain::item_class";
+"SimpleDB::Class::Domain::search" -> "SimpleDB::Class::Domain::item_class";
+"SimpleDB::Class::Domain::__ANON__[../lib/SimpleDB/Class/Domain.pm:59]" -> "Foo::Child::domain_name";
+"SimpleDB::Class::Domain::min" -> "SimpleDB::Class::Item::parse_value";
+"SimpleDB::Class::Domain::max" -> "SimpleDB::Class::Item::parse_value";
+"SimpleDB::Class::Domain::BEGIN@18" -> "Class::MOP::Class::make_immutable";
+"SimpleDB::Class::Domain::BEGIN@19" -> "Class::MOP::Class::make_immutable";
+"SimpleDB::Class::Domain::BEGIN@18" -> "Moose::has";
+"SimpleDB::Class::Domain::BEGIN@19" -> "Moose::has";
+"SimpleDB::Class::Domain::BEGIN@19" -> "SimpleDB::Class::ResultSet::BEGIN@22";
+"SimpleDB::Class::Domain::insert" -> "Moose::Object::DESTROY";
+"SimpleDB::Class::BEGIN@141" -> "SimpleDB::Class::Domain::BEGIN@19";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::Item::to_hashref";
+"SimpleDB::Class::Item::__ANON__[../lib/SimpleDB/Class/Item.pm:280]" -> "SimpleDB::Class::Domain::find";
+"main::RUNTIME" -> "SimpleDB::Class::Domain::find";
+"SimpleDB::Class::BEGIN@141" -> "SimpleDB::Class::Domain::BEGIN@20";
+"SimpleDB::Class::Domain::BEGIN@18" -> "SimpleDB::Class::SQL::meta";
+"SimpleDB::Class::Domain::BEGIN@19" -> "SimpleDB::Class::ResultSet::meta";
+"SimpleDB::Class::Domain::BEGIN@18" -> "SimpleDB::Class::SQL::BEGIN@19";
+"main::RUNTIME" -> "SimpleDB::Class::Domain::create";
+"SimpleDB::Class::BEGIN@141" -> "SimpleDB::Class::Domain::BEGIN@17";
+"SimpleDB::Class::Domain::BEGIN@19" -> "SimpleDB::Class::ResultSet::BEGIN@520";
+"Foo::Domain::children" -> "SimpleDB::Class::Domain::search";
+"Foo::Parent::domains" -> "SimpleDB::Class::Domain::search";
+"main::RUNTIME" -> "SimpleDB::Class::Domain::search";
+"SimpleDB::Class::Domain::BEGIN@17" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+"SimpleDB::Class::Domain::BEGIN@18" -> "SimpleDB::Class::SQL::BEGIN@403";
+"SimpleDB::Class::Domain::fetch_ids" -> "SimpleDB::Class::SQL::new";
+"SimpleDB::Class::Domain::min" -> "SimpleDB::Class::SQL::new";
+"SimpleDB::Class::Domain::count" -> "SimpleDB::Class::SQL::new";
+"SimpleDB::Class::Domain::max" -> "SimpleDB::Class::SQL::new";
+"SimpleDB::Class::Domain::create" -> "SimpleDB::Class::add_domain_prefix";
+"SimpleDB::Class::Domain::delete" -> "SimpleDB::Class::add_domain_prefix";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::add_domain_prefix";
+"SimpleDB::Class::Domain::find" -> "Foo::Domain::parent";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::cache";
+"SimpleDB::Class::Domain::find" -> "Exception::Class::Base::__ANON__[Exception/Class/Base.pm:30]";
+"SimpleDB::Class::Domain::fetch_ids" -> "SimpleDB::Class::SQL::to_sql";
+"SimpleDB::Class::Domain::min" -> "SimpleDB::Class::SQL::to_sql";
+"SimpleDB::Class::Domain::max" -> "SimpleDB::Class::SQL::to_sql";
+"SimpleDB::Class::Domain::count" -> "SimpleDB::Class::SQL::to_sql";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::Role::Itemized::parse_item";
+"SimpleDB::Class::Domain::search" -> "SimpleDB::Class::ResultSet::new";
+"SimpleDB::Class::BEGIN@141" -> "SimpleDB::Class::Domain::BEGIN@458";
+"SimpleDB::Class::Domain::__ANON__[../lib/SimpleDB/Class/Domain.pm:59]" -> "SimpleDB::Class::Domain::name";
+"SimpleDB::Class::Domain::create" -> "SimpleDB::Class::Domain::name";
+"SimpleDB::Class::Domain::delete" -> "SimpleDB::Class::Domain::name";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::Domain::name";
+"SimpleDB::Class::Domain::__ANON__[../lib/SimpleDB/Class/Domain.pm:59]" -> "Foo::Parent::domain_name";
+}

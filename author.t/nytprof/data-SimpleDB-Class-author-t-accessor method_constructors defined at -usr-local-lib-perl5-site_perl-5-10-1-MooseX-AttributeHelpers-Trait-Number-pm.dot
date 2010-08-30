@@ -1,0 +1,9 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Class_MOP_Method_Generated {
+	label="Class::MOP::Method::Generated";
+	"Class::MOP::Method::Generated::_eval_closure";
+	"Class::MOP::Method::Generated::CORE:match";
+}
+"Class::MOP::Method::Generated::_eval_closure" -> "Class::MOP::Method::Generated::CORE:match";
+}

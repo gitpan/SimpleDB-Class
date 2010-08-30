@@ -1,0 +1,169 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_MooseX_Types_TypeDecorator {
+	label="MooseX::Types::TypeDecorator";
+	"MooseX::Types::TypeDecorator::AUTOLOAD";
+}
+subgraph cluster_Moose_Util_TypeConstraints {
+	label="Moose::Util::TypeConstraints";
+	"Moose::Util::TypeConstraints::_install_type_coercions";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::BEGIN@20";
+}
+subgraph cluster_metaclass {
+	label="metaclass";
+	"metaclass::import";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_Class {
+	label="Moose::Meta::TypeConstraint::Class";
+	"Moose::Meta::TypeConstraint::Class::__ANON__[Moose/Meta/TypeConstraint/Class.pm:38]";
+}
+subgraph cluster_Class_MOP_Object {
+	label="Class::MOP::Object";
+	"Class::MOP::Object::meta";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Class_MOP_Class {
+	label="Class::MOP::Class";
+	"Class::MOP::Class::new_object";
+}
+subgraph cluster_Class_MOP {
+	label="Class::MOP";
+	"Class::MOP::class_of";
+}
+subgraph cluster_Moose_Meta_TypeCoercion_Union {
+	label="Moose::Meta::TypeCoercion::Union";
+	"Moose::Meta::TypeCoercion::Union::compile_type_coercion";
+}
+subgraph cluster_Moose_Util_TypeConstraints_OptimizedConstraints {
+	label="Moose::Util::TypeConstraints::OptimizedConstraints";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::HashRef";
+}
+subgraph cluster_Class_MOP_Mixin_AttributeCore {
+	label="Class::MOP::Mixin::AttributeCore";
+	"Class::MOP::Mixin::AttributeCore::default";
+}
+subgraph cluster_SimpleDB_Class_Types {
+	label="SimpleDB::Class::Types";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:159]";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:170]";
+	"SimpleDB::Class::Types::SdbArrayRefOfStr";
+	"SimpleDB::Class::Types::SdbMediumStr";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:205]";
+	"SimpleDB::Class::Types::SdbStr";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:155]";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:185]";
+	"SimpleDB::Class::Types::SdbInt";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:152]";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:165]";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:163]";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:186]";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:206]";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:221]";
+	"SimpleDB::Class::Types::SdbArrayRefOfDateTime";
+}
+subgraph cluster_Moose_Meta_Attribute {
+	label="Moose::Meta::Attribute";
+	"Moose::Meta::Attribute::BEGIN@7";
+	"Moose::Meta::Attribute::BEGIN@4";
+	"Moose::Meta::Attribute::BEGIN@10";
+	"Moose::Meta::Attribute::BEGIN@17";
+	"Moose::Meta::Attribute::BEGIN@9";
+	"Moose::Meta::Attribute::BEGIN@5";
+	"Moose::Meta::Attribute::BEGIN@15";
+	"Moose::Meta::Attribute::BEGIN@18";
+	"Moose::Meta::Attribute::BEGIN@8";
+	"Moose::Meta::Attribute::BEGIN@16";
+	"Moose::Meta::Attribute::BEGIN@20";
+}
+subgraph cluster_Class_MOP_Mixin_HasAttributes {
+	label="Class::MOP::Mixin::HasAttributes";
+	"Class::MOP::Mixin::HasAttributes::add_attribute";
+}
+subgraph cluster_Moose_Meta_TypeConstraint {
+	label="Moose::Meta::TypeConstraint";
+	"Moose::Meta::TypeConstraint::Undef";
+	"Moose::Meta::TypeConstraint::coerce";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_Union {
+	label="Moose::Meta::TypeConstraint::Union";
+	"Moose::Meta::TypeConstraint::Union::new";
+}
+subgraph cluster_Moose_Meta_TypeCoercion {
+	label="Moose::Meta::TypeCoercion";
+	"Moose::Meta::TypeCoercion::BEGIN@4";
+	"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:17]";
+	"Moose::Meta::TypeCoercion::BEGIN@8";
+	"Moose::Meta::TypeCoercion::type_coercion_map";
+	"Moose::Meta::TypeCoercion::compile_type_coercion";
+	"Moose::Meta::TypeCoercion::new";
+	"Moose::Meta::TypeCoercion::BEGIN@9";
+	"Moose::Meta::TypeCoercion::_compiled_type_coercion";
+	"Moose::Meta::TypeCoercion::BEGIN@6";
+	"Moose::Meta::TypeCoercion::coerce";
+	"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]";
+	"Moose::Meta::TypeCoercion::BEGIN@5";
+}
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "Moose::Util::TypeConstraints::OptimizedConstraints::HashRef";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Moose::Meta::Attribute::BEGIN@9";
+"Moose::BEGIN@20" -> "Moose::Meta::TypeCoercion::BEGIN@9";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "Moose::Meta::TypeConstraint::Undef";
+"Moose::Meta::TypeCoercion::coerce" -> "Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Moose::Meta::Attribute::BEGIN@20";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::SdbInt";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Moose::Meta::Attribute::BEGIN@10";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:186]";
+"Moose::BEGIN@20" -> "Moose::Meta::TypeCoercion::BEGIN@6";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Moose::Meta::Attribute::BEGIN@7";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:170]";
+"Moose::Meta::TypeCoercion::new" -> "Moose::Meta::TypeCoercion::compile_type_coercion";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Moose::Meta::Attribute::BEGIN@15";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:165]";
+"Moose::BEGIN@20" -> "Moose::Meta::TypeCoercion::BEGIN@8";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:206]";
+"Moose::Meta::TypeCoercion::new" -> "Moose::Meta::TypeCoercion::Union::compile_type_coercion";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Class::MOP::Object::meta";
+"Moose::Meta::TypeCoercion::BEGIN@6" -> "metaclass::import";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:205]";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Moose::Meta::Attribute::BEGIN@5";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Moose::Meta::Attribute::BEGIN@8";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:155]";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Moose::Meta::Attribute::BEGIN@17";
+"Moose::Meta::TypeCoercion::compile_type_coercion" -> "Moose::Meta::TypeCoercion::type_coercion_map";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:163]";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Class::MOP::Mixin::HasAttributes::add_attribute";
+"Moose::Meta::TypeCoercion::new" -> "Class::MOP::class_of";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:152]";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:221]";
+"Moose::Meta::TypeCoercion::BEGIN@5" -> "warnings::import";
+"Moose::Meta::TypeConstraint::coerce" -> "Moose::Meta::TypeCoercion::coerce";
+"Moose::BEGIN@20" -> "Moose::Meta::TypeCoercion::BEGIN@5";
+"Moose::Meta::TypeCoercion::new" -> "Class::MOP::Class::new_object";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::SdbArrayRefOfStr";
+"Moose::BEGIN@20" -> "Moose::Meta::TypeCoercion::BEGIN@4";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Moose::Meta::Attribute::BEGIN@4";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::SdbMediumStr";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Moose::Meta::Attribute::BEGIN@16";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::SdbStr";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:185]";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "Moose::Meta::TypeConstraint::Class::__ANON__[Moose/Meta/TypeConstraint/Class.pm:38]";
+"Moose::Meta::TypeCoercion::compile_type_coercion" -> "MooseX::Types::TypeDecorator::AUTOLOAD";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:159]";
+"Class::MOP::Mixin::AttributeCore::default" -> "Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:17]";
+"Moose::Meta::TypeConstraint::Union::new" -> "Moose::Meta::TypeCoercion::new";
+"Moose::Util::TypeConstraints::_install_type_coercions" -> "Moose::Meta::TypeCoercion::new";
+"Moose::Meta::TypeCoercion::compile_type_coercion" -> "Moose::Meta::TypeCoercion::_compiled_type_coercion";
+"Moose::Meta::TypeCoercion::coerce" -> "Moose::Meta::TypeCoercion::_compiled_type_coercion";
+"Moose::Meta::TypeCoercion::BEGIN@8" -> "Moose::Meta::Attribute::BEGIN@18";
+"Moose::Meta::TypeCoercion::BEGIN@4" -> "strict::import";
+"Moose::Meta::TypeCoercion::__ANON__[Moose/Meta/TypeCoercion.pm:67]" -> "SimpleDB::Class::Types::SdbArrayRefOfDateTime";
+}

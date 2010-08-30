@@ -1,0 +1,117 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_MooseX_Types_TypeDecorator {
+	label="MooseX::Types::TypeDecorator";
+	"MooseX::Types::TypeDecorator::BEGIN@12";
+}
+subgraph cluster_Test_Deep_Cmp {
+	label="Test::Deep::Cmp";
+	"Test::Deep::Cmp::BEGIN@7";
+}
+subgraph cluster_JSON_XS_Boolean {
+	label="JSON::XS::Boolean";
+	"JSON::XS::Boolean::BEGIN@1461";
+	"JSON::XS::Boolean::BEGIN@3";
+}
+subgraph cluster_mro {
+	label="mro";
+	"mro::get_linear_isa";
+}
+subgraph cluster_Test_Builder {
+	label="Test::Builder";
+	"Test::Builder::_unoverload";
+}
+subgraph cluster_Scalar_Util {
+	label="Scalar::Util";
+	"Scalar::Util::refaddr";
+	"Scalar::Util::reftype";
+	"Scalar::Util::blessed";
+}
+subgraph cluster_warnings_register {
+	label="warnings::register";
+	"warnings::register::import";
+}
+subgraph cluster_Test_Deep {
+	label="Test::Deep";
+	"Test::Deep::BEGIN@22";
+}
+subgraph cluster_Devel_StackTrace {
+	label="Devel::StackTrace";
+	"Devel::StackTrace::_ref_to_string";
+	"Devel::StackTrace::BEGIN@12";
+}
+subgraph cluster_URI {
+	label="URI";
+	"URI::BEGIN@24";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::BEGIN@53";
+}
+subgraph cluster_JSON_PP_Boolean {
+	label="JSON::PP::Boolean";
+	"JSON::PP::Boolean::BEGIN@3";
+}
+subgraph cluster_overload {
+	label="overload";
+	"overload::OVERLOAD";
+	"overload::AddrRef";
+	"overload::mycan";
+	"overload::Method";
+	"overload::import";
+	"overload::BEGIN@139";
+	"overload::ov_method";
+	"overload::CORE:match";
+}
+subgraph cluster_DateTime_Duration {
+	label="DateTime::Duration";
+	"DateTime::Duration::BEGIN@13";
+}
+subgraph cluster_Moose_Meta_Role_Method_Required {
+	label="Moose::Meta::Role::Method::Required";
+	"Moose::Meta::Role::Method::Required::BEGIN@8";
+}
+subgraph cluster_MooseX_Types_UndefinedType {
+	label="MooseX::Types::UndefinedType";
+	"MooseX::Types::UndefinedType::BEGIN@15";
+}
+subgraph cluster_Class_MOP_Method {
+	label="Class::MOP::Method";
+	"Class::MOP::Method::BEGIN@19";
+}
+subgraph cluster_Moose_Meta_TypeConstraint {
+	label="Moose::Meta::TypeConstraint";
+	"Moose::Meta::TypeConstraint::BEGIN@8";
+}
+subgraph cluster_Exception_Class_Base {
+	label="Exception::Class::Base";
+	"Exception::Class::Base::BEGIN@30";
+}
+"overload::AddrRef" -> "Scalar::Util::refaddr";
+"overload::AddrRef" -> "Scalar::Util::blessed";
+"overload::Method" -> "Scalar::Util::blessed";
+"overload::Method" -> "overload::ov_method";
+"overload::Method" -> "overload::mycan";
+"Test::Deep::BEGIN@22" -> "overload::BEGIN@139";
+"overload::BEGIN@139" -> "warnings::register::import";
+"Devel::StackTrace::_ref_to_string" -> "overload::AddrRef";
+"overload::import" -> "overload::OVERLOAD";
+"Test::Builder::_unoverload" -> "overload::Method";
+"overload::AddrRef" -> "Scalar::Util::reftype";
+"MooseX::Types::TypeDecorator::BEGIN@12" -> "overload::import";
+"JSON::XS::Boolean::BEGIN@1461" -> "overload::import";
+"DateTime::BEGIN@53" -> "overload::import";
+"DateTime::Duration::BEGIN@13" -> "overload::import";
+"MooseX::Types::UndefinedType::BEGIN@15" -> "overload::import";
+"JSON::XS::Boolean::BEGIN@3" -> "overload::import";
+"JSON::PP::Boolean::BEGIN@3" -> "overload::import";
+"Moose::Meta::Role::Method::Required::BEGIN@8" -> "overload::import";
+"Class::MOP::Method::BEGIN@19" -> "overload::import";
+"Exception::Class::Base::BEGIN@30" -> "overload::import";
+"Moose::Meta::TypeConstraint::BEGIN@8" -> "overload::import";
+"URI::BEGIN@24" -> "overload::import";
+"Devel::StackTrace::BEGIN@12" -> "overload::import";
+"Test::Deep::Cmp::BEGIN@7" -> "overload::import";
+"overload::mycan" -> "mro::get_linear_isa";
+"overload::OVERLOAD" -> "overload::CORE:match";
+}

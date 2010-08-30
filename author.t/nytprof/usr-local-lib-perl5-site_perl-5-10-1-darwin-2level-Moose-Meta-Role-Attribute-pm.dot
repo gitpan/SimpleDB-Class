@@ -1,0 +1,92 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Moose_Meta_Role_Application_ToRole {
+	label="Moose::Meta::Role::Application::ToRole";
+	"Moose::Meta::Role::Application::ToRole::apply_attributes";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Moose_Meta_Role {
+	label="Moose::Meta::Role";
+	"Moose::Meta::Role::BEGIN@17";
+	"Moose::Meta::Role::_attach_attribute";
+}
+subgraph cluster_Moose_Meta_Role_Attribute {
+	label="Moose::Meta::Role::Attribute";
+	"Moose::Meta::Role::Attribute::BEGIN@4";
+	"Moose::Meta::Role::Attribute::BEGIN@7";
+	"Moose::Meta::Role::Attribute::BEGIN@8";
+	"Moose::Meta::Role::Attribute::BEGIN@3";
+	"Moose::Meta::Role::Attribute::clone";
+	"Moose::Meta::Role::Attribute::attribute_for_class";
+	"Moose::Meta::Role::Attribute::new";
+	"Moose::Meta::Role::Attribute::attach_to_role";
+	"Moose::Meta::Role::Attribute::original_options";
+	"Moose::Meta::Role::Attribute::BEGIN@6";
+	"Moose::Meta::Role::Attribute::BEGIN@13";
+}
+subgraph cluster_Scalar_Util {
+	label="Scalar::Util";
+	"Scalar::Util::blessed";
+	"Scalar::Util::weaken";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Class_MOP_Mixin_AttributeCore {
+	label="Class::MOP::Mixin::AttributeCore";
+	"Class::MOP::Mixin::AttributeCore::name";
+}
+subgraph cluster_Moose_Meta_Attribute {
+	label="Moose::Meta::Attribute";
+	"Moose::Meta::Attribute::interpolate_class_and_new";
+}
+subgraph cluster_Class_MOP_Mixin_HasAttributes {
+	label="Class::MOP::Mixin::HasAttributes";
+	"Class::MOP::Mixin::HasAttributes::add_attribute";
+}
+subgraph cluster_Moose_Meta_Role_Application_ToClass {
+	label="Moose::Meta::Role::Application::ToClass";
+	"Moose::Meta::Role::Application::ToClass::apply_attributes";
+}
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@6";
+"Moose::Meta::Role::Application::ToClass::apply_attributes" -> "Moose::Meta::Role::Attribute::attribute_for_class";
+"Moose::Meta::Role::Attribute::BEGIN@6" -> "Exporter::import";
+"Moose::Meta::Role::Attribute::BEGIN@8" -> "Exporter::import";
+"Moose::Meta::Role::Attribute::BEGIN@7" -> "Exporter::import";
+"Class::MOP::Mixin::HasAttributes::add_attribute" -> "Moose::Meta::Role::Attribute::new";
+"Moose::Meta::Role::Attribute::clone" -> "Moose::Meta::Role::Attribute::new";
+"Moose::Meta::Role::Attribute::attribute_for_class" -> "Moose::Meta::Attribute::interpolate_class_and_new";
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@3";
+"Moose::Meta::Role::Attribute::attach_to_role" -> "Scalar::Util::blessed";
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@8";
+"Moose::Meta::Role::Application::ToRole::apply_attributes" -> "Moose::Meta::Role::Attribute::clone";
+"Moose::Meta::Role::Attribute::attach_to_role" -> "Scalar::Util::weaken";
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@7";
+"Moose::Meta::Role::Attribute::BEGIN@13" -> "base::import";
+"Moose::Meta::Role::Attribute::attach_to_role" -> "UNIVERSAL::isa";
+"Moose::Meta::Role::Attribute::BEGIN@4" -> "warnings::import";
+"Moose::Meta::Role::_attach_attribute" -> "Moose::Meta::Role::Attribute::attach_to_role";
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@4";
+"Moose::Meta::Role::Attribute::attribute_for_class" -> "Class::MOP::Mixin::AttributeCore::name";
+"Moose::Meta::Role::Attribute::clone" -> "Class::MOP::Mixin::AttributeCore::name";
+"Moose::Meta::Role::Attribute::clone" -> "Moose::Meta::Role::Attribute::original_options";
+"Moose::Meta::Role::Attribute::attribute_for_class" -> "Moose::Meta::Role::Attribute::original_options";
+"Moose::Meta::Role::Attribute::BEGIN@3" -> "strict::import";
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@13";
+}

@@ -1,0 +1,40 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_if {
+	label="if";
+	"if::import";
+	"if::work";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_DateTime_Locale_Base {
+	label="DateTime::Locale::Base";
+	"DateTime::Locale::Base::BEGIN@6";
+}
+subgraph cluster_Class_ISA {
+	label="Class::ISA";
+	"Class::ISA::BEGIN@3";
+	"Class::ISA::BEGIN@8";
+	"Class::ISA::BEGIN@13";
+	"Class::ISA::BEGIN@4";
+	"Class::ISA::BEGIN@61";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+"DateTime::Locale::Base::BEGIN@6" -> "Class::ISA::BEGIN@8";
+"DateTime::Locale::Base::BEGIN@6" -> "Class::ISA::BEGIN@3";
+"Class::ISA::BEGIN@8" -> "if::work";
+"DateTime::Locale::Base::BEGIN@6" -> "Class::ISA::BEGIN@4";
+"Class::ISA::BEGIN@8" -> "if::import";
+"Class::ISA::BEGIN@61" -> "strict::unimport";
+"Class::ISA::BEGIN@13" -> "strict::unimport";
+"DateTime::Locale::Base::BEGIN@6" -> "Class::ISA::BEGIN@61";
+"Class::ISA::BEGIN@4" -> "vars::import";
+"DateTime::Locale::Base::BEGIN@6" -> "Class::ISA::BEGIN@13";
+"Class::ISA::BEGIN@3" -> "strict::import";
+}

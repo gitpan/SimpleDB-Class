@@ -1,0 +1,136 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_utf8 {
+	label="utf8";
+	"utf8::AUTOLOAD";
+	"utf8::SWASHNEW";
+	"utf8::import";
+}
+subgraph cluster_XML_SAX {
+	label="XML::SAX";
+	"XML::SAX::BEGIN@16";
+	"XML::SAX::BEGIN@10";
+	"XML::SAX::BEGIN@15";
+	"XML::SAX::BEGIN@20";
+	"XML::SAX::BEGIN@23";
+	"XML::SAX::BEGIN@22";
+	"XML::SAX::BEGIN@6";
+	"XML::SAX::BEGIN@5";
+	"XML::SAX::BEGIN@18";
+	"XML::SAX::BEGIN@17";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+}
+subgraph cluster_XML_Simple {
+	label="XML::Simple";
+	"XML::Simple::BEGIN@1023";
+	"XML::Simple::XMLin";
+	"XML::Simple::import";
+	"XML::Simple::BEGIN@42";
+	"XML::Simple::array_to_hash";
+	"XML::Simple::BEGIN@51";
+	"XML::Simple::characters";
+	"XML::Simple::BEGIN@1687";
+	"XML::Simple::handle_options";
+	"XML::Simple::new_hashref";
+	"XML::Simple::collapse";
+	"XML::Simple::end_document";
+	"XML::Simple::_get_object";
+	"XML::Simple::new";
+	"XML::Simple::CORE:subst";
+	"XML::Simple::start_document";
+	"XML::Simple::start_element";
+	"XML::Simple::parse_string";
+	"XML::Simple::end_element";
+	"XML::Simple::build_simple_tree";
+	"XML::Simple::build_tree";
+	"XML::Simple::CORE:match";
+	"XML::Simple::BEGIN@43";
+}
+subgraph cluster_SimpleDB_Client {
+	label="SimpleDB::Client";
+	"SimpleDB::Client::BEGIN@53";
+	"SimpleDB::Client::handle_response";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_XML_SAX_ParserFactory {
+	label="XML::SAX::ParserFactory";
+	"XML::SAX::ParserFactory::parser";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_XML_SAX_Base {
+	label="XML::SAX::Base";
+	"XML::SAX::Base::parse_string";
+	"XML::SAX::Base::__ANON__[XML/SAX/Base.pm:200]";
+	"XML::SAX::Base::end_element";
+	"XML::SAX::Base::start_element";
+	"XML::SAX::Base::characters";
+	"XML::SAX::Base::__ANON__[XML/SAX/Base.pm:2201]";
+	"XML::SAX::Base::start_document";
+	"XML::SAX::Base::end_document";
+	"XML::SAX::Base::__ANON__[XML/SAX/Base.pm:292]";
+}
+"SimpleDB::Client::BEGIN@53" -> "XML::Simple::BEGIN@42";
+"XML::Simple::collapse" -> "XML::Simple::array_to_hash";
+"XML::Simple::parse_string" -> "XML::Simple::_get_object";
+"XML::Simple::XMLin" -> "XML::Simple::_get_object";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@15";
+"XML::Simple::BEGIN@43" -> "Exporter::import";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@5";
+"XML::Simple::build_simple_tree" -> "XML::Simple::build_tree";
+"SimpleDB::Client::handle_response" -> "XML::Simple::XMLin";
+"SimpleDB::Client::BEGIN@53" -> "XML::Simple::import";
+"XML::SAX::Base::start_element" -> "XML::Simple::start_element";
+"XML::SAX::Base::__ANON__[XML/SAX/Base.pm:292]" -> "XML::Simple::start_element";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@10";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@16";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@22";
+"XML::Simple::collapse" -> "XML::Simple::collapse";
+"XML::Simple::build_simple_tree" -> "XML::Simple::collapse";
+"XML::Simple::XMLin" -> "XML::Simple::parse_string";
+"XML::Simple::parse_string" -> "XML::Simple::build_simple_tree";
+"XML::Simple::CORE:match" -> "XML::Simple::BEGIN@1023";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@20";
+"SimpleDB::Client::BEGIN@53" -> "XML::Simple::BEGIN@1687";
+"XML::Simple::_get_object" -> "XML::Simple::new";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@18";
+"SimpleDB::Client::BEGIN@53" -> "XML::Simple::BEGIN@51";
+"XML::Simple::build_tree" -> "XML::SAX::ParserFactory::parser";
+"XML::Simple::array_to_hash" -> "UNIVERSAL::isa";
+"XML::Simple::collapse" -> "UNIVERSAL::isa";
+"XML::Simple::_get_object" -> "UNIVERSAL::isa";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@23";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@6";
+"XML::Simple::XMLin" -> "XML::Simple::CORE:match";
+"XML::Simple::collapse" -> "XML::Simple::CORE:match";
+"XML::Simple::import" -> "XML::Simple::CORE:match";
+"SimpleDB::Client::BEGIN@53" -> "XML::Simple::BEGIN@43";
+"XML::Simple::CORE:match" -> "utf8::AUTOLOAD";
+"XML::Simple::CORE:match" -> "utf8::SWASHNEW";
+"XML::SAX::Base::characters" -> "XML::Simple::characters";
+"XML::SAX::Base::__ANON__[XML/SAX/Base.pm:200]" -> "XML::Simple::characters";
+"XML::Simple::parse_string" -> "XML::Simple::handle_options";
+"XML::SAX::Base::end_document" -> "XML::Simple::end_document";
+"XML::SAX::Base::start_document" -> "XML::Simple::start_document";
+"XML::Simple::BEGIN@51" -> "vars::import";
+"XML::Simple::build_tree" -> "XML::SAX::Base::parse_string";
+"XML::SAX::Base::end_element" -> "XML::Simple::end_element";
+"XML::SAX::Base::__ANON__[XML/SAX/Base.pm:2201]" -> "XML::Simple::end_element";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@17";
+"XML::Simple::array_to_hash" -> "XML::Simple::new_hashref";
+"XML::Simple::handle_options" -> "XML::Simple::CORE:subst";
+"XML::Simple::BEGIN@1687" -> "utf8::import";
+"XML::Simple::BEGIN@42" -> "strict::import";
+}

@@ -1,0 +1,40 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SimpleDB_Class_Cache {
+	label="SimpleDB::Class::Cache";
+	"SimpleDB::Class::Cache::BEGIN@30";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_SimpleDB_Class_Exception {
+	label="SimpleDB::Class::Exception";
+	"SimpleDB::Class::Exception::BEGIN@45";
+	"SimpleDB::Class::Exception::BEGIN@46";
+}
+subgraph cluster_Exception_Class {
+	label="Exception::Class";
+	"Exception::Class::BEGIN@78";
+	"Exception::Class::BEGIN@8";
+	"Exception::Class::BEGIN@5";
+	"Exception::Class::import";
+	"Exception::Class::BEGIN@168";
+	"Exception::Class::BEGIN@45";
+	"Exception::Class::BEGIN@11";
+	"Exception::Class::BEGIN@7";
+	"Exception::Class::BEGIN@3";
+}
+"SimpleDB::Class::Exception::BEGIN@46" -> "Exception::Class::BEGIN@168";
+"SimpleDB::Class::Cache::BEGIN@30" -> "SimpleDB::Class::Exception::BEGIN@45";
+"SimpleDB::Class::Exception::BEGIN@46" -> "Exception::Class::BEGIN@3";
+"SimpleDB::Class::Exception::BEGIN@46" -> "Exception::Class::BEGIN@8";
+"SimpleDB::Class::Exception::BEGIN@46" -> "Exception::Class::BEGIN@11";
+"SimpleDB::Class::Exception::BEGIN@46" -> "Exception::Class::BEGIN@78";
+"SimpleDB::Class::Cache::BEGIN@30" -> "SimpleDB::Class::Exception::BEGIN@46";
+"SimpleDB::Class::Exception::BEGIN@46" -> "Exception::Class::import";
+"SimpleDB::Class::Exception::BEGIN@46" -> "Exception::Class::BEGIN@5";
+"SimpleDB::Class::Exception::BEGIN@46" -> "Exception::Class::BEGIN@45";
+"SimpleDB::Class::Exception::BEGIN@46" -> "Exception::Class::BEGIN@7";
+"SimpleDB::Class::Exception::BEGIN@45" -> "strict::import";
+}

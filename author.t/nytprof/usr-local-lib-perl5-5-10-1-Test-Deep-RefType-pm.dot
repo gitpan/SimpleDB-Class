@@ -1,0 +1,37 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Test_Deep_RefType {
+	label="Test::Deep::RefType";
+	"Test::Deep::RefType::init";
+	"Test::Deep::RefType::BEGIN@8";
+	"Test::Deep::RefType::descend";
+	"Test::Deep::RefType::BEGIN@6";
+}
+subgraph cluster_Test_Deep_Cmp {
+	label="Test::Deep::Cmp";
+	"Test::Deep::Cmp::import";
+	"Test::Deep::Cmp::new";
+}
+subgraph cluster_Scalar_Util {
+	label="Scalar::Util";
+	"Scalar::Util::reftype";
+}
+subgraph cluster_Test_Deep {
+	label="Test::Deep";
+	"Test::Deep::descend";
+	"Test::Deep::__ANON__[Test/Deep.pm:92]";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+"Test::Deep::__ANON__[Test/Deep.pm:92]" -> "Test::Deep::RefType::BEGIN@8";
+"Test::Deep::RefType::BEGIN@8" -> "Exporter::import";
+"Test::Deep::RefType::BEGIN@6" -> "Test::Deep::Cmp::import";
+"Test::Deep::RefType::descend" -> "Test::Deep::__ANON__[Test/Deep.pm:92]";
+"Test::Deep::__ANON__[Test/Deep.pm:92]" -> "Test::Deep::RefType::BEGIN@6";
+"Test::Deep::RefType::descend" -> "Test::Deep::descend";
+"Test::Deep::descend" -> "Test::Deep::RefType::descend";
+"Test::Deep::Cmp::new" -> "Test::Deep::RefType::init";
+"Test::Deep::RefType::descend" -> "Scalar::Util::reftype";
+}

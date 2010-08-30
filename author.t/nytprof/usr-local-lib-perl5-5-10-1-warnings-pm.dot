@@ -1,0 +1,707 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Class_MOP_Class_Immutable_Trait {
+	label="Class::MOP::Class::Immutable::Trait";
+	"Class::MOP::Class::Immutable::Trait::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_Role_Application_ToRole {
+	label="Moose::Meta::Role::Application::ToRole";
+	"Moose::Meta::Role::Application::ToRole::BEGIN@4";
+}
+subgraph cluster_DateTime_Locale_root {
+	label="DateTime::Locale::root";
+	"DateTime::Locale::root::BEGIN@22";
+}
+subgraph cluster_IO_Compress_Zlib_Extra {
+	label="IO::Compress::Zlib::Extra";
+	"IO::Compress::Zlib::Extra::BEGIN@6";
+}
+subgraph cluster_Moose_Meta_Class_Immutable_Trait {
+	label="Moose::Meta::Class::Immutable::Trait";
+	"Moose::Meta::Class::Immutable::Trait::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_Role_Composite {
+	label="Moose::Meta::Role::Composite";
+	"Moose::Meta::Role::Composite::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_Method_Overridden {
+	label="Moose::Meta::Method::Overridden";
+	"Moose::Meta::Method::Overridden::BEGIN@4";
+}
+subgraph cluster_MooseX_ClassAttribute_Role_Meta_Class {
+	label="MooseX::ClassAttribute::Role::Meta::Class";
+	"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_Role_Application_ToInstance {
+	label="Moose::Meta::Role::Application::ToInstance";
+	"Moose::Meta::Role::Application::ToInstance::BEGIN@4";
+}
+subgraph cluster_Class_MOP_Module {
+	label="Class::MOP::Module";
+	"Class::MOP::Module::BEGIN@5";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::unimport";
+	"warnings::CORE:regcomp";
+	"warnings::CORE:match";
+	"warnings::import";
+}
+subgraph cluster_MooseX_Types_TypeDecorator {
+	label="MooseX::Types::TypeDecorator";
+	"MooseX::Types::TypeDecorator::BEGIN@4";
+}
+subgraph cluster_Data_OptList {
+	label="Data::OptList";
+	"Data::OptList::BEGIN@4";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+	"Moose::Exporter::BEGIN@386";
+	"Moose::Exporter::BEGIN@4";
+	"Moose::Exporter::import";
+}
+subgraph cluster_DateTime_Locale_Base {
+	label="DateTime::Locale::Base";
+	"DateTime::Locale::Base::BEGIN@4";
+}
+subgraph cluster_Module_Find {
+	label="Module::Find";
+	"Module::Find::BEGIN@5";
+}
+subgraph cluster_Test_Deep_Hash {
+	label="Test::Deep::Hash";
+	"Test::Deep::Hash::BEGIN@2";
+}
+subgraph cluster_Variable_Magic {
+	label="Variable::Magic";
+	"Variable::Magic::BEGIN@6";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_Enum {
+	label="Moose::Meta::TypeConstraint::Enum";
+	"Moose::Meta::TypeConstraint::Enum::BEGIN@4";
+}
+subgraph cluster_MooseX_Types_Moose {
+	label="MooseX::Types::Moose";
+	"MooseX::Types::Moose::BEGIN@9";
+}
+subgraph cluster_MooseX_Types_Util {
+	label="MooseX::Types::Util";
+	"MooseX::Types::Util::BEGIN@9";
+}
+subgraph cluster_Class_MOP_Mixin_HasMethods {
+	label="Class::MOP::Mixin::HasMethods";
+	"Class::MOP::Mixin::HasMethods::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_Role {
+	label="Moose::Meta::Role";
+	"Moose::Meta::Role::BEGIN@523";
+	"Moose::Meta::Role::BEGIN@5";
+	"Moose::Meta::Role::BEGIN@544";
+}
+subgraph cluster_Moose_Util_TypeConstraints {
+	label="Moose::Util::TypeConstraints";
+	"Moose::Util::TypeConstraints::BEGIN@598";
+	"Moose::Util::TypeConstraints::BEGIN@619";
+	"Moose::Util::TypeConstraints::BEGIN@592";
+	"Moose::Util::TypeConstraints::BEGIN@603";
+}
+subgraph cluster_Class_MOP_Method_Inlined {
+	label="Class::MOP::Method::Inlined";
+	"Class::MOP::Method::Inlined::BEGIN@4";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::BEGIN@3";
+}
+subgraph cluster_File_GlobMapper {
+	label="File::GlobMapper";
+	"File::GlobMapper::BEGIN@341";
+	"File::GlobMapper::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_Method_Augmented {
+	label="Moose::Meta::Method::Augmented";
+	"Moose::Meta::Method::Augmented::BEGIN@4";
+}
+subgraph cluster_utf8 {
+	label="utf8";
+	"utf8::BEGIN@211";
+	"utf8::BEGIN@3";
+}
+subgraph cluster_Carp {
+	label="Carp";
+	"Carp::BEGIN@301";
+}
+subgraph cluster_Params_Validate {
+	label="Params::Validate";
+	"Params::Validate::BEGIN@4";
+}
+subgraph cluster_DateTime_Locale_en_US {
+	label="DateTime::Locale::en_US";
+	"DateTime::Locale::en_US::BEGIN@22";
+}
+subgraph cluster_Sub_Install {
+	label="Sub::Install";
+	"Sub::Install::BEGIN@3";
+}
+subgraph cluster_MooseX_ClassAttribute_Meta_Method_Accessor {
+	label="MooseX::ClassAttribute::Meta::Method::Accessor";
+	"MooseX::ClassAttribute::Meta::Method::Accessor::BEGIN@4";
+}
+subgraph cluster_Moose_Util_MetaRole {
+	label="Moose::Util::MetaRole";
+	"Moose::Util::MetaRole::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_Parameterized {
+	label="Moose::Meta::TypeConstraint::Parameterized";
+	"Moose::Meta::TypeConstraint::Parameterized::BEGIN@4";
+}
+subgraph cluster_mro {
+	label="mro";
+	"mro::BEGIN@11";
+}
+subgraph cluster_IO_Uncompress_Adapter_Inflate {
+	label="IO::Uncompress::Adapter::Inflate";
+	"IO::Uncompress::Adapter::Inflate::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_Role_Application_RoleSummation {
+	label="Moose::Meta::Role::Application::RoleSummation";
+	"Moose::Meta::Role::Application::RoleSummation::BEGIN@4";
+}
+subgraph cluster_Test_Builder {
+	label="Test::Builder";
+	"Test::Builder::BEGIN@5";
+	"Test::Builder::BEGIN@857";
+	"Test::Builder::BEGIN@1161";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_Registry {
+	label="Moose::Meta::TypeConstraint::Registry";
+	"Moose::Meta::TypeConstraint::Registry::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_Method_Constructor {
+	label="Moose::Meta::Method::Constructor";
+	"Moose::Meta::Method::Constructor::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_Instance {
+	label="Moose::Meta::Instance";
+	"Moose::Meta::Instance::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_Mixin_AttributeCore {
+	label="Moose::Meta::Mixin::AttributeCore";
+	"Moose::Meta::Mixin::AttributeCore::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_Role_Attribute {
+	label="Moose::Meta::Role::Attribute";
+	"Moose::Meta::Role::Attribute::BEGIN@4";
+}
+subgraph cluster_re {
+	label="re";
+	"re::BEGIN@5";
+}
+subgraph cluster_Sub_Name {
+	label="Sub::Name";
+	"Sub::Name::BEGIN@45";
+}
+subgraph cluster_Compress_Raw_Zlib {
+	label="Compress::Raw::Zlib";
+	"Compress::Raw::Zlib::BEGIN@12";
+}
+subgraph cluster_Test_More {
+	label="Test::More";
+	"Test::More::BEGIN@1429";
+	"Test::More::BEGIN@1305";
+	"Test::More::BEGIN@5";
+	"Test::More::BEGIN@1228";
+	"Test::More::BEGIN@1578";
+}
+subgraph cluster_metaclass {
+	label="metaclass";
+	"metaclass::BEGIN@5";
+}
+subgraph cluster_Test_Deep_HashKeys {
+	label="Test::Deep::HashKeys";
+	"Test::Deep::HashKeys::BEGIN@2";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_Class {
+	label="Moose::Meta::TypeConstraint::Class";
+	"Moose::Meta::TypeConstraint::Class::BEGIN@4";
+}
+subgraph cluster_Class_MOP_Method_Wrapped {
+	label="Class::MOP::Method::Wrapped";
+	"Class::MOP::Method::Wrapped::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_Class {
+	label="Moose::Meta::Class";
+	"Moose::Meta::Class::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_Method_Destructor {
+	label="Moose::Meta::Method::Destructor";
+	"Moose::Meta::Method::Destructor::BEGIN@5";
+}
+subgraph cluster_MRO_Compat {
+	label="MRO::Compat";
+	"MRO::Compat::BEGIN@226";
+	"MRO::Compat::BEGIN@39";
+	"MRO::Compat::BEGIN@3";
+}
+subgraph cluster_DateTime_TimeZone_Local {
+	label="DateTime::TimeZone::Local";
+	"DateTime::TimeZone::Local::BEGIN@4";
+}
+subgraph cluster_namespace_clean {
+	label="namespace::clean";
+	"namespace::clean::BEGIN@9";
+	"namespace::clean::BEGIN@383";
+	"namespace::clean::BEGIN@190";
+	"namespace::clean::BEGIN@2";
+}
+subgraph cluster_Class_MOP_Mixin {
+	label="Class::MOP::Mixin";
+	"Class::MOP::Mixin::BEGIN@4";
+}
+subgraph cluster_Class_MOP_Method_Accessor {
+	label="Class::MOP::Method::Accessor";
+	"Class::MOP::Method::Accessor::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_Parameterizable {
+	label="Moose::Meta::TypeConstraint::Parameterizable";
+	"Moose::Meta::TypeConstraint::Parameterizable::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_DuckType {
+	label="Moose::Meta::TypeConstraint::DuckType";
+	"Moose::Meta::TypeConstraint::DuckType::BEGIN@4";
+}
+subgraph cluster_Class_MOP_Object {
+	label="Class::MOP::Object";
+	"Class::MOP::Object::BEGIN@5";
+}
+subgraph cluster_Test_Deep {
+	label="Test::Deep";
+	"Test::Deep::BEGIN@2";
+}
+subgraph cluster_Class_MOP_Deprecated {
+	label="Class::MOP::Deprecated";
+	"Class::MOP::Deprecated::BEGIN@4";
+}
+subgraph cluster_Devel_StackTrace {
+	label="Devel::StackTrace";
+	"Devel::StackTrace::BEGIN@6";
+}
+subgraph cluster_Class_MOP_Method_Generated {
+	label="Class::MOP::Method::Generated";
+	"Class::MOP::Method::Generated::BEGIN@5";
+}
+subgraph cluster_Memcached_libmemcached {
+	label="Memcached::libmemcached";
+	"Memcached::libmemcached::BEGIN@3";
+}
+subgraph cluster_DateTime_Locale_Catalog {
+	label="DateTime::Locale::Catalog";
+	"DateTime::Locale::Catalog::BEGIN@18";
+}
+subgraph cluster_Moose_Util {
+	label="Moose::Util";
+	"Moose::Util::BEGIN@4";
+}
+subgraph cluster_Devel_GlobalDestruction {
+	label="Devel::GlobalDestruction";
+	"Devel::GlobalDestruction::BEGIN@3";
+	"Devel::GlobalDestruction::BEGIN@6";
+}
+subgraph cluster_Class_MOP_Instance {
+	label="Class::MOP::Instance";
+	"Class::MOP::Instance::BEGIN@5";
+}
+subgraph cluster_MooseX_Types {
+	label="MooseX::Types";
+	"MooseX::Types::import";
+}
+subgraph cluster_Class_MOP_Class {
+	label="Class::MOP::Class";
+	"Class::MOP::Class::BEGIN@223";
+	"Class::MOP::Class::BEGIN@244";
+	"Class::MOP::Class::BEGIN@5";
+}
+subgraph cluster_Class_MOP {
+	label="Class::MOP";
+	"Class::MOP::BEGIN@5";
+}
+subgraph cluster_IO_Uncompress_RawInflate {
+	label="IO::Uncompress::RawInflate";
+	"IO::Uncompress::RawInflate::BEGIN@5";
+}
+subgraph cluster_Moose_Error_Default {
+	label="Moose::Error::Default";
+	"Moose::Error::Default::BEGIN@4";
+}
+subgraph cluster_DateTime_Helpers {
+	label="DateTime::Helpers";
+	"DateTime::Helpers::BEGIN@4";
+}
+subgraph cluster_File_Find {
+	label="File::Find";
+	"File::Find::BEGIN@4";
+}
+subgraph cluster_Class_MOP_Method_Constructor {
+	label="Class::MOP::Method::Constructor";
+	"Class::MOP::Method::Constructor::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_Role_Method {
+	label="Moose::Meta::Role::Method";
+	"Moose::Meta::Role::Method::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_Role {
+	label="Moose::Meta::TypeConstraint::Role";
+	"Moose::Meta::TypeConstraint::Role::BEGIN@4";
+}
+subgraph cluster_Exporter_Heavy {
+	label="Exporter::Heavy";
+	"Exporter::Heavy::BEGIN@200";
+}
+subgraph cluster_IO_Uncompress_Gunzip {
+	label="IO::Uncompress::Gunzip";
+	"IO::Uncompress::Gunzip::BEGIN@9";
+}
+subgraph cluster_Test_Deep_Stack {
+	label="Test::Deep::Stack";
+	"Test::Deep::Stack::BEGIN@2";
+}
+subgraph cluster_Moose_Meta_TypeCoercion_Union {
+	label="Moose::Meta::TypeCoercion::Union";
+	"Moose::Meta::TypeCoercion::Union::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_Method {
+	label="Moose::Meta::Method";
+	"Moose::Meta::Method::BEGIN@4";
+}
+subgraph cluster_DateTime_Infinite {
+	label="DateTime::Infinite";
+	"DateTime::Infinite::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_Role_Method_Conflicting {
+	label="Moose::Meta::Role::Method::Conflicting";
+	"Moose::Meta::Role::Method::Conflicting::BEGIN@5";
+}
+subgraph cluster_Devel_StackTraceFrame {
+	label="Devel::StackTraceFrame";
+	"Devel::StackTraceFrame::BEGIN@245";
+}
+subgraph cluster_File_Basename {
+	label="File::Basename";
+	"File::Basename::BEGIN@52";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::BEGIN@6";
+}
+subgraph cluster_DateTime_Locale {
+	label="DateTime::Locale";
+	"DateTime::Locale::BEGIN@4";
+}
+subgraph cluster_Class_MOP_Attribute {
+	label="Class::MOP::Attribute";
+	"Class::MOP::Attribute::BEGIN@5";
+}
+subgraph cluster_IO {
+	label="IO";
+	"IO::BEGIN@8";
+}
+subgraph cluster_DateTime_Locale_en {
+	label="DateTime::Locale::en";
+	"DateTime::Locale::en::BEGIN@22";
+}
+subgraph cluster_MooseX_ClassAttribute {
+	label="MooseX::ClassAttribute";
+	"MooseX::ClassAttribute::BEGIN@4";
+}
+subgraph cluster_Moose_Object {
+	label="Moose::Object";
+	"Moose::Object::BEGIN@98";
+	"Moose::Object::BEGIN@5";
+}
+subgraph cluster_Moose_Role {
+	label="Moose::Role";
+	"Moose::Role::BEGIN@3";
+}
+subgraph cluster_main {
+	label="main";
+	"main::BEGIN@2";
+}
+subgraph cluster_Test_Deep_Cache {
+	label="Test::Deep::Cache";
+	"Test::Deep::Cache::BEGIN@2";
+}
+subgraph cluster_DateTime_Duration {
+	label="DateTime::Duration";
+	"DateTime::Duration::BEGIN@4";
+}
+subgraph cluster_UUID_Tiny {
+	label="UUID::Tiny";
+	"UUID::Tiny::BEGIN@4";
+}
+subgraph cluster_Class_MOP_Package {
+	label="Class::MOP::Package";
+	"Class::MOP::Package::BEGIN@5";
+	"Class::MOP::Package::BEGIN@146";
+}
+subgraph cluster_Moose_Util_TypeConstraints_OptimizedConstraints {
+	label="Moose::Util::TypeConstraints::OptimizedConstraints";
+	"Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@4";
+}
+subgraph cluster_IO_Compress_Gzip_Constants {
+	label="IO::Compress::Gzip::Constants";
+	"IO::Compress::Gzip::Constants::BEGIN@4";
+}
+subgraph cluster_IO_Uncompress_Base {
+	label="IO::Uncompress::Base";
+	"IO::Uncompress::Base::BEGIN@413";
+	"IO::Uncompress::Base::BEGIN@94";
+	"IO::Uncompress::Base::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_Role_Method_Required {
+	label="Moose::Meta::Role::Method::Required";
+	"Moose::Meta::Role::Method::Required::BEGIN@5";
+}
+subgraph cluster_POSIX {
+	label="POSIX";
+	"POSIX::BEGIN@40";
+	"POSIX::BEGIN@3";
+}
+subgraph cluster_Moose_Meta_Attribute {
+	label="Moose::Meta::Attribute";
+	"Moose::Meta::Attribute::BEGIN@5";
+}
+subgraph cluster_SimpleDB_Class_Types {
+	label="SimpleDB::Class::Types";
+	"SimpleDB::Class::Types::BEGIN@70";
+}
+subgraph cluster_Class_MOP_Mixin_AttributeCore {
+	label="Class::MOP::Mixin::AttributeCore";
+	"Class::MOP::Mixin::AttributeCore::BEGIN@4";
+}
+subgraph cluster_Class_MOP_Mixin_HasAttributes {
+	label="Class::MOP::Mixin::HasAttributes";
+	"Class::MOP::Mixin::HasAttributes::BEGIN@4";
+}
+subgraph cluster_Test_Deep_Ignore {
+	label="Test::Deep::Ignore";
+	"Test::Deep::Ignore::BEGIN@2";
+}
+subgraph cluster_MooseX_Types_UndefinedType {
+	label="MooseX::Types::UndefinedType";
+	"MooseX::Types::UndefinedType::BEGIN@9";
+}
+subgraph cluster_Moose_Meta_Method_Accessor {
+	label="Moose::Meta::Method::Accessor";
+	"Moose::Meta::Method::Accessor::BEGIN@5";
+}
+subgraph cluster_Class_MOP_Method {
+	label="Class::MOP::Method";
+	"Class::MOP::Method::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_TypeConstraint {
+	label="Moose::Meta::TypeConstraint";
+	"Moose::Meta::TypeConstraint::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_Method_Delegation {
+	label="Moose::Meta::Method::Delegation";
+	"Moose::Meta::Method::Delegation::BEGIN@5";
+}
+subgraph cluster_Exception_Class_Base {
+	label="Exception::Class::Base";
+	"Exception::Class::Base::BEGIN@4";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_Union {
+	label="Moose::Meta::TypeConstraint::Union";
+	"Moose::Meta::TypeConstraint::Union::BEGIN@5";
+}
+subgraph cluster_DateTime_TimeZone {
+	label="DateTime::TimeZone";
+	"DateTime::TimeZone::BEGIN@6";
+}
+subgraph cluster_Moose_Meta_TypeCoercion {
+	label="Moose::Meta::TypeCoercion";
+	"Moose::Meta::TypeCoercion::BEGIN@5";
+}
+subgraph cluster_Moose_Meta_Role_Application {
+	label="Moose::Meta::Role::Application";
+	"Moose::Meta::Role::Application::BEGIN@4";
+}
+subgraph cluster_MooseX_ClassAttribute_Role_Meta_Attribute {
+	label="MooseX::ClassAttribute::Role::Meta::Attribute";
+	"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@4";
+}
+subgraph cluster_IO_Compress_Base_Common {
+	label="IO::Compress::Base::Common";
+	"IO::Compress::Base::Common::BEGIN@502";
+	"IO::Compress::Base::Common::BEGIN@4";
+}
+subgraph cluster_MooseX_Types_CheckedUtilExports {
+	label="MooseX::Types::CheckedUtilExports";
+	"MooseX::Types::CheckedUtilExports::BEGIN@11";
+}
+subgraph cluster_Moose_Meta_Role_Application_ToClass {
+	label="Moose::Meta::Role::Application::ToClass";
+	"Moose::Meta::Role::Application::ToClass::BEGIN@4";
+}
+"Test::More::BEGIN@1305" -> "warnings::unimport";
+"Class::MOP::Class::BEGIN@223" -> "warnings::unimport";
+"IO::Uncompress::Base::BEGIN@413" -> "warnings::unimport";
+"Moose::Util::TypeConstraints::BEGIN@619" -> "warnings::unimport";
+"MRO::Compat::BEGIN@39" -> "warnings::unimport";
+"Moose::Meta::Role::BEGIN@523" -> "warnings::unimport";
+"namespace::clean::BEGIN@383" -> "warnings::unimport";
+"Moose::Meta::Role::BEGIN@544" -> "warnings::unimport";
+"POSIX::BEGIN@40" -> "warnings::unimport";
+"IO::Uncompress::Base::BEGIN@94" -> "warnings::unimport";
+"MRO::Compat::BEGIN@226" -> "warnings::unimport";
+"Moose::Util::TypeConstraints::BEGIN@592" -> "warnings::unimport";
+"Test::More::BEGIN@1429" -> "warnings::unimport";
+"Moose::Exporter::BEGIN@386" -> "warnings::unimport";
+"Moose::Util::TypeConstraints::BEGIN@598" -> "warnings::unimport";
+"Class::MOP::Class::BEGIN@244" -> "warnings::unimport";
+"Moose::Object::BEGIN@98" -> "warnings::unimport";
+"Test::More::BEGIN@1228" -> "warnings::unimport";
+"Test::Builder::BEGIN@857" -> "warnings::unimport";
+"Exporter::Heavy::BEGIN@200" -> "warnings::unimport";
+"Test::More::BEGIN@1578" -> "warnings::unimport";
+"Test::Builder::BEGIN@1161" -> "warnings::unimport";
+"Moose::Util::TypeConstraints::BEGIN@603" -> "warnings::unimport";
+"File::GlobMapper::BEGIN@341" -> "warnings::unimport";
+"Carp::BEGIN@301" -> "warnings::unimport";
+"utf8::BEGIN@211" -> "warnings::unimport";
+"Class::MOP::Package::BEGIN@146" -> "warnings::unimport";
+"namespace::clean::BEGIN@190" -> "warnings::unimport";
+"Test::More::BEGIN@5" -> "warnings::CORE:regcomp";
+"Test::More::BEGIN@5" -> "warnings::CORE:match";
+"Moose::Meta::Role::Method::Conflicting::BEGIN@5" -> "warnings::import";
+"Moose::Exporter::import" -> "warnings::import";
+"Moose::Meta::TypeConstraint::Union::BEGIN@5" -> "warnings::import";
+"Moose::Meta::Role::Application::ToRole::BEGIN@4" -> "warnings::import";
+"namespace::clean::BEGIN@2" -> "warnings::import";
+"DateTime::BEGIN@6" -> "warnings::import";
+"Moose::Meta::TypeConstraint::BEGIN@5" -> "warnings::import";
+"Data::OptList::BEGIN@4" -> "warnings::import";
+"Moose::Meta::Instance::BEGIN@5" -> "warnings::import";
+"MooseX::Types::TypeDecorator::BEGIN@4" -> "warnings::import";
+"MooseX::Types::import" -> "warnings::import";
+"Moose::Meta::Mixin::AttributeCore::BEGIN@4" -> "warnings::import";
+"Class::MOP::Mixin::AttributeCore::BEGIN@4" -> "warnings::import";
+"Moose::Meta::TypeConstraint::Role::BEGIN@4" -> "warnings::import";
+"Moose::Meta::Method::Constructor::BEGIN@5" -> "warnings::import";
+"Moose::Util::TypeConstraints::OptimizedConstraints::BEGIN@4" -> "warnings::import";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@4" -> "warnings::import";
+"Test::Deep::Cache::BEGIN@2" -> "warnings::import";
+"Moose::Meta::Role::Composite::BEGIN@4" -> "warnings::import";
+"MooseX::ClassAttribute::Role::Meta::Attribute::BEGIN@4" -> "warnings::import";
+"Moose::Meta::Method::Accessor::BEGIN@5" -> "warnings::import";
+"Moose::Meta::TypeConstraint::Parameterized::BEGIN@4" -> "warnings::import";
+"Moose::Meta::TypeCoercion::Union::BEGIN@5" -> "warnings::import";
+"Moose::Util::MetaRole::BEGIN@4" -> "warnings::import";
+"Moose::Meta::TypeConstraint::Class::BEGIN@4" -> "warnings::import";
+"Moose::BEGIN@3" -> "warnings::import";
+"MooseX::Types::Util::BEGIN@9" -> "warnings::import";
+"Class::MOP::Class::BEGIN@5" -> "warnings::import";
+"DateTime::Locale::Base::BEGIN@4" -> "warnings::import";
+"re::BEGIN@5" -> "warnings::import";
+"Moose::Meta::Role::Method::Required::BEGIN@5" -> "warnings::import";
+"DateTime::Duration::BEGIN@4" -> "warnings::import";
+"Class::MOP::Class::Immutable::Trait::BEGIN@4" -> "warnings::import";
+"Moose::Meta::Class::Immutable::Trait::BEGIN@4" -> "warnings::import";
+"Moose::Meta::Role::Application::BEGIN@4" -> "warnings::import";
+"Memcached::libmemcached::BEGIN@3" -> "warnings::import";
+"MooseX::Types::CheckedUtilExports::BEGIN@11" -> "warnings::import";
+"Moose::Meta::Role::Application::RoleSummation::BEGIN@4" -> "warnings::import";
+"DateTime::Locale::root::BEGIN@22" -> "warnings::import";
+"Test::Deep::Hash::BEGIN@2" -> "warnings::import";
+"IO::Uncompress::RawInflate::BEGIN@5" -> "warnings::import";
+"MooseX::Types::UndefinedType::BEGIN@9" -> "warnings::import";
+"Moose::Object::BEGIN@5" -> "warnings::import";
+"MRO::Compat::BEGIN@3" -> "warnings::import";
+"Moose::Meta::Role::Application::ToClass::BEGIN@4" -> "warnings::import";
+"Class::MOP::Mixin::HasAttributes::BEGIN@4" -> "warnings::import";
+"SimpleDB::Class::Types::BEGIN@70" -> "warnings::import";
+"Moose::Meta::Class::BEGIN@5" -> "warnings::import";
+"Class::MOP::Instance::BEGIN@5" -> "warnings::import";
+"Devel::StackTrace::BEGIN@6" -> "warnings::import";
+"Class::MOP::Method::Accessor::BEGIN@5" -> "warnings::import";
+"Compress::Raw::Zlib::BEGIN@12" -> "warnings::import";
+"Moose::Meta::Attribute::BEGIN@5" -> "warnings::import";
+"Class::MOP::Deprecated::BEGIN@4" -> "warnings::import";
+"Class::MOP::Mixin::HasMethods::BEGIN@4" -> "warnings::import";
+"Devel::StackTraceFrame::BEGIN@245" -> "warnings::import";
+"Exception::Class::Base::BEGIN@4" -> "warnings::import";
+"Moose::Meta::Role::Method::BEGIN@5" -> "warnings::import";
+"namespace::clean::BEGIN@9" -> "warnings::import";
+"File::Basename::BEGIN@52" -> "warnings::import";
+"Moose::Meta::Method::Destructor::BEGIN@5" -> "warnings::import";
+"Moose::Meta::TypeConstraint::Parameterizable::BEGIN@4" -> "warnings::import";
+"utf8::BEGIN@3" -> "warnings::import";
+"Moose::Role::BEGIN@3" -> "warnings::import";
+"Class::MOP::Package::BEGIN@5" -> "warnings::import";
+"metaclass::BEGIN@5" -> "warnings::import";
+"DateTime::TimeZone::Local::BEGIN@4" -> "warnings::import";
+"Class::MOP::BEGIN@5" -> "warnings::import";
+"Test::Deep::Ignore::BEGIN@2" -> "warnings::import";
+"Class::MOP::Method::Generated::BEGIN@5" -> "warnings::import";
+"Moose::Meta::TypeConstraint::Enum::BEGIN@4" -> "warnings::import";
+"Moose::Meta::Method::Delegation::BEGIN@5" -> "warnings::import";
+"Devel::GlobalDestruction::BEGIN@3" -> "warnings::import";
+"Moose::Exporter::BEGIN@4" -> "warnings::import";
+"UUID::Tiny::BEGIN@4" -> "warnings::import";
+"mro::BEGIN@11" -> "warnings::import";
+"MooseX::ClassAttribute::BEGIN@4" -> "warnings::import";
+"IO::Compress::Base::Common::BEGIN@4" -> "warnings::import";
+"Test::Deep::Stack::BEGIN@2" -> "warnings::import";
+"Variable::Magic::BEGIN@6" -> "warnings::import";
+"DateTime::Locale::Catalog::BEGIN@18" -> "warnings::import";
+"Moose::Meta::Method::BEGIN@4" -> "warnings::import";
+"Test::Deep::BEGIN@2" -> "warnings::import";
+"Moose::Error::Default::BEGIN@4" -> "warnings::import";
+"Devel::GlobalDestruction::BEGIN@6" -> "warnings::import";
+"Class::MOP::Mixin::BEGIN@4" -> "warnings::import";
+"IO::Uncompress::Base::BEGIN@5" -> "warnings::import";
+"Sub::Install::BEGIN@3" -> "warnings::import";
+"DateTime::Locale::en_US::BEGIN@22" -> "warnings::import";
+"Params::Validate::BEGIN@4" -> "warnings::import";
+"Class::MOP::Object::BEGIN@5" -> "warnings::import";
+"Moose::Meta::TypeConstraint::Registry::BEGIN@5" -> "warnings::import";
+"Class::MOP::Method::BEGIN@5" -> "warnings::import";
+"Module::Find::BEGIN@5" -> "warnings::import";
+"File::GlobMapper::BEGIN@4" -> "warnings::import";
+"IO::Compress::Gzip::Constants::BEGIN@4" -> "warnings::import";
+"MooseX::ClassAttribute::Meta::Method::Accessor::BEGIN@4" -> "warnings::import";
+"Moose::Meta::TypeCoercion::BEGIN@5" -> "warnings::import";
+"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]" -> "warnings::import";
+"Moose::Meta::Role::Attribute::BEGIN@4" -> "warnings::import";
+"POSIX::BEGIN@3" -> "warnings::import";
+"Moose::Meta::Role::BEGIN@5" -> "warnings::import";
+"Class::MOP::Method::Wrapped::BEGIN@5" -> "warnings::import";
+"IO::Compress::Base::Common::BEGIN@502" -> "warnings::import";
+"IO::Uncompress::Adapter::Inflate::BEGIN@4" -> "warnings::import";
+"Moose::Meta::Method::Overridden::BEGIN@4" -> "warnings::import";
+"Moose::Meta::Role::Application::ToInstance::BEGIN@4" -> "warnings::import";
+"DateTime::Locale::en::BEGIN@22" -> "warnings::import";
+"Test::Deep::HashKeys::BEGIN@2" -> "warnings::import";
+"main::BEGIN@2" -> "warnings::import";
+"MooseX::Types::Moose::BEGIN@9" -> "warnings::import";
+"Class::MOP::Method::Constructor::BEGIN@5" -> "warnings::import";
+"IO::BEGIN@8" -> "warnings::import";
+"Class::MOP::Attribute::BEGIN@5" -> "warnings::import";
+"File::Find::BEGIN@4" -> "warnings::import";
+"Test::Builder::BEGIN@5" -> "warnings::import";
+"Moose::Meta::Method::Augmented::BEGIN@4" -> "warnings::import";
+"Class::MOP::Module::BEGIN@5" -> "warnings::import";
+"DateTime::TimeZone::BEGIN@6" -> "warnings::import";
+"Sub::Name::BEGIN@45" -> "warnings::import";
+"DateTime::Locale::BEGIN@4" -> "warnings::import";
+"IO::Uncompress::Gunzip::BEGIN@9" -> "warnings::import";
+"Moose::Meta::TypeConstraint::DuckType::BEGIN@4" -> "warnings::import";
+"DateTime::Helpers::BEGIN@4" -> "warnings::import";
+"Test::More::BEGIN@5" -> "warnings::import";
+"IO::Compress::Zlib::Extra::BEGIN@6" -> "warnings::import";
+"Class::MOP::Method::Inlined::BEGIN@4" -> "warnings::import";
+"DateTime::Infinite::BEGIN@4" -> "warnings::import";
+"Moose::Util::BEGIN@4" -> "warnings::import";
+}

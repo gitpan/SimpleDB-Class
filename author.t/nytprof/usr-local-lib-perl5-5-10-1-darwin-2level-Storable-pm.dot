@@ -1,0 +1,119 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Storable {
+	label="Storable";
+	"Storable::thaw";
+	"Storable::BEGIN@24";
+	"Storable::BEGIN@23";
+	"Storable::mretrieve";
+	"Storable::CORE:subst";
+	"Storable::dclone";
+	"Storable::nfreeze";
+	"Storable::_freeze";
+	"Storable::net_mstore";
+	"Storable::BEGIN@22";
+	"Storable::BEGIN@44";
+	"Storable::bootstrap";
+}
+subgraph cluster_DynaLoader {
+	label="DynaLoader";
+	"DynaLoader::bootstrap";
+}
+subgraph cluster_SimpleDB_Class_Cache {
+	label="SimpleDB::Class::Cache";
+	"SimpleDB::Class::Cache::get";
+	"SimpleDB::Class::Cache::set";
+	"SimpleDB::Class::Cache::BEGIN@32";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_DateTime_Locale_Base {
+	label="DateTime::Locale::Base";
+	"DateTime::Locale::Base::STORABLE_thaw";
+	"DateTime::Locale::Base::STORABLE_freeze";
+}
+subgraph cluster_FileHandle {
+	label="FileHandle";
+	"FileHandle::import";
+	"FileHandle::BEGIN@46";
+	"FileHandle::BEGIN@3";
+	"FileHandle::BEGIN@4";
+}
+subgraph cluster_IO_File {
+	label="IO::File";
+	"IO::File::BEGIN@128";
+	"IO::File::BEGIN@133";
+	"IO::File::BEGIN@130";
+	"IO::File::BEGIN@131";
+	"IO::File::CORE:match";
+	"IO::File::BEGIN@134";
+	"IO::File::BEGIN@132";
+	"IO::File::BEGIN@127";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_AutoLoader {
+	label="AutoLoader";
+	"AutoLoader::import";
+	"AutoLoader::AUTOLOAD";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::STORABLE_freeze";
+	"DateTime::STORABLE_thaw";
+}
+subgraph cluster_DateTime_TimeZone_OffsetOnly {
+	label="DateTime::TimeZone::OffsetOnly";
+	"DateTime::TimeZone::OffsetOnly::STORABLE_freeze";
+}
+subgraph cluster_LWP_Protocol_http {
+	label="LWP::Protocol::http";
+	"LWP::Protocol::http::request";
+}
+subgraph cluster_DateTime_TimeZone {
+	label="DateTime::TimeZone";
+	"DateTime::TimeZone::STORABLE_freeze";
+	"DateTime::TimeZone::STORABLE_thaw";
+}
+"SimpleDB::Class::Cache::set" -> "Storable::nfreeze";
+"Storable::nfreeze" -> "Storable::_freeze";
+"SimpleDB::Class::Cache::BEGIN@32" -> "Storable::BEGIN@24";
+"Storable::BEGIN@23" -> "Exporter::import";
+"Storable::BEGIN@44" -> "Exporter::import";
+"Storable::BEGIN@23" -> "FileHandle::BEGIN@46";
+"SimpleDB::Class::Cache::BEGIN@32" -> "Storable::BEGIN@22";
+"Storable::_freeze" -> "Storable::net_mstore";
+"Storable::BEGIN@23" -> "IO::File::BEGIN@134";
+"Storable::_freeze" -> "Storable::CORE:subst";
+"Storable::thaw" -> "Storable::CORE:subst";
+"Storable::BEGIN@23" -> "IO::File::BEGIN@131";
+"Storable::thaw" -> "Storable::mretrieve";
+"Storable::mretrieve" -> "DateTime::STORABLE_thaw";
+"Storable::mretrieve" -> "DateTime::TimeZone::STORABLE_thaw";
+"Storable::net_mstore" -> "DateTime::Locale::Base::STORABLE_freeze";
+"SimpleDB::Class::Cache::BEGIN@32" -> "Storable::BEGIN@23";
+"Storable::mretrieve" -> "DateTime::Locale::Base::STORABLE_thaw";
+"Storable::BEGIN@23" -> "IO::File::BEGIN@132";
+"Storable::BEGIN@23" -> "IO::File::BEGIN@127";
+"Storable::BEGIN@23" -> "IO::File::BEGIN@130";
+"Storable::net_mstore" -> "DateTime::TimeZone::STORABLE_freeze";
+"Storable::BEGIN@22" -> "AutoLoader::import";
+"Storable::BEGIN@23" -> "FileHandle::BEGIN@4";
+"Storable::BEGIN@23" -> "IO::File::BEGIN@128";
+"Storable::nfreeze" -> "AutoLoader::AUTOLOAD";
+"DynaLoader::bootstrap" -> "Storable::bootstrap";
+"Storable::BEGIN@23" -> "FileHandle::BEGIN@3";
+"LWP::Protocol::http::request" -> "Storable::dclone";
+"SimpleDB::Class::Cache::BEGIN@32" -> "Storable::BEGIN@44";
+"Storable::BEGIN@24" -> "vars::import";
+"SimpleDB::Class::Cache::get" -> "Storable::thaw";
+"Storable::BEGIN@23" -> "IO::File::BEGIN@133";
+"Storable::net_mstore" -> "DateTime::TimeZone::OffsetOnly::STORABLE_freeze";
+"Storable::BEGIN@23" -> "IO::File::CORE:match";
+"Storable::BEGIN@23" -> "FileHandle::import";
+"Storable::net_mstore" -> "DateTime::STORABLE_freeze";
+}

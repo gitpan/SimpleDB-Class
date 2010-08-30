@@ -1,0 +1,410 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Storable {
+	label="Storable";
+	"Storable::net_mstore";
+	"Storable::mretrieve";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_SimpleDB_Class_Item {
+	label="SimpleDB::Class::Item";
+	"SimpleDB::Class::Item::__ANON__[../lib/SimpleDB/Class/Item.pm:87]";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_DateTime_TimeZone_Floating {
+	label="DateTime::TimeZone::Floating";
+	"DateTime::TimeZone::Floating::is_floating";
+}
+subgraph cluster_Params_Validate {
+	label="Params::Validate";
+	"Params::Validate::_validate";
+}
+subgraph cluster_Test_Builder {
+	label="Test::Builder";
+	"Test::Builder::cmp_ok";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::VERSION";
+	"UNIVERSAL::can";
+}
+subgraph cluster_DateTime__Thawed {
+	label="DateTime::_Thawed";
+	"DateTime::_Thawed::time_zone";
+	"DateTime::_Thawed::utc_rd_values";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DateTime_TimeZone_UTC {
+	label="DateTime::TimeZone::UTC";
+	"DateTime::TimeZone::UTC::is_utc";
+	"DateTime::TimeZone::UTC::offset_for_local_datetime";
+	"DateTime::TimeZone::UTC::offset_for_datetime";
+}
+subgraph cluster_DateTime_Helpers {
+	label="DateTime::Helpers";
+	"DateTime::Helpers::can";
+	"DateTime::Helpers::BEGIN@8";
+	"DateTime::Helpers::BEGIN@3";
+	"DateTime::Helpers::BEGIN@4";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::import";
+}
+subgraph cluster_DateTime_Infinite {
+	label="DateTime::Infinite";
+	"DateTime::Infinite::_seconds_as_components";
+	"DateTime::Infinite::_rd2ymd";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::__ANON__[DateTime.pm:1015]";
+	"DateTime::BEGIN@40";
+	"DateTime::strftime";
+	"DateTime::CORE:subst";
+	"DateTime::offset";
+	"DateTime::__ANON__[DateTime.pm:149]";
+	"DateTime::__ANON__[DateTime.pm:157]";
+	"DateTime::_format_nanosecs";
+	"DateTime::BEGIN@43";
+	"DateTime::BEGIN@5";
+	"DateTime::__ANON__[DateTime.pm:164]";
+	"DateTime::_is_leap_year";
+	"DateTime::BEGIN@45";
+	"DateTime::BEGIN@6";
+	"DateTime::minute";
+	"DateTime::set_time_zone";
+	"DateTime::day_of_month";
+	"DateTime::_normalize_nanoseconds";
+	"DateTime::__ANON__[DateTime.pm:977]";
+	"DateTime::CORE:regcomp";
+	"DateTime::from_object";
+	"DateTime::BEGIN@1841";
+	"DateTime::compare";
+	"DateTime::_calc_local_components";
+	"DateTime::__ANON__[DateTime.pm:141]";
+	"DateTime::_ymd2rd";
+	"DateTime::BEGIN@76";
+	"DateTime::BEGIN@9";
+	"DateTime::CORE:substcont";
+	"DateTime::_offset_for_local_datetime";
+	"DateTime::_compare";
+	"DateTime::_calc_local_rd";
+	"DateTime::year";
+	"DateTime::__ANON__[DateTime.pm:965]";
+	"DateTime::BEGIN@8";
+	"DateTime::BEGIN@68";
+	"DateTime::__ANON__[DateTime.pm:125]";
+	"DateTime::BEGIN@53";
+	"DateTime::_time_as_seconds";
+	"DateTime::_rd2ymd";
+	"DateTime::BEGIN@71";
+	"DateTime::__ANON__[DateTime.pm:1014]";
+	"DateTime::__ANON__[DateTime.pm:117]";
+	"DateTime::CORE:qr";
+	"DateTime::BEGIN@70";
+	"DateTime::_seconds_as_components";
+	"DateTime::__ANON__[DateTime.pm:133]";
+	"DateTime::_calc_utc_rd";
+	"DateTime::BEGIN@42";
+	"DateTime::BEGIN@74";
+	"DateTime::utc_rd_values";
+	"DateTime::__ANON__[DateTime.pm:985]";
+	"DateTime::DefaultLocale";
+	"DateTime::BEGIN@80";
+	"DateTime::BEGIN@72";
+	"DateTime::clone";
+	"DateTime::from_epoch";
+	"DateTime::_month_length";
+	"DateTime::BEGIN@3";
+	"DateTime::now";
+	"DateTime::_handle_offset_modifier";
+	"DateTime::STORABLE_freeze";
+	"DateTime::time_zone";
+	"DateTime::hour";
+	"DateTime::new";
+	"DateTime::_normalize_tai_seconds";
+	"DateTime::BEGIN@41";
+	"DateTime::BEGIN@13";
+	"DateTime::CORE:match";
+	"DateTime::__ANON__[DateTime.pm:976]";
+	"DateTime::STORABLE_thaw";
+	"DateTime::_compare_overload";
+	"DateTime::second";
+	"DateTime::BEGIN@667";
+	"DateTime::__ANON__[DateTime.pm:971]";
+	"DateTime::month";
+}
+subgraph cluster_DateTime_Format_Strptime {
+	label="DateTime::Format::Strptime";
+	"DateTime::Format::Strptime::parse_datetime";
+	"DateTime::Format::Strptime::strftime";
+	"DateTime::Format::Strptime::_build_parser";
+}
+subgraph cluster_DateTime_TimeZone_OffsetOnly {
+	label="DateTime::TimeZone::OffsetOnly";
+	"DateTime::TimeZone::OffsetOnly::offset_for_datetime";
+	"DateTime::TimeZone::OffsetOnly::is_utc";
+}
+subgraph cluster_DateTime_Locale {
+	label="DateTime::Locale";
+	"DateTime::Locale::BEGIN@3";
+	"DateTime::Locale::BEGIN@4";
+	"DateTime::Locale::BEGIN@148";
+	"DateTime::Locale::BEGIN@11";
+	"DateTime::Locale::BEGIN@10";
+	"DateTime::Locale::load";
+	"DateTime::Locale::BEGIN@12";
+	"DateTime::Locale::BEGIN@6";
+}
+subgraph cluster_integer {
+	label="integer";
+	"integer::import";
+}
+subgraph cluster_SimpleDB_Class_SQL {
+	label="SimpleDB::Class::SQL";
+	"SimpleDB::Class::SQL::BEGIN@19";
+}
+subgraph cluster_overload {
+	label="overload";
+	"overload::import";
+}
+subgraph cluster_main {
+	label="main";
+	"main::RUNTIME";
+}
+subgraph cluster_DateTime_Duration {
+	label="DateTime::Duration";
+	"DateTime::Duration::BEGIN@11";
+	"DateTime::Duration::BEGIN@13";
+	"DateTime::Duration::BEGIN@9";
+	"DateTime::Duration::BEGIN@3";
+	"DateTime::Duration::BEGIN@22";
+	"DateTime::Duration::BEGIN@4";
+	"DateTime::Duration::BEGIN@8";
+	"DateTime::Duration::BEGIN@10";
+}
+subgraph cluster_DateTime_TimeZone {
+	label="DateTime::TimeZone";
+	"DateTime::TimeZone::offset_as_string";
+	"DateTime::TimeZone::BEGIN@21";
+	"DateTime::TimeZone::BEGIN@11";
+	"DateTime::TimeZone::BEGIN@23";
+	"DateTime::TimeZone::BEGIN@24";
+	"DateTime::TimeZone::BEGIN@13";
+	"DateTime::TimeZone::BEGIN@6";
+	"DateTime::TimeZone::is_floating";
+	"DateTime::TimeZone::BEGIN@17";
+	"DateTime::TimeZone::BEGIN@3";
+	"DateTime::TimeZone::BEGIN@14";
+	"DateTime::TimeZone::BEGIN@25";
+	"DateTime::TimeZone::BEGIN@27";
+	"DateTime::TimeZone::BEGIN@10";
+	"DateTime::TimeZone::BEGIN@22";
+	"DateTime::TimeZone::new";
+	"DateTime::TimeZone::BEGIN@12";
+	"DateTime::TimeZone::BEGIN@26";
+	"DateTime::TimeZone::BEGIN@5";
+	"DateTime::TimeZone::BEGIN@15";
+	"DateTime::TimeZone::BEGIN@18";
+}
+"DateTime::Format::Strptime::strftime" -> "DateTime::strftime";
+"DateTime::BEGIN@41" -> "DateTime::Locale::BEGIN@11";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@11";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:149]";
+"DateTime::from_object" -> "DateTime::_Thawed::utc_rd_values";
+"DateTime::strftime" -> "DateTime::_format_nanosecs";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:157]";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@5";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:164]";
+"DateTime::_handle_offset_modifier" -> "DateTime::TimeZone::is_floating";
+"DateTime::from_object" -> "DateTime::TimeZone::is_floating";
+"DateTime::_compare" -> "DateTime::TimeZone::is_floating";
+"DateTime::set_time_zone" -> "DateTime::TimeZone::is_floating";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@6";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@27";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@10";
+"DateTime::from_object" -> "DateTime::set_time_zone";
+"DateTime::_compare" -> "DateTime::set_time_zone";
+"DateTime::BEGIN@8" -> "Exporter::import";
+"DateTime::BEGIN@43" -> "Exporter::import";
+"DateTime::BEGIN@45" -> "Exporter::import";
+"DateTime::__ANON__[DateTime.pm:965]" -> "DateTime::day_of_month";
+"main::RUNTIME" -> "DateTime::day_of_month";
+"DateTime::new" -> "DateTime::_normalize_nanoseconds";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::CORE:regcomp";
+"DateTime::STORABLE_thaw" -> "DateTime::from_object";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@1841";
+"DateTime::_calc_local_rd" -> "DateTime::_calc_local_components";
+"DateTime::BEGIN@41" -> "DateTime::Locale::BEGIN@3";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@21";
+"DateTime::BEGIN@9" -> "DateTime::Helpers::BEGIN@3";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:141]";
+"DateTime::new" -> "DateTime::_ymd2rd";
+"DateTime::_calc_local_rd" -> "DateTime::TimeZone::UTC::is_utc";
+"DateTime::_calc_utc_rd" -> "DateTime::TimeZone::UTC::is_utc";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@23";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@76";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@9";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@13";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@17";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@25";
+"DateTime::compare" -> "DateTime::_compare";
+"DateTime::offset" -> "DateTime::TimeZone::UTC::offset_for_datetime";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::_calc_local_rd";
+"DateTime::new" -> "DateTime::_calc_local_rd";
+"DateTime::set_time_zone" -> "DateTime::_calc_local_rd";
+"DateTime::__ANON__[DateTime.pm:1014]" -> "DateTime::year";
+"main::RUNTIME" -> "DateTime::year";
+"DateTime::BEGIN@40" -> "DateTime::Duration::BEGIN@8";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@8";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@68";
+"DateTime::BEGIN@40" -> "DateTime::Duration::BEGIN@11";
+"DateTime::BEGIN@9" -> "DateTime::Helpers::BEGIN@8";
+"DateTime::BEGIN@41" -> "DateTime::Locale::BEGIN@148";
+"DateTime::new" -> "DateTime::_time_as_seconds";
+"DateTime::_calc_local_components" -> "DateTime::_rd2ymd";
+"DateTime::from_object" -> "DateTime::_rd2ymd";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@71";
+"DateTime::strftime" -> "DateTime::__ANON__[DateTime.pm:1014]";
+"DateTime::BEGIN@40" -> "DateTime::Duration::BEGIN@4";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:117]";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@3";
+"DateTime::strftime" -> "DateTime::__ANON__[DateTime.pm:985]";
+"DateTime::BEGIN@40" -> "DateTime::Duration::BEGIN@13";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@80";
+"DateTime::_compare" -> "DateTime::clone";
+"DateTime::new" -> "DateTime::_month_length";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@3";
+"DateTime::new" -> "DateTime::_handle_offset_modifier";
+"DateTime::set_time_zone" -> "DateTime::_handle_offset_modifier";
+"DateTime::_compare" -> "DateTime::time_zone";
+"DateTime::from_object" -> "DateTime::_Thawed::time_zone";
+"DateTime::_calc_utc_rd" -> "DateTime::_normalize_tai_seconds";
+"DateTime::BEGIN@13" -> "XSLoader::load";
+"DateTime::__ANON__[DateTime.pm:117]" -> "DateTime::CORE:match";
+"DateTime::__ANON__[DateTime.pm:133]" -> "DateTime::CORE:match";
+"DateTime::__ANON__[DateTime.pm:164]" -> "DateTime::CORE:match";
+"DateTime::__ANON__[DateTime.pm:141]" -> "DateTime::CORE:match";
+"DateTime::__ANON__[DateTime.pm:149]" -> "DateTime::CORE:match";
+"DateTime::__ANON__[DateTime.pm:157]" -> "DateTime::CORE:match";
+"DateTime::__ANON__[DateTime.pm:125]" -> "DateTime::CORE:match";
+"DateTime::_compare" -> "DateTime::Helpers::can";
+"DateTime::strftime" -> "DateTime::__ANON__[DateTime.pm:976]";
+"Storable::mretrieve" -> "DateTime::STORABLE_thaw";
+"Test::Builder::cmp_ok" -> "DateTime::_compare_overload";
+"DateTime::__ANON__[DateTime.pm:985]" -> "DateTime::second";
+"DateTime::set_time_zone" -> "DateTime::second";
+"main::RUNTIME" -> "DateTime::second";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@667";
+"DateTime::BEGIN@40" -> "DateTime::Duration::BEGIN@22";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@26";
+"DateTime::_calc_local_components" -> "DateTime::Infinite::_rd2ymd";
+"DateTime::Format::Strptime::parse_datetime" -> "DateTime::month";
+"DateTime::__ANON__[DateTime.pm:976]" -> "DateTime::month";
+"main::RUNTIME" -> "DateTime::month";
+"DateTime::strftime" -> "DateTime::__ANON__[DateTime.pm:1015]";
+"DateTime::__ANON__[DateTime.pm:1015]" -> "DateTime::TimeZone::offset_as_string";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@40";
+"DateTime::strftime" -> "DateTime::CORE:subst";
+"DateTime::__ANON__[DateTime.pm:1015]" -> "DateTime::offset";
+"DateTime::_handle_offset_modifier" -> "DateTime::offset";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@43";
+"DateTime::_month_length" -> "DateTime::_is_leap_year";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@45";
+"DateTime::__ANON__[DateTime.pm:977]" -> "DateTime::minute";
+"main::RUNTIME" -> "DateTime::minute";
+"DateTime::BEGIN@40" -> "DateTime::Duration::BEGIN@3";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@22";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@5";
+"DateTime::strftime" -> "DateTime::__ANON__[DateTime.pm:977]";
+"DateTime::from_object" -> "UNIVERSAL::can";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@18";
+"DateTime::BEGIN@76" -> "constant::import";
+"DateTime::BEGIN@68" -> "constant::import";
+"DateTime::BEGIN@71" -> "constant::import";
+"DateTime::BEGIN@70" -> "constant::import";
+"DateTime::BEGIN@74" -> "constant::import";
+"DateTime::BEGIN@72" -> "constant::import";
+"DateTime::_compare_overload" -> "DateTime::compare";
+"DateTime::BEGIN@41" -> "DateTime::Locale::BEGIN@10";
+"DateTime::strftime" -> "DateTime::CORE:substcont";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@24";
+"DateTime::BEGIN@53" -> "overload::import";
+"DateTime::BEGIN@40" -> "DateTime::Duration::BEGIN@10";
+"DateTime::BEGIN@41" -> "DateTime::Locale::BEGIN@12";
+"DateTime::_handle_offset_modifier" -> "DateTime::_offset_for_local_datetime";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@14";
+"DateTime::BEGIN@40" -> "DateTime::Duration::BEGIN@9";
+"DateTime::BEGIN@6" -> "warnings::import";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@12";
+"DateTime::strftime" -> "DateTime::__ANON__[DateTime.pm:965]";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@15";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:125]";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@53";
+"DateTime::offset" -> "DateTime::TimeZone::OffsetOnly::offset_for_datetime";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::CORE:qr";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@70";
+"DateTime::_calc_local_components" -> "DateTime::_seconds_as_components";
+"DateTime::from_object" -> "DateTime::_seconds_as_components";
+"DateTime::_offset_for_local_datetime" -> "DateTime::TimeZone::UTC::offset_for_local_datetime";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:133]";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::_calc_utc_rd";
+"DateTime::new" -> "DateTime::_calc_utc_rd";
+"DateTime::set_time_zone" -> "DateTime::_calc_utc_rd";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@42";
+"DateTime::_calc_local_rd" -> "DateTime::TimeZone::OffsetOnly::is_utc";
+"DateTime::_calc_utc_rd" -> "DateTime::TimeZone::OffsetOnly::is_utc";
+"DateTime::new" -> "DateTime::TimeZone::new";
+"DateTime::_calc_local_components" -> "DateTime::Infinite::_seconds_as_components";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@74";
+"DateTime::_compare" -> "DateTime::utc_rd_values";
+"DateTime::BEGIN@1841" -> "integer::import";
+"DateTime::BEGIN@667" -> "integer::import";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::DefaultLocale";
+"DateTime::new" -> "DateTime::DefaultLocale";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@72";
+"DateTime::from_object" -> "Params::Validate::_validate";
+"DateTime::from_epoch" -> "Params::Validate::_validate";
+"DateTime::new" -> "Params::Validate::_validate";
+"DateTime::now" -> "DateTime::from_epoch";
+"DateTime::_calc_local_rd" -> "DateTime::TimeZone::Floating::is_floating";
+"DateTime::_handle_offset_modifier" -> "DateTime::TimeZone::Floating::is_floating";
+"DateTime::_calc_utc_rd" -> "DateTime::TimeZone::Floating::is_floating";
+"DateTime::_compare" -> "DateTime::TimeZone::Floating::is_floating";
+"DateTime::set_time_zone" -> "DateTime::TimeZone::Floating::is_floating";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::now";
+"SimpleDB::Class::Item::__ANON__[../lib/SimpleDB/Class/Item.pm:87]" -> "DateTime::now";
+"Storable::net_mstore" -> "DateTime::STORABLE_freeze";
+"DateTime::Format::Strptime::parse_datetime" -> "DateTime::new";
+"DateTime::from_object" -> "DateTime::new";
+"DateTime::from_epoch" -> "DateTime::new";
+"main::RUNTIME" -> "DateTime::new";
+"DateTime::__ANON__[DateTime.pm:971]" -> "DateTime::hour";
+"main::RUNTIME" -> "DateTime::hour";
+"DateTime::BEGIN@41" -> "DateTime::Locale::BEGIN@6";
+"DateTime::BEGIN@42" -> "DateTime::TimeZone::BEGIN@6";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@13";
+"SimpleDB::Class::SQL::BEGIN@19" -> "DateTime::BEGIN@41";
+"DateTime::BEGIN@41" -> "DateTime::Locale::BEGIN@4";
+"DateTime::BEGIN@9" -> "DateTime::Helpers::BEGIN@4";
+"DateTime::DefaultLocale" -> "DateTime::Locale::load";
+"DateTime::new" -> "DateTime::Locale::load";
+"DateTime::BEGIN@41" -> "UNIVERSAL::VERSION";
+"DateTime::BEGIN@42" -> "UNIVERSAL::VERSION";
+"DateTime::BEGIN@5" -> "strict::import";
+"DateTime::strftime" -> "DateTime::__ANON__[DateTime.pm:971]";
+}

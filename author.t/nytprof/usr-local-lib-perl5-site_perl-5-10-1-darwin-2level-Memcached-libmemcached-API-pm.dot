@@ -1,0 +1,29 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SimpleDB_Class_Cache {
+	label="SimpleDB::Class::Cache";
+	"SimpleDB::Class::Cache::BEGIN@31";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_Memcached_libmemcached {
+	label="Memcached::libmemcached";
+	"Memcached::libmemcached::BEGIN@21";
+}
+subgraph cluster_Memcached_libmemcached_API {
+	label="Memcached::libmemcached::API";
+	"Memcached::libmemcached::API::libmemcached_functions";
+	"Memcached::libmemcached::API::libmemcached_tags";
+	"Memcached::libmemcached::API::libmemcached_constants";
+	"Memcached::libmemcached::API::BEGIN@23";
+	"Memcached::libmemcached::API::CORE:sort";
+}
+"SimpleDB::Class::Cache::BEGIN@31" -> "Memcached::libmemcached::API::libmemcached_constants";
+"SimpleDB::Class::Cache::BEGIN@31" -> "Memcached::libmemcached::API::libmemcached_functions";
+"Memcached::libmemcached::BEGIN@21" -> "Memcached::libmemcached::API::CORE:sort";
+"Memcached::libmemcached::API::BEGIN@23" -> "base::import";
+"SimpleDB::Class::Cache::BEGIN@31" -> "Memcached::libmemcached::API::libmemcached_tags";
+"Memcached::libmemcached::BEGIN@21" -> "Memcached::libmemcached::API::BEGIN@23";
+}

@@ -1,0 +1,152 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_MooseX_Types_TypeDecorator {
+	label="MooseX::Types::TypeDecorator";
+	"MooseX::Types::TypeDecorator::DESTROY";
+}
+subgraph cluster_Foo_Child {
+	label="Foo::Child";
+	"Foo::Child::_castor_attribute";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+}
+subgraph cluster_SimpleDB_Class_Item {
+	label="SimpleDB::Class::Item";
+	"SimpleDB::Class::Item::_castor_attribute";
+}
+subgraph cluster_Moose_Util_TypeConstraints {
+	label="Moose::Util::TypeConstraints";
+	"Moose::Util::TypeConstraints::where";
+	"Moose::Util::TypeConstraints::via";
+}
+subgraph cluster___TYPE___SimpleDB_Class_Types {
+	label="__TYPE__::SimpleDB::Class::Types";
+	"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfIntAsStr";
+	"__TYPE__::SimpleDB::Class::Types::SdbHashRef";
+	"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfInt";
+	"__TYPE__::SimpleDB::Class::Types::SdbDateTime";
+	"__TYPE__::SimpleDB::Class::Types::SdbStr";
+	"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfStr";
+	"__TYPE__::SimpleDB::Class::Types::SdbIntAsStr";
+	"__TYPE__::SimpleDB::Class::Types::SdbInt";
+	"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfDateTime";
+	"__TYPE__::SimpleDB::Class::Types::SdbMediumStr";
+}
+subgraph cluster_SimpleDB_Class_Role_Itemized {
+	label="SimpleDB::Class::Role::Itemized";
+	"SimpleDB::Class::Role::Itemized::parse_item";
+	"SimpleDB::Class::Role::Itemized::determine_item_class";
+	"SimpleDB::Class::Role::Itemized::BEGIN@4";
+	"SimpleDB::Class::Role::Itemized::BEGIN@3";
+	"SimpleDB::Class::Role::Itemized::instantiate_item";
+}
+subgraph cluster_SimpleDB_Class_ResultSet {
+	label="SimpleDB::Class::ResultSet";
+	"SimpleDB::Class::ResultSet::item_class";
+	"SimpleDB::Class::ResultSet::next";
+	"SimpleDB::Class::ResultSet::simpledb";
+}
+subgraph cluster___TYPE__ {
+	label="__TYPE__";
+	"__TYPE__::ArrayRef";
+	"__TYPE__::Undef";
+	"__TYPE__::HashRef";
+	"__TYPE__::Str";
+	"__TYPE__::Int";
+}
+subgraph cluster_SimpleDB_Class_Domain {
+	label="SimpleDB::Class::Domain";
+	"SimpleDB::Class::Domain::insert";
+	"SimpleDB::Class::Domain::find";
+	"SimpleDB::Class::Domain::item_class";
+	"SimpleDB::Class::Domain::simpledb";
+}
+subgraph cluster_Class_MOP {
+	label="Class::MOP";
+	"Class::MOP::__ANON__[Class/MOP.pm:103]";
+}
+subgraph cluster_Moose_Object {
+	label="Moose::Object";
+	"Moose::Object::new";
+}
+subgraph cluster_MooseX_Types_Base {
+	label="MooseX::Types::Base";
+	"MooseX::Types::Base::import";
+}
+subgraph cluster_SimpleDB_Class_Types {
+	label="SimpleDB::Class::Types";
+	"SimpleDB::Class::Types::BEGIN@83";
+	"SimpleDB::Class::Types::BEGIN@71";
+	"SimpleDB::Class::Types::BEGIN@74";
+	"SimpleDB::Class::Types::BEGIN@77";
+	"SimpleDB::Class::Types::BEGIN@70";
+	"SimpleDB::Class::Types::BEGIN@73";
+	"SimpleDB::Class::Types::BEGIN@72";
+}
+subgraph cluster_MooseX_Types_UndefinedType {
+	label="MooseX::Types::UndefinedType";
+	"MooseX::Types::UndefinedType::DESTROY";
+}
+subgraph cluster_MooseX_Types_CheckedUtilExports {
+	label="MooseX::Types::CheckedUtilExports";
+	"MooseX::Types::CheckedUtilExports::as";
+	"MooseX::Types::CheckedUtilExports::subtype";
+	"MooseX::Types::CheckedUtilExports::class_type";
+	"MooseX::Types::CheckedUtilExports::from";
+	"MooseX::Types::CheckedUtilExports::coerce";
+}
+"SimpleDB::Class::Role::Itemized::instantiate_item" -> "SimpleDB::Class::Domain::simpledb";
+"SimpleDB::Class::Role::Itemized::parse_item" -> "SimpleDB::Class::Domain::simpledb";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "SimpleDB::Class::Types::BEGIN@72";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "Moose::Util::TypeConstraints::where";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::SimpleDB::Class::Types::SdbInt";
+"SimpleDB::Class::Role::Itemized::parse_item" -> "Moose::Object::new";
+"SimpleDB::Class::Role::Itemized::instantiate_item" -> "Moose::Object::new";
+"SimpleDB::Class::Role::Itemized::parse_item" -> "SimpleDB::Class::Role::Itemized::determine_item_class";
+"SimpleDB::Class::Role::Itemized::instantiate_item" -> "SimpleDB::Class::Role::Itemized::determine_item_class";
+"Class::MOP::__ANON__[Class/MOP.pm:103]" -> "SimpleDB::Class::Role::Itemized::BEGIN@4";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::SimpleDB::Class::Types::SdbMediumStr";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "SimpleDB::Class::Types::BEGIN@83";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfInt";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::Str";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "SimpleDB::Class::Types::BEGIN@74";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "MooseX::Types::CheckedUtilExports::from";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "MooseX::Types::CheckedUtilExports::subtype";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "MooseX::Types::UndefinedType::DESTROY";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::SimpleDB::Class::Types::SdbIntAsStr";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "SimpleDB::Class::Types::BEGIN@70";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::SimpleDB::Class::Types::SdbHashRef";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::SimpleDB::Class::Types::SdbStr";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "SimpleDB::Class::Types::BEGIN@77";
+"SimpleDB::Class::Domain::insert" -> "SimpleDB::Class::Role::Itemized::instantiate_item";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::Role::Itemized::instantiate_item";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::Role::Itemized::instantiate_item";
+"SimpleDB::Class::Role::Itemized::determine_item_class" -> "SimpleDB::Class::Domain::item_class";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::HashRef";
+"SimpleDB::Class::Role::Itemized::determine_item_class" -> "Foo::Child::_castor_attribute";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "MooseX::Types::CheckedUtilExports::as";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::ArrayRef";
+"SimpleDB::Class::Role::Itemized::parse_item" -> "SimpleDB::Class::ResultSet::simpledb";
+"SimpleDB::Class::Role::Itemized::instantiate_item" -> "SimpleDB::Class::ResultSet::simpledb";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfDateTime";
+"SimpleDB::Class::Role::Itemized::BEGIN@3" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::Undef";
+"SimpleDB::Class::Role::Itemized::determine_item_class" -> "SimpleDB::Class::ResultSet::item_class";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "MooseX::Types::Base::import";
+"SimpleDB::Class::Role::Itemized::determine_item_class" -> "SimpleDB::Class::Item::_castor_attribute";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "SimpleDB::Class::Types::BEGIN@71";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "SimpleDB::Class::Types::BEGIN@73";
+"Class::MOP::__ANON__[Class/MOP.pm:103]" -> "SimpleDB::Class::Role::Itemized::BEGIN@3";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::SimpleDB::Class::Types::SdbDateTime";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::Role::Itemized::parse_item";
+"SimpleDB::Class::Domain::find" -> "SimpleDB::Class::Role::Itemized::parse_item";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "MooseX::Types::TypeDecorator::DESTROY";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfIntAsStr";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::Int";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "MooseX::Types::CheckedUtilExports::coerce";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfStr";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "Moose::Util::TypeConstraints::via";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "MooseX::Types::CheckedUtilExports::class_type";
+}

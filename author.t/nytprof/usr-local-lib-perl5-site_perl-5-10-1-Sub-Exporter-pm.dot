@@ -1,0 +1,209 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Data_OptList {
+	label="Data::OptList";
+	"Data::OptList::BEGIN@214";
+	"Data::OptList::mkopt_hash";
+	"Data::OptList::BEGIN@131";
+	"Data::OptList::mkopt";
+	"Data::OptList::BEGIN@4";
+	"Data::OptList::BEGIN@7";
+	"Data::OptList::BEGIN@3";
+	"Data::OptList::BEGIN@8";
+	"Data::OptList::BEGIN@6";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:263]";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:193]";
+	"Moose::Exporter::BEGIN@14";
+	"Moose::Exporter::build_import_methods";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:241]";
+}
+subgraph cluster_Moose_Meta_Role {
+	label="Moose::Meta::Role";
+	"Moose::Meta::Role::BEGIN@10";
+	"Moose::Meta::Role::BEGIN@21";
+}
+subgraph cluster_Params_Util {
+	label="Params::Util";
+	"Params::Util::_SCALAR0";
+	"Params::Util::_CODELIKE";
+}
+subgraph cluster_B_Hooks_EndOfScope {
+	label="B::Hooks::EndOfScope";
+	"B::Hooks::EndOfScope::BEGIN@11";
+}
+subgraph cluster_Sub_Install {
+	label="Sub::Install";
+	"Sub::Install::__ANON__[Sub/Install.pm:132]";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::VERSION";
+	"UNIVERSAL::can";
+}
+subgraph cluster_namespace_clean {
+	label="namespace::clean";
+	"namespace::clean::BEGIN@14";
+}
+subgraph cluster_Sub_Exporter {
+	label="Sub::Exporter";
+	"Sub::Exporter::__ANON__[Sub/Exporter.pm:937]";
+	"Sub::Exporter::_expand_group";
+	"Sub::Exporter::BEGIN@6";
+	"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+	"Sub::Exporter::_collect_collections";
+	"Sub::Exporter::default_generator";
+	"Sub::Exporter::build_exporter";
+	"Sub::Exporter::BEGIN@8";
+	"Sub::Exporter::__ANON__[Sub/Exporter.pm:544]";
+	"Sub::Exporter::BEGIN@9";
+	"Sub::Exporter::_do_import";
+	"Sub::Exporter::_expand_groups";
+	"Sub::Exporter::default_installer";
+	"Sub::Exporter::_assert_collector_names_ok";
+	"Sub::Exporter::setup_exporter";
+	"Sub::Exporter::_key_intersection";
+	"Sub::Exporter::CORE:match";
+	"Sub::Exporter::_rewrite_build_config";
+	"Sub::Exporter::_mk_collection_builder";
+	"Sub::Exporter::BEGIN@7";
+	"Sub::Exporter::_group_name";
+	"Sub::Exporter::_setup";
+	"Sub::Exporter::BEGIN@636";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_DuckType {
+	label="Moose::Meta::TypeConstraint::DuckType";
+	"Moose::Meta::TypeConstraint::DuckType::BEGIN@9";
+}
+subgraph cluster_Moose_Util {
+	label="Moose::Util";
+	"Moose::Util::BEGIN@7";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Devel_GlobalDestruction {
+	label="Devel::GlobalDestruction";
+	"Devel::GlobalDestruction::BEGIN@26";
+	"Devel::GlobalDestruction::BEGIN@3";
+	"Devel::GlobalDestruction::BEGIN@2";
+	"Devel::GlobalDestruction::BEGIN@1";
+	"Devel::GlobalDestruction::in_global_destruction";
+}
+subgraph cluster_Class_MOP_Class {
+	label="Class::MOP::Class";
+	"Class::MOP::Class::BEGIN@15";
+	"Class::MOP::Class::DESTROY";
+}
+subgraph cluster_Moose_Meta_Role_Method_Conflicting {
+	label="Moose::Meta::Role::Method::Conflicting";
+	"Moose::Meta::Role::Method::Conflicting::BEGIN@7";
+}
+subgraph cluster_Moose_Object {
+	label="Moose::Object";
+	"Moose::Object::__ANON__[Moose/Object.pm:94]";
+}
+subgraph cluster_Moose_Role {
+	label="Moose::Role";
+	"Moose::Role::BEGIN@8";
+}
+subgraph cluster_Moose_Meta_Attribute {
+	label="Moose::Meta::Attribute";
+	"Moose::Meta::Attribute::BEGIN@17";
+}
+subgraph cluster_MooseX_Types_Base {
+	label="MooseX::Types::Base";
+	"MooseX::Types::Base::__ANON__[MooseX/Types/Base.pm:85]";
+	"MooseX::Types::Base::import";
+	"MooseX::Types::Base::__ANON__[MooseX/Types/Base.pm:72]";
+	"MooseX::Types::Base::__ANON__[MooseX/Types/Base.pm:77]";
+	"MooseX::Types::Base::BEGIN@12";
+}
+subgraph cluster_Moose_Meta_Role_Application_ToClass {
+	label="Moose::Meta::Role::Application::ToClass";
+	"Moose::Meta::Role::Application::ToClass::BEGIN@7";
+}
+"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"B::Hooks::EndOfScope::BEGIN@11" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Devel::GlobalDestruction::BEGIN@26" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Moose::Util::BEGIN@7" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Moose::Meta::Role::Application::ToClass::BEGIN@7" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Moose::Meta::TypeConstraint::DuckType::BEGIN@9" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"namespace::clean::BEGIN@14" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Class::MOP::Class::BEGIN@15" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Moose::Meta::Role::BEGIN@21" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"MooseX::Types::Base::BEGIN@12" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Moose::Meta::Role::Method::Conflicting::BEGIN@7" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"MooseX::Types::Base::import" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Moose::Meta::Role::BEGIN@10" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Moose::Exporter::BEGIN@14" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Moose::Role::BEGIN@8" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Sub::Exporter::_do_import" -> "Sub::Exporter::default_generator";
+"Sub::Exporter::_do_import" -> "Sub::Exporter::default_installer";
+"Sub::Exporter::default_installer" -> "Sub::Install::__ANON__[Sub/Install.pm:132]";
+"Sub::Exporter::setup_exporter" -> "Sub::Install::__ANON__[Sub/Install.pm:132]";
+"Sub::Exporter::BEGIN@7" -> "Data::OptList::BEGIN@4";
+"Sub::Exporter::BEGIN@7" -> "Data::OptList::BEGIN@8";
+"Devel::GlobalDestruction::BEGIN@26" -> "Sub::Exporter::BEGIN@6";
+"Devel::GlobalDestruction::BEGIN@26" -> "Sub::Exporter::BEGIN@9";
+"Sub::Exporter::_rewrite_build_config" -> "Sub::Exporter::_assert_collector_names_ok";
+"Sub::Exporter::default_generator" -> "MooseX::Types::Base::__ANON__[MooseX/Types/Base.pm:85]";
+"Sub::Exporter::BEGIN@7" -> "Data::OptList::BEGIN@214";
+"Sub::Exporter::default_generator" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:193]";
+"Sub::Exporter::default_generator" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:263]";
+"Devel::GlobalDestruction::BEGIN@26" -> "Sub::Exporter::BEGIN@8";
+"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]" -> "Sub::Exporter::_do_import";
+"Sub::Exporter::_assert_collector_names_ok" -> "Sub::Exporter::CORE:match";
+"Devel::GlobalDestruction::BEGIN@26" -> "Sub::Exporter::BEGIN@7";
+"Sub::Exporter::default_generator" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:241]";
+"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]" -> "Data::OptList::mkopt";
+"Sub::Exporter::_expand_group" -> "Data::OptList::mkopt";
+"Sub::Exporter::build_exporter" -> "Sub::Exporter::_rewrite_build_config";
+"Devel::GlobalDestruction::BEGIN@26" -> "Devel::GlobalDestruction::BEGIN@1";
+"Class::MOP::Class::DESTROY" -> "Devel::GlobalDestruction::in_global_destruction";
+"Moose::Object::__ANON__[Moose/Object.pm:94]" -> "Devel::GlobalDestruction::in_global_destruction";
+"Devel::GlobalDestruction::BEGIN@26" -> "Devel::GlobalDestruction::BEGIN@3";
+"Sub::Exporter::BEGIN@7" -> "Data::OptList::BEGIN@7";
+"Devel::GlobalDestruction::BEGIN@26" -> "Sub::Exporter::setup_exporter";
+"Moose::Meta::Attribute::BEGIN@17" -> "Sub::Exporter::setup_exporter";
+"Sub::Exporter::__ANON__[Sub/Exporter.pm:544]" -> "Sub::Exporter::_setup";
+"Sub::Exporter::default_generator" -> "UNIVERSAL::can";
+"Sub::Exporter::BEGIN@7" -> "Data::OptList::BEGIN@3";
+"Sub::Exporter::default_generator" -> "MooseX::Types::Base::__ANON__[MooseX/Types/Base.pm:77]";
+"MooseX::Types::Base::import" -> "Sub::Exporter::build_exporter";
+"Sub::Exporter::__ANON__[Sub/Exporter.pm:937]" -> "Sub::Exporter::build_exporter";
+"Sub::Exporter::setup_exporter" -> "Sub::Exporter::build_exporter";
+"Moose::Exporter::build_import_methods" -> "Sub::Exporter::build_exporter";
+"Sub::Exporter::BEGIN@7" -> "Data::OptList::BEGIN@6";
+"Devel::GlobalDestruction::BEGIN@3" -> "warnings::import";
+"Sub::Exporter::_expand_groups" -> "Sub::Exporter::_group_name";
+"Sub::Exporter::_expand_group" -> "Sub::Exporter::_group_name";
+"Sub::Exporter::_expand_groups" -> "Sub::Exporter::_expand_group";
+"Sub::Exporter::default_generator" -> "Params::Util::_CODELIKE";
+"Sub::Exporter::_expand_group" -> "Params::Util::_CODELIKE";
+"Sub::Exporter::_do_import" -> "Params::Util::_CODELIKE";
+"Sub::Exporter::default_generator" -> "MooseX::Types::Base::__ANON__[MooseX/Types/Base.pm:72]";
+"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]" -> "Sub::Exporter::_collect_collections";
+"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]" -> "Sub::Exporter::_expand_groups";
+"Sub::Exporter::_expand_group" -> "Sub::Exporter::_expand_groups";
+"Devel::GlobalDestruction::BEGIN@26" -> "Sub::Exporter::BEGIN@636";
+"Sub::Exporter::default_generator" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:937]";
+"Sub::Exporter::BEGIN@7" -> "Data::OptList::BEGIN@131";
+"Sub::Exporter::_expand_group" -> "Params::Util::_SCALAR0";
+"Sub::Exporter::__ANON__[Sub/Exporter.pm:544]" -> "Params::Util::_SCALAR0";
+"Sub::Exporter::_collect_collections" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:544]";
+"Sub::Exporter::_rewrite_build_config" -> "Data::OptList::mkopt_hash";
+"Devel::GlobalDestruction::BEGIN@26" -> "Devel::GlobalDestruction::BEGIN@2";
+"Sub::Exporter::_rewrite_build_config" -> "Sub::Exporter::_key_intersection";
+"Sub::Exporter::_collect_collections" -> "Sub::Exporter::_mk_collection_builder";
+"Sub::Exporter::BEGIN@9" -> "UNIVERSAL::VERSION";
+"Devel::GlobalDestruction::BEGIN@2" -> "strict::import";
+}

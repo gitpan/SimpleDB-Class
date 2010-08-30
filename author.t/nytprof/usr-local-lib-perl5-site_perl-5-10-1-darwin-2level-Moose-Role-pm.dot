@@ -1,0 +1,192 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_MooseX_AttributeHelpers_Trait_Collection_Hash {
+	label="MooseX::AttributeHelpers::Trait::Collection::Hash";
+	"MooseX::AttributeHelpers::Trait::Collection::Hash::BEGIN@9";
+}
+subgraph cluster_MooseX_ClassAttribute_Role_Meta_Class {
+	label="MooseX::ClassAttribute::Role::Meta::Class";
+	"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@7";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:255]";
+	"Moose::Exporter::import";
+}
+subgraph cluster_Class_MOP_Mixin_HasMethods {
+	label="Class::MOP::Mixin::HasMethods";
+	"Class::MOP::Mixin::HasMethods::add_method";
+}
+subgraph cluster_Moose_Meta_Role {
+	label="Moose::Meta::Role";
+	"Moose::Meta::Role::add_required_methods";
+	"Moose::Meta::Role::add_before_method_modifier";
+	"Moose::Meta::Role::add_attribute";
+	"Moose::Meta::Role::add_after_method_modifier";
+	"Moose::Meta::Role::add_around_method_modifier";
+	"Moose::Meta::Role::initialize";
+}
+subgraph cluster_Moose_Util_TypeConstraints {
+	label="Moose::Util::TypeConstraints";
+	"Moose::Util::TypeConstraints::find_type_constraint";
+	"Moose::Util::TypeConstraints::role_type";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Collection_Bag {
+	label="MooseX::AttributeHelpers::Trait::Collection::Bag";
+	"MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@10";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Bool {
+	label="MooseX::AttributeHelpers::Trait::Bool";
+	"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::can";
+}
+subgraph cluster_Sub_Exporter {
+	label="Sub::Exporter";
+	"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Moose_Util {
+	label="Moose::Util";
+	"Moose::Util::apply_all_roles";
+	"Moose::Util::_caller_info";
+}
+subgraph cluster_Class_MOP {
+	label="Class::MOP";
+	"Class::MOP::__ANON__[Class/MOP.pm:103]";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Collection_Array {
+	label="MooseX::AttributeHelpers::Trait::Collection::Array";
+	"MooseX::AttributeHelpers::Trait::Collection::Array::BEGIN@9";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_MooseX_AttributeHelpers {
+	label="MooseX::AttributeHelpers";
+	"MooseX::AttributeHelpers::BEGIN@15";
+	"MooseX::AttributeHelpers::BEGIN@19";
+	"MooseX::AttributeHelpers::BEGIN@20";
+	"MooseX::AttributeHelpers::BEGIN@17";
+	"MooseX::AttributeHelpers::BEGIN@14";
+	"MooseX::AttributeHelpers::BEGIN@18";
+	"MooseX::AttributeHelpers::BEGIN@13";
+	"MooseX::AttributeHelpers::BEGIN@16";
+	"MooseX::AttributeHelpers::BEGIN@21";
+}
+subgraph cluster_MooseX_ClassAttribute {
+	label="MooseX::ClassAttribute";
+	"MooseX::ClassAttribute::BEGIN@11";
+}
+subgraph cluster_Moose_Role {
+	label="Moose::Role";
+	"Moose::Role::with";
+	"Moose::Role::BEGIN@6";
+	"Moose::Role::around";
+	"Moose::Role::BEGIN@17";
+	"Moose::Role::has";
+	"Moose::Role::BEGIN@14";
+	"Moose::Role::init_meta";
+	"Moose::Role::BEGIN@19";
+	"Moose::Role::BEGIN@2";
+	"Moose::Role::_add_method_modifier";
+	"Moose::Role::BEGIN@3";
+	"Moose::Role::before";
+	"Moose::Role::after";
+	"Moose::Role::BEGIN@15";
+	"Moose::Role::BEGIN@18";
+	"Moose::Role::BEGIN@5";
+	"Moose::Role::BEGIN@8";
+	"Moose::Role::requires";
+}
+"Moose::Role::init_meta" -> "Moose::Util::TypeConstraints::role_type";
+"Moose::Role::BEGIN@17" -> "Moose::Exporter::import";
+"Moose::Role::BEGIN@8" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@14";
+"Moose::Role::with" -> "Moose::Util::apply_all_roles";
+"Moose::Role::before" -> "Moose::Role::_add_method_modifier";
+"Moose::Role::after" -> "Moose::Role::_add_method_modifier";
+"Moose::Role::around" -> "Moose::Role::_add_method_modifier";
+"Moose::Role::BEGIN@5" -> "Exporter::import";
+"Moose::Role::BEGIN@6" -> "Exporter::import";
+"Moose::Role::_add_method_modifier" -> "Moose::Meta::Role::add_before_method_modifier";
+"Moose::Role::init_meta" -> "Moose::Util::TypeConstraints::find_type_constraint";
+"Moose::Role::has" -> "Moose::Util::_caller_info";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@2";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@18";
+"Moose::Role::with" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:255]";
+"Moose::Role::around" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:255]";
+"Moose::Role::before" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:255]";
+"Moose::Role::after" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:255]";
+"Moose::Role::has" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:255]";
+"Moose::Role::requires" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:255]";
+"Moose::Role::init_meta" -> "Moose::Meta::Role::initialize";
+"Moose::Role::_add_method_modifier" -> "Moose::Meta::Role::add_after_method_modifier";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@5";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@3";
+"Class::MOP::__ANON__[Class/MOP.pm:103]" -> "Moose::Role::before";
+"Moose::Role::before" -> "Moose::Role::before";
+"MooseX::AttributeHelpers::BEGIN@14" -> "Moose::Role::before";
+"MooseX::AttributeHelpers::BEGIN@16" -> "Moose::Role::before";
+"MooseX::AttributeHelpers::BEGIN@13" -> "Moose::Role::before";
+"MooseX::AttributeHelpers::BEGIN@21" -> "Moose::Role::before";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@7" -> "Moose::Role::around";
+"Moose::Role::around" -> "Moose::Role::around";
+"Moose::Role::_add_method_modifier" -> "Moose::Meta::Role::add_around_method_modifier";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@17";
+"Moose::Role::requires" -> "Moose::Meta::Role::add_required_methods";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@19";
+"Class::MOP::__ANON__[Class/MOP.pm:103]" -> "Moose::Role::after";
+"Moose::Role::after" -> "Moose::Role::after";
+"MooseX::AttributeHelpers::BEGIN@14" -> "Moose::Role::after";
+"MooseX::AttributeHelpers::BEGIN@16" -> "Moose::Role::after";
+"Moose::Role::init_meta" -> "UNIVERSAL::can";
+"MooseX::AttributeHelpers::Trait::Collection::Hash::BEGIN@9" -> "Moose::Role::with";
+"Moose::Role::with" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@20" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@17" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@16" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@18" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::Trait::Collection::Array::BEGIN@9" -> "Moose::Role::with";
+"Class::MOP::__ANON__[Class/MOP.pm:103]" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@15" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@19" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@10" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@14" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@13" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@21" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@20" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@17" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@16" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@18" -> "Moose::Role::has";
+"Class::MOP::__ANON__[Class/MOP.pm:103]" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@15" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@19" -> "Moose::Role::has";
+"Moose::Role::has" -> "Moose::Role::has";
+"MooseX::ClassAttribute::BEGIN@11" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@14" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@13" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@21" -> "Moose::Role::has";
+"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]" -> "Moose::Role::init_meta";
+"Moose::Role::BEGIN@3" -> "warnings::import";
+"Moose::Role::init_meta" -> "Class::MOP::Mixin::HasMethods::add_method";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@8";
+"Moose::Role::BEGIN@19" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@6";
+"Moose::Role::has" -> "Moose::Meta::Role::add_attribute";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@15";
+"Moose::Role::BEGIN@2" -> "strict::import";
+"Class::MOP::__ANON__[Class/MOP.pm:103]" -> "Moose::Role::requires";
+"Moose::Role::requires" -> "Moose::Role::requires";
+}

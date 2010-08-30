@@ -1,0 +1,30 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Test_Deep_Cmp {
+	label="Test::Deep::Cmp";
+	"Test::Deep::Cmp::import";
+	"Test::Deep::Cmp::new";
+}
+subgraph cluster_Test_Deep_ArrayLength {
+	label="Test::Deep::ArrayLength";
+	"Test::Deep::ArrayLength::init";
+	"Test::Deep::ArrayLength::BEGIN@6";
+	"Test::Deep::ArrayLength::descend";
+}
+subgraph cluster_Test_Deep_Ref {
+	label="Test::Deep::Ref";
+	"Test::Deep::Ref::test_reftype";
+}
+subgraph cluster_Test_Deep {
+	label="Test::Deep";
+	"Test::Deep::descend";
+	"Test::Deep::__ANON__[Test/Deep.pm:92]";
+}
+"Test::Deep::Cmp::new" -> "Test::Deep::ArrayLength::init";
+"Test::Deep::ArrayLength::BEGIN@6" -> "Test::Deep::Cmp::import";
+"Test::Deep::ArrayLength::descend" -> "Test::Deep::__ANON__[Test/Deep.pm:92]";
+"Test::Deep::ArrayLength::descend" -> "Test::Deep::descend";
+"Test::Deep::descend" -> "Test::Deep::ArrayLength::descend";
+"Test::Deep::ArrayLength::descend" -> "Test::Deep::Ref::test_reftype";
+"Test::Deep::__ANON__[Test/Deep.pm:92]" -> "Test::Deep::ArrayLength::BEGIN@6";
+}

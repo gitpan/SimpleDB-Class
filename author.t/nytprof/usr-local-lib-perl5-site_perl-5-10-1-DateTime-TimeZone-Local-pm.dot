@@ -1,0 +1,35 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_DateTime_TimeZone_Local {
+	label="DateTime::TimeZone::Local";
+	"DateTime::TimeZone::Local::BEGIN@10";
+	"DateTime::TimeZone::Local::BEGIN@4";
+	"DateTime::TimeZone::Local::BEGIN@3";
+	"DateTime::TimeZone::Local::BEGIN@6";
+	"DateTime::TimeZone::Local::BEGIN@9";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DateTime_TimeZone {
+	label="DateTime::TimeZone";
+	"DateTime::TimeZone::BEGIN@12";
+}
+"DateTime::TimeZone::BEGIN@12" -> "DateTime::TimeZone::Local::BEGIN@4";
+"DateTime::TimeZone::BEGIN@12" -> "DateTime::TimeZone::Local::BEGIN@10";
+"DateTime::TimeZone::Local::BEGIN@4" -> "warnings::import";
+"DateTime::TimeZone::Local::BEGIN@6" -> "vars::import";
+"DateTime::TimeZone::BEGIN@12" -> "DateTime::TimeZone::Local::BEGIN@9";
+"DateTime::TimeZone::Local::BEGIN@3" -> "strict::import";
+"DateTime::TimeZone::BEGIN@12" -> "DateTime::TimeZone::Local::BEGIN@6";
+"DateTime::TimeZone::BEGIN@12" -> "DateTime::TimeZone::Local::BEGIN@3";
+}

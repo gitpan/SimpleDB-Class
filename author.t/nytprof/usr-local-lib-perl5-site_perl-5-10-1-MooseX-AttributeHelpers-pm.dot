@@ -1,0 +1,276 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_MooseX_ClassAttribute_Role_Meta_Class {
+	label="MooseX::ClassAttribute::Role::Meta::Class";
+	"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6";
+}
+subgraph cluster_MooseX_AttributeHelpers_Collection_Hash {
+	label="MooseX::AttributeHelpers::Collection::Hash";
+	"MooseX::AttributeHelpers::Collection::Hash::BEGIN@3";
+	"MooseX::AttributeHelpers::Collection::Hash::BEGIN@12";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Collection_Hash {
+	label="MooseX::AttributeHelpers::Trait::Collection::Hash";
+	"MooseX::AttributeHelpers::Trait::Collection::Hash::BEGIN@9";
+	"MooseX::AttributeHelpers::Trait::Collection::Hash::BEGIN@3";
+	"MooseX::AttributeHelpers::Trait::Collection::Hash::BEGIN@22";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Number {
+	label="MooseX::AttributeHelpers::Trait::Number";
+	"MooseX::AttributeHelpers::Trait::Number::BEGIN@56";
+	"MooseX::AttributeHelpers::Trait::Number::BEGIN@2";
+}
+subgraph cluster_Moose_Util_TypeConstraints {
+	label="Moose::Util::TypeConstraints";
+	"Moose::Util::TypeConstraints::subtype";
+	"Moose::Util::TypeConstraints::as";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::with";
+	"Moose::extends";
+}
+subgraph cluster_MooseX_AttributeHelpers_Meta_Method_Curried {
+	label="MooseX::AttributeHelpers::Meta::Method::Curried";
+	"MooseX::AttributeHelpers::Meta::Method::Curried::BEGIN@3";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Collection_List {
+	label="MooseX::AttributeHelpers::Trait::Collection::List";
+	"MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@3";
+	"MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@22";
+	"MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@9";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Collection_Bag {
+	label="MooseX::AttributeHelpers::Trait::Collection::Bag";
+	"MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@3";
+	"MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@4";
+	"MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@10";
+	"MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@36";
+	"MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@37";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Collection_ImmutableHash {
+	label="MooseX::AttributeHelpers::Trait::Collection::ImmutableHash";
+	"MooseX::AttributeHelpers::Trait::Collection::ImmutableHash::BEGIN@3";
+	"MooseX::AttributeHelpers::Trait::Collection::ImmutableHash::BEGIN@9";
+	"MooseX::AttributeHelpers::Trait::Collection::ImmutableHash::BEGIN@22";
+}
+subgraph cluster_MooseX_AttributeHelpers_Counter {
+	label="MooseX::AttributeHelpers::Counter";
+	"MooseX::AttributeHelpers::Counter::BEGIN@12";
+	"MooseX::AttributeHelpers::Counter::BEGIN@3";
+}
+subgraph cluster_MooseX_AttributeHelpers_Collection_Bag {
+	label="MooseX::AttributeHelpers::Collection::Bag";
+	"MooseX::AttributeHelpers::Collection::Bag::BEGIN@3";
+	"MooseX::AttributeHelpers::Collection::Bag::BEGIN@12";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Bool {
+	label="MooseX::AttributeHelpers::Trait::Bool";
+	"MooseX::AttributeHelpers::Trait::Bool::BEGIN@35";
+	"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2";
+	"MooseX::AttributeHelpers::Trait::Bool::BEGIN@3";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::VERSION";
+}
+subgraph cluster_MooseX_AttributeHelpers_Collection_Array {
+	label="MooseX::AttributeHelpers::Collection::Array";
+	"MooseX::AttributeHelpers::Collection::Array::BEGIN@12";
+	"MooseX::AttributeHelpers::Collection::Array::BEGIN@3";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_String {
+	label="MooseX::AttributeHelpers::Trait::String";
+	"MooseX::AttributeHelpers::Trait::String::BEGIN@3";
+	"MooseX::AttributeHelpers::Trait::String::BEGIN@9";
+	"MooseX::AttributeHelpers::Trait::String::BEGIN@48";
+}
+subgraph cluster_MooseX_AttributeHelpers_Number {
+	label="MooseX::AttributeHelpers::Number";
+	"MooseX::AttributeHelpers::Number::BEGIN@11";
+	"MooseX::AttributeHelpers::Number::BEGIN@2";
+}
+subgraph cluster_MooseX_AttributeHelpers_Bool {
+	label="MooseX::AttributeHelpers::Bool";
+	"MooseX::AttributeHelpers::Bool::BEGIN@11";
+	"MooseX::AttributeHelpers::Bool::BEGIN@2";
+}
+subgraph cluster_MooseX_AttributeHelpers_Collection_List {
+	label="MooseX::AttributeHelpers::Collection::List";
+	"MooseX::AttributeHelpers::Collection::List::BEGIN@12";
+	"MooseX::AttributeHelpers::Collection::List::BEGIN@3";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Counter {
+	label="MooseX::AttributeHelpers::Trait::Counter";
+	"MooseX::AttributeHelpers::Trait::Counter::BEGIN@48";
+	"MooseX::AttributeHelpers::Trait::Counter::BEGIN@9";
+	"MooseX::AttributeHelpers::Trait::Counter::BEGIN@3";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Collection_Array {
+	label="MooseX::AttributeHelpers::Trait::Collection::Array";
+	"MooseX::AttributeHelpers::Trait::Collection::Array::BEGIN@3";
+	"MooseX::AttributeHelpers::Trait::Collection::Array::BEGIN@9";
+	"MooseX::AttributeHelpers::Trait::Collection::Array::BEGIN@22";
+}
+subgraph cluster_MooseX_AttributeHelpers {
+	label="MooseX::AttributeHelpers";
+	"MooseX::AttributeHelpers::BEGIN@25";
+	"MooseX::AttributeHelpers::BEGIN@10";
+	"MooseX::AttributeHelpers::BEGIN@17";
+	"MooseX::AttributeHelpers::BEGIN@26";
+	"MooseX::AttributeHelpers::BEGIN@16";
+	"MooseX::AttributeHelpers::BEGIN@18";
+	"MooseX::AttributeHelpers::BEGIN@11";
+	"MooseX::AttributeHelpers::BEGIN@23";
+	"MooseX::AttributeHelpers::BEGIN@28";
+	"MooseX::AttributeHelpers::BEGIN@30";
+	"MooseX::AttributeHelpers::BEGIN@19";
+	"MooseX::AttributeHelpers::BEGIN@14";
+	"MooseX::AttributeHelpers::BEGIN@29";
+	"MooseX::AttributeHelpers::BEGIN@20";
+	"MooseX::AttributeHelpers::BEGIN@31";
+	"MooseX::AttributeHelpers::BEGIN@15";
+	"MooseX::AttributeHelpers::BEGIN@8";
+	"MooseX::AttributeHelpers::BEGIN@24";
+	"MooseX::AttributeHelpers::BEGIN@13";
+	"MooseX::AttributeHelpers::BEGIN@27";
+	"MooseX::AttributeHelpers::BEGIN@21";
+}
+subgraph cluster_MooseX_AttributeHelpers_String {
+	label="MooseX::AttributeHelpers::String";
+	"MooseX::AttributeHelpers::String::BEGIN@12";
+	"MooseX::AttributeHelpers::String::BEGIN@3";
+}
+subgraph cluster_Moose_Role {
+	label="Moose::Role";
+	"Moose::Role::before";
+	"Moose::Role::after";
+	"Moose::Role::with";
+	"Moose::Role::has";
+}
+subgraph cluster_MooseX_AttributeHelpers_Collection_ImmutableHash {
+	label="MooseX::AttributeHelpers::Collection::ImmutableHash";
+	"MooseX::AttributeHelpers::Collection::ImmutableHash::BEGIN@12";
+	"MooseX::AttributeHelpers::Collection::ImmutableHash::BEGIN@3";
+}
+subgraph cluster_MooseX_AttributeHelpers_Meta_Method_Provided {
+	label="MooseX::AttributeHelpers::Meta::Method::Provided";
+	"MooseX::AttributeHelpers::Meta::Method::Provided::BEGIN@3";
+}
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@25";
+"MooseX::AttributeHelpers::BEGIN@13" -> "MooseX::AttributeHelpers::Trait::Bool::BEGIN@35";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@18";
+"MooseX::AttributeHelpers::BEGIN@17" -> "MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@9";
+"MooseX::AttributeHelpers::BEGIN@19" -> "MooseX::AttributeHelpers::Trait::Collection::Hash::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@20" -> "MooseX::AttributeHelpers::Trait::Collection::ImmutableHash::BEGIN@22";
+"MooseX::AttributeHelpers::BEGIN@14" -> "MooseX::AttributeHelpers::Trait::Counter::BEGIN@9";
+"MooseX::AttributeHelpers::BEGIN@21" -> "MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@37";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@30";
+"MooseX::AttributeHelpers::BEGIN@18" -> "MooseX::AttributeHelpers::Trait::Collection::Array::BEGIN@22";
+"MooseX::AttributeHelpers::BEGIN@18" -> "MooseX::AttributeHelpers::Trait::Collection::Array::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@20" -> "MooseX::AttributeHelpers::Trait::Collection::ImmutableHash::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@30" -> "MooseX::AttributeHelpers::Collection::ImmutableHash::BEGIN@3";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@16";
+"MooseX::AttributeHelpers::BEGIN@29" -> "MooseX::AttributeHelpers::Collection::Hash::BEGIN@12";
+"MooseX::AttributeHelpers::BEGIN@25" -> "MooseX::AttributeHelpers::String::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@27" -> "MooseX::AttributeHelpers::Collection::List::BEGIN@12";
+"MooseX::AttributeHelpers::BEGIN@31" -> "MooseX::AttributeHelpers::Collection::Bag::BEGIN@12";
+"MooseX::AttributeHelpers::BEGIN@21" -> "Moose::Util::TypeConstraints::as";
+"MooseX::AttributeHelpers::BEGIN@25" -> "MooseX::AttributeHelpers::String::BEGIN@12";
+"MooseX::AttributeHelpers::BEGIN@29" -> "MooseX::AttributeHelpers::Collection::Hash::BEGIN@3";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@21";
+"MooseX::AttributeHelpers::BEGIN@10" -> "MooseX::AttributeHelpers::Meta::Method::Provided::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@25" -> "Moose::extends";
+"MooseX::AttributeHelpers::BEGIN@10" -> "Moose::extends";
+"MooseX::AttributeHelpers::BEGIN@29" -> "Moose::extends";
+"MooseX::AttributeHelpers::BEGIN@26" -> "Moose::extends";
+"MooseX::AttributeHelpers::BEGIN@31" -> "Moose::extends";
+"MooseX::AttributeHelpers::BEGIN@11" -> "Moose::extends";
+"MooseX::AttributeHelpers::BEGIN@28" -> "Moose::extends";
+"MooseX::AttributeHelpers::BEGIN@23" -> "Moose::extends";
+"MooseX::AttributeHelpers::BEGIN@24" -> "Moose::extends";
+"MooseX::AttributeHelpers::BEGIN@30" -> "Moose::extends";
+"MooseX::AttributeHelpers::BEGIN@27" -> "Moose::extends";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@23";
+"MooseX::AttributeHelpers::BEGIN@25" -> "Moose::with";
+"MooseX::AttributeHelpers::BEGIN@29" -> "Moose::with";
+"MooseX::AttributeHelpers::BEGIN@26" -> "Moose::with";
+"MooseX::AttributeHelpers::BEGIN@31" -> "Moose::with";
+"MooseX::AttributeHelpers::BEGIN@28" -> "Moose::with";
+"MooseX::AttributeHelpers::BEGIN@23" -> "Moose::with";
+"MooseX::AttributeHelpers::BEGIN@24" -> "Moose::with";
+"MooseX::AttributeHelpers::BEGIN@30" -> "Moose::with";
+"MooseX::AttributeHelpers::BEGIN@27" -> "Moose::with";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@29";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@20";
+"MooseX::AttributeHelpers::BEGIN@14" -> "Moose::Role::before";
+"MooseX::AttributeHelpers::BEGIN@13" -> "Moose::Role::before";
+"MooseX::AttributeHelpers::BEGIN@16" -> "Moose::Role::before";
+"MooseX::AttributeHelpers::BEGIN@21" -> "Moose::Role::before";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@26";
+"MooseX::AttributeHelpers::BEGIN@11" -> "MooseX::AttributeHelpers::Meta::Method::Curried::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@13" -> "MooseX::AttributeHelpers::Trait::Bool::BEGIN@3";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@28";
+"MooseX::AttributeHelpers::BEGIN@17" -> "MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@16" -> "MooseX::AttributeHelpers::Trait::String::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@21" -> "MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@4";
+"MooseX::AttributeHelpers::BEGIN@21" -> "Moose::Util::TypeConstraints::subtype";
+"MooseX::AttributeHelpers::BEGIN@20" -> "MooseX::AttributeHelpers::Trait::Collection::ImmutableHash::BEGIN@9";
+"MooseX::AttributeHelpers::BEGIN@23" -> "MooseX::AttributeHelpers::Counter::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@16" -> "MooseX::AttributeHelpers::Trait::String::BEGIN@48";
+"MooseX::AttributeHelpers::BEGIN@17" -> "MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@22";
+"MooseX::AttributeHelpers::BEGIN@18" -> "MooseX::AttributeHelpers::Trait::Collection::Array::BEGIN@9";
+"MooseX::AttributeHelpers::BEGIN@27" -> "MooseX::AttributeHelpers::Collection::List::BEGIN@3";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@8";
+"MooseX::AttributeHelpers::BEGIN@14" -> "Moose::Role::after";
+"MooseX::AttributeHelpers::BEGIN@16" -> "Moose::Role::after";
+"MooseX::AttributeHelpers::BEGIN@28" -> "MooseX::AttributeHelpers::Collection::Array::BEGIN@12";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@10";
+"MooseX::AttributeHelpers::BEGIN@20" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@17" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@18" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@16" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@15" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@19" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@14" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@13" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@21" -> "Moose::Role::with";
+"MooseX::AttributeHelpers::BEGIN@26" -> "MooseX::AttributeHelpers::Bool::BEGIN@11";
+"MooseX::AttributeHelpers::BEGIN@19" -> "MooseX::AttributeHelpers::Trait::Collection::Hash::BEGIN@22";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@11";
+"MooseX::AttributeHelpers::BEGIN@20" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@17" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@18" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@16" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@15" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@19" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@14" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@13" -> "Moose::Role::has";
+"MooseX::AttributeHelpers::BEGIN@21" -> "Moose::Role::has";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@14";
+"MooseX::AttributeHelpers::BEGIN@28" -> "MooseX::AttributeHelpers::Collection::Array::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@14" -> "MooseX::AttributeHelpers::Trait::Counter::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@14" -> "MooseX::AttributeHelpers::Trait::Counter::BEGIN@48";
+"MooseX::AttributeHelpers::BEGIN@21" -> "MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@3";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@31";
+"MooseX::AttributeHelpers::BEGIN@16" -> "MooseX::AttributeHelpers::Trait::String::BEGIN@9";
+"MooseX::AttributeHelpers::BEGIN@13" -> "MooseX::AttributeHelpers::Trait::Bool::BEGIN@2";
+"MooseX::AttributeHelpers::BEGIN@19" -> "MooseX::AttributeHelpers::Trait::Collection::Hash::BEGIN@9";
+"MooseX::AttributeHelpers::BEGIN@23" -> "MooseX::AttributeHelpers::Counter::BEGIN@12";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@19";
+"MooseX::AttributeHelpers::BEGIN@31" -> "MooseX::AttributeHelpers::Collection::Bag::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@24" -> "MooseX::AttributeHelpers::Number::BEGIN@2";
+"MooseX::AttributeHelpers::BEGIN@15" -> "MooseX::AttributeHelpers::Trait::Number::BEGIN@2";
+"MooseX::AttributeHelpers::BEGIN@24" -> "MooseX::AttributeHelpers::Number::BEGIN@11";
+"MooseX::AttributeHelpers::BEGIN@21" -> "MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@36";
+"MooseX::AttributeHelpers::BEGIN@21" -> "MooseX::AttributeHelpers::Trait::Collection::Bag::BEGIN@10";
+"MooseX::AttributeHelpers::BEGIN@26" -> "MooseX::AttributeHelpers::Bool::BEGIN@2";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@17";
+"MooseX::AttributeHelpers::BEGIN@15" -> "MooseX::AttributeHelpers::Trait::Number::BEGIN@56";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@15";
+"MooseX::AttributeHelpers::BEGIN@30" -> "MooseX::AttributeHelpers::Collection::ImmutableHash::BEGIN@12";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@24";
+"MooseX::AttributeHelpers::BEGIN@8" -> "UNIVERSAL::VERSION";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@27";
+"MooseX::ClassAttribute::Role::Meta::Class::BEGIN@6" -> "MooseX::AttributeHelpers::BEGIN@13";
+}

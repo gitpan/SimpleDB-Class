@@ -1,0 +1,80 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_MooseX_Types_TypeDecorator {
+	label="MooseX::Types::TypeDecorator";
+	"MooseX::Types::TypeDecorator::__ANON__[MooseX/Types/TypeDecorator.pm:20]";
+	"MooseX::Types::TypeDecorator::new";
+}
+subgraph cluster_Carp_Clan {
+	label="Carp::Clan";
+	"Carp::Clan::import";
+}
+subgraph cluster___TYPE___SimpleDB_Class_Types {
+	label="__TYPE__::SimpleDB::Class::Types";
+	"__TYPE__::SimpleDB::Class::Types::SdbHashRef";
+	"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfIntAsStr";
+	"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfInt";
+	"__TYPE__::SimpleDB::Class::Types::SdbStr";
+	"__TYPE__::SimpleDB::Class::Types::SdbDateTime";
+	"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfStr";
+	"__TYPE__::SimpleDB::Class::Types::SdbIntAsStr";
+	"__TYPE__::SimpleDB::Class::Types::SdbInt";
+	"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfDateTime";
+	"__TYPE__::SimpleDB::Class::Types::SdbMediumStr";
+}
+subgraph cluster_SimpleDB_Class_Role_Itemized {
+	label="SimpleDB::Class::Role::Itemized";
+	"SimpleDB::Class::Role::Itemized::BEGIN@4";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_MooseX_Types {
+	label="MooseX::Types";
+	"MooseX::Types::BEGIN@14";
+}
+subgraph cluster_overload {
+	label="overload";
+	"overload::import";
+}
+subgraph cluster_MooseX_Types_UndefinedType {
+	label="MooseX::Types::UndefinedType";
+	"MooseX::Types::UndefinedType::new";
+	"MooseX::Types::UndefinedType::BEGIN@13";
+	"MooseX::Types::UndefinedType::__ANON__[MooseX/Types/UndefinedType.pm:15]";
+	"MooseX::Types::UndefinedType::BEGIN@9";
+	"MooseX::Types::UndefinedType::DESTROY";
+	"MooseX::Types::UndefinedType::BEGIN@15";
+	"MooseX::Types::UndefinedType::name";
+	"MooseX::Types::UndefinedType::BEGIN@10";
+	"MooseX::Types::UndefinedType::BEGIN@12";
+}
+"MooseX::Types::TypeDecorator::new" -> "MooseX::Types::UndefinedType::__ANON__[MooseX/Types/UndefinedType.pm:15]";
+"MooseX::Types::BEGIN@14" -> "MooseX::Types::UndefinedType::BEGIN@15";
+"SimpleDB::Class::Role::Itemized::BEGIN@4" -> "MooseX::Types::UndefinedType::DESTROY";
+"MooseX::Types::UndefinedType::BEGIN@13" -> "Carp::Clan::import";
+"MooseX::Types::BEGIN@14" -> "MooseX::Types::UndefinedType::BEGIN@9";
+"MooseX::Types::BEGIN@14" -> "MooseX::Types::UndefinedType::BEGIN@12";
+"MooseX::Types::TypeDecorator::__ANON__[MooseX/Types/TypeDecorator.pm:20]" -> "MooseX::Types::UndefinedType::name";
+"MooseX::Types::UndefinedType::__ANON__[MooseX/Types/UndefinedType.pm:15]" -> "MooseX::Types::UndefinedType::name";
+"MooseX::Types::UndefinedType::BEGIN@15" -> "overload::import";
+"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfIntAsStr" -> "MooseX::Types::UndefinedType::new";
+"__TYPE__::SimpleDB::Class::Types::SdbHashRef" -> "MooseX::Types::UndefinedType::new";
+"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfInt" -> "MooseX::Types::UndefinedType::new";
+"__TYPE__::SimpleDB::Class::Types::SdbDateTime" -> "MooseX::Types::UndefinedType::new";
+"__TYPE__::SimpleDB::Class::Types::SdbStr" -> "MooseX::Types::UndefinedType::new";
+"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfStr" -> "MooseX::Types::UndefinedType::new";
+"__TYPE__::SimpleDB::Class::Types::SdbIntAsStr" -> "MooseX::Types::UndefinedType::new";
+"__TYPE__::SimpleDB::Class::Types::SdbInt" -> "MooseX::Types::UndefinedType::new";
+"__TYPE__::SimpleDB::Class::Types::SdbArrayRefOfDateTime" -> "MooseX::Types::UndefinedType::new";
+"__TYPE__::SimpleDB::Class::Types::SdbMediumStr" -> "MooseX::Types::UndefinedType::new";
+"MooseX::Types::UndefinedType::BEGIN@9" -> "warnings::import";
+"MooseX::Types::BEGIN@14" -> "MooseX::Types::UndefinedType::BEGIN@13";
+"MooseX::Types::BEGIN@14" -> "MooseX::Types::UndefinedType::BEGIN@10";
+"MooseX::Types::UndefinedType::BEGIN@10" -> "strict::import";
+}

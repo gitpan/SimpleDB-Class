@@ -1,0 +1,50 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_DateTime_TimeZone_Floating {
+	label="DateTime::TimeZone::Floating";
+	"DateTime::TimeZone::Floating::BEGIN@9";
+	"DateTime::TimeZone::Floating::BEGIN@3";
+	"DateTime::TimeZone::Floating::is_floating";
+	"DateTime::TimeZone::Floating::BEGIN@8";
+	"DateTime::TimeZone::Floating::BEGIN@5";
+	"DateTime::TimeZone::Floating::new";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::_calc_local_rd";
+	"DateTime::_handle_offset_modifier";
+	"DateTime::_compare";
+	"DateTime::_calc_utc_rd";
+	"DateTime::set_time_zone";
+}
+subgraph cluster_DateTime_TimeZone {
+	label="DateTime::TimeZone";
+	"DateTime::TimeZone::BEGIN@11";
+	"DateTime::TimeZone::new";
+}
+"DateTime::TimeZone::BEGIN@11" -> "DateTime::TimeZone::Floating::BEGIN@8";
+"DateTime::TimeZone::BEGIN@11" -> "DateTime::TimeZone::Floating::BEGIN@3";
+"DateTime::TimeZone::new" -> "DateTime::TimeZone::Floating::new";
+"DateTime::TimeZone::BEGIN@11" -> "DateTime::TimeZone::Floating::BEGIN@9";
+"DateTime::TimeZone::BEGIN@11" -> "DateTime::TimeZone::Floating::BEGIN@5";
+"DateTime::TimeZone::Floating::BEGIN@9" -> "base::import";
+"DateTime::TimeZone::Floating::BEGIN@5" -> "vars::import";
+"DateTime::_calc_local_rd" -> "DateTime::TimeZone::Floating::is_floating";
+"DateTime::_handle_offset_modifier" -> "DateTime::TimeZone::Floating::is_floating";
+"DateTime::_calc_utc_rd" -> "DateTime::TimeZone::Floating::is_floating";
+"DateTime::_compare" -> "DateTime::TimeZone::Floating::is_floating";
+"DateTime::set_time_zone" -> "DateTime::TimeZone::Floating::is_floating";
+"DateTime::TimeZone::Floating::BEGIN@3" -> "strict::import";
+}

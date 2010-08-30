@@ -1,0 +1,133 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Symbol {
+	label="Symbol";
+	"Symbol::qualify_to_ref";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::unimport";
+	"warnings::import";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Sub_Identify {
+	label="Sub::Identify";
+	"Sub::Identify::BEGIN@3";
+	"Sub::Identify::sub_fullname";
+	"Sub::Identify::BEGIN@6";
+	"Sub::Identify::BEGIN@4";
+}
+subgraph cluster_Variable_Magic {
+	label="Variable::Magic";
+	"Variable::Magic::wizard";
+}
+subgraph cluster_MooseX_Types_Moose {
+	label="MooseX::Types::Moose";
+	"MooseX::Types::Moose::BEGIN@15";
+}
+subgraph cluster_B_Hooks_EndOfScope {
+	label="B::Hooks::EndOfScope";
+	"B::Hooks::EndOfScope::BEGIN@7";
+	"B::Hooks::EndOfScope::BEGIN@11";
+	"B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:47]";
+	"B::Hooks::EndOfScope::on_scope_end";
+	"B::Hooks::EndOfScope::BEGIN@6";
+}
+subgraph cluster_namespace_clean {
+	label="namespace::clean";
+	"namespace::clean::BEGIN@340";
+	"namespace::clean::BEGIN@14";
+	"namespace::clean::get_functions";
+	"namespace::clean::BEGIN@12";
+	"namespace::clean::BEGIN@13";
+	"namespace::clean::BEGIN@16";
+	"namespace::clean::BEGIN@383";
+	"namespace::clean::BEGIN@10";
+	"namespace::clean::__ANON__[namespace/clean.pm:275]";
+	"namespace::clean::BEGIN@1";
+	"namespace::clean::BEGIN@2";
+	"namespace::clean::__ANON__[namespace/clean.pm:211]";
+	"namespace::clean::BEGIN@320";
+	"namespace::clean::BEGIN@9";
+	"namespace::clean::get_class_store";
+	"namespace::clean::BEGIN@15";
+	"namespace::clean::import";
+	"namespace::clean::CORE:match";
+	"namespace::clean::BEGIN@190";
+	"namespace::clean::BEGIN@170";
+}
+subgraph cluster_Sub_Exporter {
+	label="Sub::Exporter";
+	"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_MooseX_Types {
+	label="MooseX::Types";
+	"MooseX::Types::BEGIN@20";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_MooseX_Types_Base {
+	label="MooseX::Types::Base";
+	"MooseX::Types::Base::BEGIN@15";
+}
+subgraph cluster_MooseX_Types_CheckedUtilExports {
+	label="MooseX::Types::CheckedUtilExports";
+	"MooseX::Types::CheckedUtilExports::BEGIN@17";
+}
+"namespace::clean::BEGIN@14" -> "B::Hooks::EndOfScope::BEGIN@6";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@13";
+"namespace::clean::BEGIN@14" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"namespace::clean::BEGIN@14" -> "namespace::clean::BEGIN@2";
+"namespace::clean::__ANON__[namespace/clean.pm:211]" -> "Sub::Identify::sub_fullname";
+"namespace::clean::BEGIN@383" -> "warnings::unimport";
+"namespace::clean::BEGIN@190" -> "warnings::unimport";
+"namespace::clean::BEGIN@13" -> "Exporter::import";
+"namespace::clean::BEGIN@16" -> "Exporter::import";
+"namespace::clean::BEGIN@15" -> "Exporter::import";
+"namespace::clean::BEGIN@15" -> "Sub::Identify::BEGIN@6";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@340";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@16";
+"namespace::clean::BEGIN@14" -> "Variable::Magic::wizard";
+"namespace::clean::import" -> "namespace::clean::get_class_store";
+"namespace::clean::import" -> "B::Hooks::EndOfScope::on_scope_end";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@15";
+"namespace::clean::import" -> "namespace::clean::CORE:match";
+"namespace::clean::get_functions" -> "namespace::clean::CORE:match";
+"namespace::clean::BEGIN@15" -> "Sub::Identify::BEGIN@3";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@10";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@320";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@9";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@14";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@190";
+"namespace::clean::BEGIN@14" -> "B::Hooks::EndOfScope::BEGIN@11";
+"namespace::clean::BEGIN@340" -> "strict::unimport";
+"namespace::clean::BEGIN@320" -> "strict::unimport";
+"namespace::clean::BEGIN@170" -> "strict::unimport";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@12";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@383";
+"namespace::clean::BEGIN@14" -> "namespace::clean::BEGIN@1";
+"namespace::clean::__ANON__[namespace/clean.pm:275]" -> "namespace::clean::__ANON__[namespace/clean.pm:211]";
+"namespace::clean::BEGIN@14" -> "B::Hooks::EndOfScope::BEGIN@7";
+"namespace::clean::BEGIN@9" -> "warnings::import";
+"namespace::clean::get_functions" -> "Symbol::qualify_to_ref";
+"namespace::clean::BEGIN@12" -> "vars::import";
+"namespace::clean::import" -> "namespace::clean::get_functions";
+"B::Hooks::EndOfScope::__ANON__[B/Hooks/EndOfScope.pm:47]" -> "namespace::clean::__ANON__[namespace/clean.pm:275]";
+"MooseX::Types::BEGIN@20" -> "namespace::clean::import";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::import";
+"MooseX::Types::Moose::BEGIN@15" -> "namespace::clean::import";
+"MooseX::Types::CheckedUtilExports::BEGIN@17" -> "namespace::clean::import";
+"namespace::clean::BEGIN@10" -> "strict::import";
+"MooseX::Types::Base::BEGIN@15" -> "namespace::clean::BEGIN@170";
+"namespace::clean::BEGIN@15" -> "Sub::Identify::BEGIN@4";
+}

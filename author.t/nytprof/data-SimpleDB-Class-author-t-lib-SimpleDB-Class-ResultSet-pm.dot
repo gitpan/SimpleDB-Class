@@ -1,0 +1,161 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SimpleDB_Class_Cache {
+	label="SimpleDB::Class::Cache";
+	"SimpleDB::Class::Cache::get";
+	"SimpleDB::Class::Cache::set";
+}
+subgraph cluster_Foo_Child {
+	label="Foo::Child";
+	"Foo::Child::domain_name";
+	"Foo::Child::domain";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+}
+subgraph cluster_SimpleDB_Class_Item {
+	label="SimpleDB::Class::Item";
+	"SimpleDB::Class::Item::id";
+	"SimpleDB::Class::Item::to_hashref";
+}
+subgraph cluster_SimpleDB_Class_Role_Itemized {
+	label="SimpleDB::Class::Role::Itemized";
+	"SimpleDB::Class::Role::Itemized::parse_item";
+	"SimpleDB::Class::Role::Itemized::instantiate_item";
+}
+subgraph cluster_SimpleDB_Class {
+	label="SimpleDB::Class";
+	"SimpleDB::Class::add_domain_prefix";
+	"SimpleDB::Class::cache";
+	"SimpleDB::Class::http";
+}
+subgraph cluster_SimpleDB_Client {
+	label="SimpleDB::Client";
+	"SimpleDB::Client::send_request";
+}
+subgraph cluster_SimpleDB_Class_ResultSet {
+	label="SimpleDB::Class::ResultSet";
+	"SimpleDB::Class::ResultSet::BEGIN@21";
+	"SimpleDB::Class::ResultSet::count";
+	"SimpleDB::Class::ResultSet::limit";
+	"SimpleDB::Class::ResultSet::limit_counter";
+	"SimpleDB::Class::ResultSet::item_class";
+	"SimpleDB::Class::ResultSet::simpledb";
+	"SimpleDB::Class::ResultSet::has_order_by";
+	"SimpleDB::Class::ResultSet::iterator";
+	"SimpleDB::Class::ResultSet::order_by";
+	"SimpleDB::Class::ResultSet::set";
+	"SimpleDB::Class::ResultSet::BEGIN@22";
+	"SimpleDB::Class::ResultSet::where";
+	"SimpleDB::Class::ResultSet::consistent";
+	"SimpleDB::Class::ResultSet::has_result";
+	"SimpleDB::Class::ResultSet::has_limit";
+	"SimpleDB::Class::ResultSet::__ANON__[../lib/SimpleDB/Class/ResultSet.pm:109]";
+	"SimpleDB::Class::ResultSet::result";
+	"SimpleDB::Class::ResultSet::fetch_result";
+	"SimpleDB::Class::ResultSet::paginate";
+	"SimpleDB::Class::ResultSet::BEGIN@520";
+	"SimpleDB::Class::ResultSet::next";
+}
+subgraph cluster_SimpleDB_Class_Domain {
+	label="SimpleDB::Class::Domain";
+	"SimpleDB::Class::Domain::BEGIN@19";
+}
+subgraph cluster_Foo_Domain {
+	label="Foo::Domain";
+	"Foo::Domain::parent";
+	"Foo::Domain::domain_name";
+}
+subgraph cluster_Moose_Object {
+	label="Moose::Object";
+	"Moose::Object::DESTROY";
+}
+subgraph cluster_SimpleDB_Class_SQL {
+	label="SimpleDB::Class::SQL";
+	"SimpleDB::Class::SQL::new";
+	"SimpleDB::Class::SQL::to_sql";
+}
+subgraph cluster_main {
+	label="main";
+	"main::RUNTIME";
+}
+subgraph cluster_Class_MOP_Mixin_AttributeCore {
+	label="Class::MOP::Mixin::AttributeCore";
+	"Class::MOP::Mixin::AttributeCore::default";
+}
+subgraph cluster_Exception_Class_Base {
+	label="Exception::Class::Base";
+	"Exception::Class::Base::caught";
+	"Exception::Class::Base::__ANON__[Exception/Class/Base.pm:30]";
+}
+"SimpleDB::Class::ResultSet::next" -> "Foo::Domain::domain_name";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::ResultSet::limit_counter";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::ResultSet::order_by";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::ResultSet::order_by";
+"SimpleDB::Class::ResultSet::BEGIN@520" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+"SimpleDB::Class::ResultSet::next" -> "Exception::Class::Base::caught";
+"SimpleDB::Class::ResultSet::count" -> "SimpleDB::Class::http";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::http";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::http";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::ResultSet::limit";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::ResultSet::limit";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::ResultSet::limit";
+"SimpleDB::Class::ResultSet::next" -> "Foo::Child::domain";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::Cache::get";
+"SimpleDB::Class::ResultSet::count" -> "SimpleDB::Client::send_request";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Client::send_request";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Client::send_request";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::Cache::set";
+"SimpleDB::Class::Domain::BEGIN@19" -> "SimpleDB::Class::ResultSet::BEGIN@21";
+"main::RUNTIME" -> "SimpleDB::Class::ResultSet::count";
+"main::RUNTIME" -> "SimpleDB::Class::ResultSet::paginate";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::ResultSet::set";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::Role::Itemized::instantiate_item";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::ResultSet::has_limit";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::ResultSet::has_limit";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::ResultSet::has_limit";
+"Class::MOP::Mixin::AttributeCore::default" -> "SimpleDB::Class::ResultSet::__ANON__[../lib/SimpleDB/Class/ResultSet.pm:109]";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::ResultSet::result";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::ResultSet::result";
+"SimpleDB::Class::ResultSet::next" -> "Foo::Child::domain_name";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::ResultSet::fetch_result";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::ResultSet::fetch_result";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::ResultSet::has_order_by";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::ResultSet::has_order_by";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::ResultSet::iterator";
+"SimpleDB::Class::Domain::BEGIN@19" -> "SimpleDB::Class::ResultSet::BEGIN@22";
+"SimpleDB::Class::ResultSet::count" -> "Moose::Object::DESTROY";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::Item::to_hashref";
+"SimpleDB::Class::ResultSet::count" -> "SimpleDB::Class::ResultSet::simpledb";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::ResultSet::simpledb";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::ResultSet::simpledb";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::ResultSet::simpledb";
+"SimpleDB::Class::ResultSet::count" -> "SimpleDB::Class::ResultSet::consistent";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::ResultSet::consistent";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::ResultSet::consistent";
+"SimpleDB::Class::Domain::BEGIN@19" -> "SimpleDB::Class::ResultSet::BEGIN@520";
+"SimpleDB::Class::ResultSet::count" -> "SimpleDB::Class::ResultSet::next";
+"main::RUNTIME" -> "SimpleDB::Class::ResultSet::next";
+"SimpleDB::Class::ResultSet::BEGIN@21" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+"SimpleDB::Class::ResultSet::count" -> "SimpleDB::Class::SQL::new";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::SQL::new";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::SQL::new";
+"SimpleDB::Class::ResultSet::count" -> "SimpleDB::Class::ResultSet::item_class";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::ResultSet::item_class";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::ResultSet::item_class";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::ResultSet::item_class";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::add_domain_prefix";
+"SimpleDB::Class::ResultSet::next" -> "Foo::Domain::parent";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::cache";
+"SimpleDB::Class::ResultSet::next" -> "Exception::Class::Base::__ANON__[Exception/Class/Base.pm:30]";
+"SimpleDB::Class::ResultSet::count" -> "SimpleDB::Class::SQL::to_sql";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::SQL::to_sql";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::SQL::to_sql";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::Role::Itemized::parse_item";
+"SimpleDB::Class::ResultSet::count" -> "SimpleDB::Class::Item::id";
+"SimpleDB::Class::ResultSet::fetch_result" -> "SimpleDB::Class::ResultSet::where";
+"SimpleDB::Class::ResultSet::paginate" -> "SimpleDB::Class::ResultSet::where";
+"SimpleDB::Class::ResultSet::next" -> "SimpleDB::Class::ResultSet::has_result";
+}

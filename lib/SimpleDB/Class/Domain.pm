@@ -1,5 +1,7 @@
 package SimpleDB::Class::Domain;
-our $VERSION = '1.0500';
+BEGIN {
+  $SimpleDB::Class::Domain::VERSION = '1.0502';
+}
 
 =head1 NAME
 
@@ -7,7 +9,7 @@ SimpleDB::Class::Domain - A schematic representation of a SimpleDB domain.
 
 =head1 VERSION
 
-version 1.0500
+version 1.0502
 
 =head1 DESCRIPTION
 
@@ -76,7 +78,6 @@ Returns the name determined automatically by the item_class passed into the cons
 
 has name => (
     is          => 'rw',
-    isa         => 'Str',
     default     => undef,
 );
 

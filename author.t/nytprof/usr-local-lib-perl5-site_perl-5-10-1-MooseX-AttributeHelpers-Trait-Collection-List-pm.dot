@@ -1,0 +1,28 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Collection_List {
+	label="MooseX::AttributeHelpers::Trait::Collection::List";
+	"MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@3";
+	"MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@22";
+	"MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@9";
+}
+subgraph cluster_MooseX_AttributeHelpers_MethodProvider_List {
+	label="MooseX::AttributeHelpers::MethodProvider::List";
+	"MooseX::AttributeHelpers::MethodProvider::List::BEGIN@2";
+}
+subgraph cluster_MooseX_AttributeHelpers {
+	label="MooseX::AttributeHelpers";
+	"MooseX::AttributeHelpers::BEGIN@17";
+}
+"MooseX::AttributeHelpers::BEGIN@17" -> "MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@9";
+"MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@9" -> "MooseX::AttributeHelpers::MethodProvider::List::BEGIN@2";
+"MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@22" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+"MooseX::AttributeHelpers::BEGIN@17" -> "MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@17" -> "MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@22";
+"MooseX::AttributeHelpers::Trait::Collection::List::BEGIN@3" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+}

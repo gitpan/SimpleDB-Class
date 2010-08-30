@@ -1,0 +1,47 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::BEGIN@29";
+}
+subgraph cluster_Moose_Meta_Role_Application_RoleSummation {
+	label="Moose::Meta::Role::Application::RoleSummation";
+	"Moose::Meta::Role::Application::RoleSummation::BEGIN@7";
+	"Moose::Meta::Role::Application::RoleSummation::BEGIN@4";
+	"Moose::Meta::Role::Application::RoleSummation::BEGIN@9";
+	"Moose::Meta::Role::Application::RoleSummation::BEGIN@5";
+	"Moose::Meta::Role::Application::RoleSummation::BEGIN@3";
+	"Moose::Meta::Role::Application::RoleSummation::BEGIN@15";
+}
+subgraph cluster_metaclass {
+	label="metaclass";
+	"metaclass::import";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+"Moose::Meta::Role::Application::RoleSummation::BEGIN@7" -> "Exporter::import";
+"Moose::BEGIN@29" -> "Moose::Meta::Role::Application::RoleSummation::BEGIN@5";
+"Moose::BEGIN@29" -> "Moose::Meta::Role::Application::RoleSummation::BEGIN@9";
+"Moose::BEGIN@29" -> "Moose::Meta::Role::Application::RoleSummation::BEGIN@4";
+"Moose::Meta::Role::Application::RoleSummation::BEGIN@5" -> "metaclass::import";
+"Moose::BEGIN@29" -> "Moose::Meta::Role::Application::RoleSummation::BEGIN@7";
+"Moose::BEGIN@29" -> "Moose::Meta::Role::Application::RoleSummation::BEGIN@15";
+"Moose::Meta::Role::Application::RoleSummation::BEGIN@15" -> "base::import";
+"Moose::Meta::Role::Application::RoleSummation::BEGIN@4" -> "warnings::import";
+"Moose::BEGIN@29" -> "Moose::Meta::Role::Application::RoleSummation::BEGIN@3";
+"Moose::Meta::Role::Application::RoleSummation::BEGIN@3" -> "strict::import";
+}

@@ -1,5 +1,7 @@
 package SimpleDB::Class;
-our $VERSION = '1.0500';
+BEGIN {
+  $SimpleDB::Class::VERSION = '1.0502';
+}
 
 =head1 NAME
 
@@ -7,7 +9,7 @@ SimpleDB::Class - An Object Relational Mapper (ORM) for the Amazon SimpleDB serv
 
 =head1 VERSION
 
-version 1.0500
+version 1.0502
 
 =head1 SYNOPSIS
 
@@ -267,7 +269,6 @@ Returns a boolean indicating whether the user has overridden the URI.
 has simpledb_uri => (
     is          => 'ro',
     predicate   => 'has_simpledb_uri',
-    default     => undef,
 );
 
 

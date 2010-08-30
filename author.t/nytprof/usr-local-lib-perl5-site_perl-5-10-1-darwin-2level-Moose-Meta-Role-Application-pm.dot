@@ -1,0 +1,109 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Moose_Meta_Role_Application_ToRole {
+	label="Moose::Meta::Role::Application::ToRole";
+	"Moose::Meta::Role::Application::ToRole::apply_override_method_modifiers";
+	"Moose::Meta::Role::Application::ToRole::apply_method_modifiers";
+	"Moose::Meta::Role::Application::ToRole::check_role_exclusions";
+	"Moose::Meta::Role::Application::ToRole::apply_methods";
+	"Moose::Meta::Role::Application::ToRole::_new";
+	"Moose::Meta::Role::Application::ToRole::apply";
+	"Moose::Meta::Role::Application::ToRole::check_required_attributes";
+	"Moose::Meta::Role::Application::ToRole::check_required_methods";
+	"Moose::Meta::Role::Application::ToRole::apply_attributes";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Moose_Meta_Role {
+	label="Moose::Meta::Role";
+	"Moose::Meta::Role::apply";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::BEGIN@28";
+}
+subgraph cluster_metaclass {
+	label="metaclass";
+	"metaclass::import";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Moose_Meta_Role_Application {
+	label="Moose::Meta::Role::Application";
+	"Moose::Meta::Role::Application::BEGIN@3";
+	"Moose::Meta::Role::Application::is_aliased_method";
+	"Moose::Meta::Role::Application::is_method_aliased";
+	"Moose::Meta::Role::Application::apply";
+	"Moose::Meta::Role::Application::__ANON__[Moose/Meta/Role/Application.pm:14]";
+	"Moose::Meta::Role::Application::get_method_aliases";
+	"Moose::Meta::Role::Application::is_method_excluded";
+	"Moose::Meta::Role::Application::new";
+	"Moose::Meta::Role::Application::__ANON__[Moose/Meta/Role/Application.pm:20]";
+	"Moose::Meta::Role::Application::BEGIN@4";
+	"Moose::Meta::Role::Application::get_method_exclusions";
+	"Moose::Meta::Role::Application::BEGIN@5";
+	"Moose::Meta::Role::Application::apply_before_method_modifiers";
+	"Moose::Meta::Role::Application::apply_after_method_modifiers";
+	"Moose::Meta::Role::Application::apply_around_method_modifiers";
+}
+subgraph cluster_Moose_Meta_Role_Application_ToClass {
+	label="Moose::Meta::Role::Application::ToClass";
+	"Moose::Meta::Role::Application::ToClass::_new";
+	"Moose::Meta::Role::Application::ToClass::check_required_methods";
+	"Moose::Meta::Role::Application::ToClass::check_role_exclusions";
+	"Moose::Meta::Role::Application::ToClass::apply_methods";
+	"Moose::Meta::Role::Application::ToClass::apply";
+	"Moose::Meta::Role::Application::ToClass::apply_attributes";
+	"Moose::Meta::Role::Application::ToClass::apply_override_method_modifiers";
+	"Moose::Meta::Role::Application::ToClass::check_required_attributes";
+	"Moose::Meta::Role::Application::ToClass::apply_method_modifiers";
+}
+"Moose::Meta::Role::Application::ToClass::_new" -> "Moose::Meta::Role::Application::__ANON__[Moose/Meta/Role/Application.pm:20]";
+"Moose::Meta::Role::Application::ToRole::_new" -> "Moose::Meta::Role::Application::__ANON__[Moose/Meta/Role/Application.pm:20]";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToRole::apply_attributes";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToClass::check_required_attributes";
+"Moose::Meta::Role::Application::is_method_excluded" -> "Moose::Meta::Role::Application::get_method_exclusions";
+"Moose::Meta::Role::Application::ToRole::apply_methods" -> "Moose::Meta::Role::Application::is_method_aliased";
+"Moose::Meta::Role::Application::ToClass::apply_methods" -> "Moose::Meta::Role::Application::is_method_aliased";
+"Moose::Meta::Role::Application::new" -> "Moose::Meta::Role::Application::ToRole::_new";
+"Moose::Meta::Role::Application::ToRole::apply_methods" -> "Moose::Meta::Role::Application::is_method_excluded";
+"Moose::Meta::Role::Application::ToClass::apply_methods" -> "Moose::Meta::Role::Application::is_method_excluded";
+"Moose::BEGIN@28" -> "Moose::Meta::Role::Application::BEGIN@4";
+"Moose::Meta::Role::Application::apply_before_method_modifiers" -> "Moose::Meta::Role::Application::ToClass::apply_method_modifiers";
+"Moose::Meta::Role::Application::apply_after_method_modifiers" -> "Moose::Meta::Role::Application::ToClass::apply_method_modifiers";
+"Moose::Meta::Role::Application::apply_around_method_modifiers" -> "Moose::Meta::Role::Application::ToClass::apply_method_modifiers";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::apply_around_method_modifiers";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToRole::check_role_exclusions";
+"Moose::Meta::Role::Application::apply_before_method_modifiers" -> "Moose::Meta::Role::Application::ToRole::apply_method_modifiers";
+"Moose::Meta::Role::Application::apply_after_method_modifiers" -> "Moose::Meta::Role::Application::ToRole::apply_method_modifiers";
+"Moose::Meta::Role::Application::apply_around_method_modifiers" -> "Moose::Meta::Role::Application::ToRole::apply_method_modifiers";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToRole::apply_methods";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToRole::apply_override_method_modifiers";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToClass::check_required_methods";
+"Moose::Meta::Role::Application::ToClass::apply" -> "Moose::Meta::Role::Application::apply";
+"Moose::Meta::Role::Application::ToRole::apply" -> "Moose::Meta::Role::Application::apply";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToRole::check_required_attributes";
+"Moose::Meta::Role::Application::BEGIN@5" -> "metaclass::import";
+"Moose::Meta::Role::Application::new" -> "Moose::Meta::Role::Application::ToClass::_new";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToClass::apply_methods";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToClass::check_role_exclusions";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToClass::apply_attributes";
+"Moose::Meta::Role::apply" -> "Moose::Meta::Role::Application::new";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToRole::check_required_methods";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::ToClass::apply_override_method_modifiers";
+"Moose::Meta::Role::Application::is_aliased_method" -> "Moose::Meta::Role::Application::get_method_aliases";
+"Moose::Meta::Role::Application::is_method_aliased" -> "Moose::Meta::Role::Application::get_method_aliases";
+"Moose::Meta::Role::Application::ToRole::check_required_methods" -> "Moose::Meta::Role::Application::is_aliased_method";
+"Moose::Meta::Role::Application::BEGIN@4" -> "warnings::import";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::apply_after_method_modifiers";
+"Moose::BEGIN@28" -> "Moose::Meta::Role::Application::BEGIN@3";
+"Moose::Meta::Role::Application::ToClass::_new" -> "Moose::Meta::Role::Application::__ANON__[Moose/Meta/Role/Application.pm:14]";
+"Moose::Meta::Role::Application::ToRole::_new" -> "Moose::Meta::Role::Application::__ANON__[Moose/Meta/Role/Application.pm:14]";
+"Moose::Meta::Role::Application::apply" -> "Moose::Meta::Role::Application::apply_before_method_modifiers";
+"Moose::BEGIN@28" -> "Moose::Meta::Role::Application::BEGIN@5";
+"Moose::Meta::Role::Application::BEGIN@3" -> "strict::import";
+}

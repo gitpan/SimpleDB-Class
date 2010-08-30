@@ -1,0 +1,40 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DynaLoader {
+	label="DynaLoader";
+	"DynaLoader::bootstrap";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Clone {
+	label="Clone";
+	"Clone::clone";
+	"Clone::BEGIN@6";
+	"Clone::BEGIN@5";
+	"Clone::BEGIN@4";
+	"Clone::bootstrap";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_SimpleDB_Class_SQL {
+	label="SimpleDB::Class::SQL";
+	"SimpleDB::Class::SQL::BEGIN@21";
+	"SimpleDB::Class::SQL::to_sql";
+}
+"Clone::BEGIN@5" -> "Exporter::import";
+"SimpleDB::Class::SQL::BEGIN@21" -> "Clone::BEGIN@6";
+"SimpleDB::Class::SQL::BEGIN@21" -> "Clone::BEGIN@5";
+"SimpleDB::Class::SQL::BEGIN@21" -> "Clone::BEGIN@4";
+"SimpleDB::Class::SQL::to_sql" -> "Clone::clone";
+"DynaLoader::bootstrap" -> "Clone::bootstrap";
+"Clone::BEGIN@6" -> "vars::import";
+"Clone::BEGIN@4" -> "strict::import";
+}

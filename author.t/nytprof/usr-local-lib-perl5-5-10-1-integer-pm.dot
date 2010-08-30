@@ -1,0 +1,29 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_URI__punycode {
+	label="URI::_punycode";
+	"URI::_punycode::BEGIN@10";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::BEGIN@1841";
+	"DateTime::BEGIN@667";
+}
+subgraph cluster_integer {
+	label="integer";
+	"integer::import";
+}
+subgraph cluster_Digest_SHA {
+	label="Digest::SHA";
+	"Digest::SHA::BEGIN@6";
+}
+subgraph cluster_Time_Local {
+	label="Time::Local";
+	"Time::Local::BEGIN@7";
+}
+"Digest::SHA::BEGIN@6" -> "integer::import";
+"URI::_punycode::BEGIN@10" -> "integer::import";
+"DateTime::BEGIN@1841" -> "integer::import";
+"Time::Local::BEGIN@7" -> "integer::import";
+"DateTime::BEGIN@667" -> "integer::import";
+}

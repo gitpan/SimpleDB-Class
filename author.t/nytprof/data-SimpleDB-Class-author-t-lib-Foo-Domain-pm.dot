@@ -1,0 +1,27 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+}
+subgraph cluster_Module_Find {
+	label="Module::Find";
+	"Module::Find::useall";
+}
+subgraph cluster_Moose_Meta_Class {
+	label="Moose::Meta::Class";
+	"Moose::Meta::Class::new_object";
+}
+subgraph cluster_Foo_Domain {
+	label="Foo::Domain";
+	"Foo::Domain::BEGIN@3";
+	"Foo::Domain::size";
+	"Foo::Domain::__ANON__[lib/Foo/Domain.pm:13]";
+	"Foo::Domain::size_formatted";
+}
+"Module::Find::useall" -> "Foo::Domain::BEGIN@3";
+"Foo::Domain::__ANON__[lib/Foo/Domain.pm:13]" -> "Foo::Domain::size_formatted";
+"Foo::Domain::BEGIN@3" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+"Moose::Meta::Class::new_object" -> "Foo::Domain::__ANON__[lib/Foo/Domain.pm:13]";
+"Foo::Domain::size" -> "Foo::Domain::__ANON__[lib/Foo/Domain.pm:13]";
+}

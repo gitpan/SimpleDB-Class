@@ -1,0 +1,17 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+}
+subgraph cluster_Module_Find {
+	label="Module::Find";
+	"Module::Find::useall";
+}
+subgraph cluster_Foo_SubChild {
+	label="Foo::SubChild";
+	"Foo::SubChild::BEGIN@3";
+}
+"Module::Find::useall" -> "Foo::SubChild::BEGIN@3";
+"Foo::SubChild::BEGIN@3" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+}

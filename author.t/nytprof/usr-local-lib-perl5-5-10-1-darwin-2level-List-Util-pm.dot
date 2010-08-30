@@ -1,0 +1,31 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_Data_OptList {
+	label="Data::OptList";
+	"Data::OptList::__is_a";
+}
+subgraph cluster_List_Util {
+	label="List::Util";
+	"List::Util::BEGIN@11";
+	"List::Util::first";
+	"List::Util::BEGIN@12";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Test_Deep_Cache_Simple {
+	label="Test::Deep::Cache::Simple";
+	"Test::Deep::Cache::Simple::BEGIN@7";
+}
+"Test::Deep::Cache::Simple::BEGIN@7" -> "List::Util::BEGIN@11";
+"List::Util::first" -> "Data::OptList::__is_a";
+"Test::Deep::Cache::Simple::BEGIN@7" -> "List::Util::BEGIN@12";
+"List::Util::BEGIN@12" -> "vars::import";
+"Data::OptList::__is_a" -> "List::Util::first";
+"List::Util::BEGIN@11" -> "strict::import";
+}

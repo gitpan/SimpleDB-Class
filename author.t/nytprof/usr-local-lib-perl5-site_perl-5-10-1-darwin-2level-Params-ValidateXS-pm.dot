@@ -1,0 +1,98 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_SimpleDB_Class_Cache {
+	label="SimpleDB::Class::Cache";
+	"SimpleDB::Class::Cache::BEGIN@33";
+	"SimpleDB::Class::Cache::get";
+	"SimpleDB::Class::Cache::set";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_Params_Validate {
+	label="Params::Validate";
+	"Params::Validate::_check_regex_from_xs";
+	"Params::Validate::CORE:match";
+	"Params::Validate::_validate";
+	"Params::Validate::_validate_pos";
+	"Params::Validate::BEGIN@4";
+	"Params::Validate::CORE:regcomp";
+	"Params::Validate::BEGIN@5";
+	"Params::Validate::BEGIN@3";
+	"Params::Validate::BEGIN@41";
+	"Params::Validate::validation_options";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::can";
+}
+subgraph cluster_SimpleDB_Class {
+	label="SimpleDB::Class";
+	"SimpleDB::Class::BEGIN@139";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::__ANON__[DateTime.pm:133]";
+	"DateTime::from_epoch";
+	"DateTime::__ANON__[DateTime.pm:141]";
+	"DateTime::__ANON__[DateTime.pm:149]";
+	"DateTime::__ANON__[DateTime.pm:157]";
+	"DateTime::__ANON__[DateTime.pm:117]";
+	"DateTime::from_object";
+	"DateTime::__ANON__[DateTime.pm:164]";
+	"DateTime::new";
+	"DateTime::__ANON__[DateTime.pm:125]";
+}
+subgraph cluster_DateTime_Format_Strptime {
+	label="DateTime::Format::Strptime";
+	"DateTime::Format::Strptime::new";
+}
+subgraph cluster_DateTime_TimeZone_OffsetOnly {
+	label="DateTime::TimeZone::OffsetOnly";
+	"DateTime::TimeZone::OffsetOnly::new";
+}
+subgraph cluster_DateTime_Locale {
+	label="DateTime::Locale";
+	"DateTime::Locale::load";
+	"DateTime::Locale::_registered_id";
+	"DateTime::Locale::_register";
+}
+subgraph cluster_DateTime_TimeZone {
+	label="DateTime::TimeZone";
+	"DateTime::TimeZone::new";
+}
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:149]";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:157]";
+"Params::Validate::_check_regex_from_xs" -> "Params::Validate::CORE:regcomp";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:164]";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:141]";
+"Params::Validate::_validate" -> "Params::Validate::_check_regex_from_xs";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:117]";
+"Params::Validate::_check_regex_from_xs" -> "Params::Validate::CORE:match";
+"DateTime::Locale::load" -> "Params::Validate::_validate_pos";
+"SimpleDB::Class::Cache::get" -> "Params::Validate::_validate_pos";
+"DateTime::Locale::_registered_id" -> "Params::Validate::_validate_pos";
+"SimpleDB::Class::Cache::set" -> "Params::Validate::_validate_pos";
+"Params::Validate::BEGIN@5" -> "Params::Validate::BEGIN@41";
+"Params::Validate::_validate" -> "UNIVERSAL::can";
+"SimpleDB::Class::BEGIN@139" -> "Params::Validate::validation_options";
+"Params::Validate::BEGIN@5" -> "Params::Validate::BEGIN@4";
+"Params::Validate::BEGIN@4" -> "warnings::import";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:125]";
+"Params::Validate::_validate" -> "DateTime::__ANON__[DateTime.pm:133]";
+"DateTime::TimeZone::OffsetOnly::new" -> "Params::Validate::_validate";
+"DateTime::from_object" -> "Params::Validate::_validate";
+"DateTime::new" -> "Params::Validate::_validate";
+"DateTime::from_epoch" -> "Params::Validate::_validate";
+"DateTime::Format::Strptime::new" -> "Params::Validate::_validate";
+"DateTime::TimeZone::new" -> "Params::Validate::_validate";
+"DateTime::Locale::_register" -> "Params::Validate::_validate";
+"SimpleDB::Class::Cache::BEGIN@33" -> "Params::Validate::BEGIN@3";
+"Params::Validate::BEGIN@5" -> "Params::Validate::BEGIN@3";
+"Params::Validate::BEGIN@3" -> "strict::import";
+}

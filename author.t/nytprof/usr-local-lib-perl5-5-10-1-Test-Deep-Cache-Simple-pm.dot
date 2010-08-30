@@ -1,0 +1,76 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::import";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_List_Util {
+	label="List::Util";
+	"List::Util::BEGIN@11";
+	"List::Util::BEGIN@12";
+}
+subgraph cluster_Scalar_Util {
+	label="Scalar::Util";
+	"Scalar::Util::BEGIN@9";
+	"Scalar::Util::refaddr";
+	"Scalar::Util::BEGIN@10";
+	"Scalar::Util::weaken";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Test_Deep_Cache {
+	label="Test::Deep::Cache";
+	"Test::Deep::Cache::cmp";
+	"Test::Deep::Cache::local";
+	"Test::Deep::Cache::BEGIN@2";
+	"Test::Deep::Cache::add";
+	"Test::Deep::Cache::BEGIN@6";
+	"Test::Deep::Cache::BEGIN@1";
+	"Test::Deep::Cache::new";
+}
+subgraph cluster_Test_Deep_Cache_Simple {
+	label="Test::Deep::Cache::Simple";
+	"Test::Deep::Cache::Simple::new";
+	"Test::Deep::Cache::Simple::BEGIN@10";
+	"Test::Deep::Cache::Simple::BEGIN@5";
+	"Test::Deep::Cache::Simple::CORE:sort";
+	"Test::Deep::Cache::Simple::BEGIN@7";
+	"Test::Deep::Cache::Simple::cmp";
+	"Test::Deep::Cache::Simple::add";
+	"Test::Deep::Cache::Simple::fn_get_key";
+}
+"Test::Deep::Cache::Simple::BEGIN@5" -> "Exporter::import";
+"Test::Deep::Cache::Simple::BEGIN@10" -> "Exporter::import";
+"Test::Deep::Cache::Simple::BEGIN@7" -> "Exporter::import";
+"Test::Deep::Cache::cmp" -> "Test::Deep::Cache::Simple::cmp";
+"Test::Deep::Cache::BEGIN@6" -> "Test::Deep::Cache::BEGIN@2";
+"Test::Deep::Cache::Simple::BEGIN@7" -> "List::Util::BEGIN@11";
+"Test::Deep::Cache::Simple::fn_get_key" -> "Scalar::Util::refaddr";
+"Test::Deep::Cache::Simple::cmp" -> "Test::Deep::Cache::Simple::fn_get_key";
+"Test::Deep::Cache::Simple::add" -> "Test::Deep::Cache::Simple::fn_get_key";
+"Test::Deep::Cache::BEGIN@6" -> "Test::Deep::Cache::Simple::BEGIN@5";
+"Test::Deep::Cache::Simple::BEGIN@7" -> "Scalar::Util::BEGIN@9";
+"Test::Deep::Cache::Simple::BEGIN@7" -> "XSLoader::load";
+"Test::Deep::Cache::BEGIN@6" -> "Test::Deep::Cache::Simple::BEGIN@10";
+"Test::Deep::Cache::local" -> "Test::Deep::Cache::Simple::new";
+"Test::Deep::Cache::new" -> "Test::Deep::Cache::Simple::new";
+"Test::Deep::Cache::Simple::add" -> "Scalar::Util::weaken";
+"Test::Deep::Cache::Simple::BEGIN@7" -> "List::Util::BEGIN@12";
+"Test::Deep::Cache::add" -> "Test::Deep::Cache::Simple::add";
+"Test::Deep::Cache::Simple::BEGIN@7" -> "Scalar::Util::BEGIN@10";
+"Test::Deep::Cache::BEGIN@2" -> "warnings::import";
+"Test::Deep::Cache::Simple::fn_get_key" -> "Test::Deep::Cache::Simple::CORE:sort";
+"Test::Deep::Cache::BEGIN@6" -> "Test::Deep::Cache::Simple::BEGIN@7";
+"Test::Deep::Cache::BEGIN@6" -> "Test::Deep::Cache::BEGIN@1";
+"Test::Deep::Cache::BEGIN@1" -> "strict::import";
+}

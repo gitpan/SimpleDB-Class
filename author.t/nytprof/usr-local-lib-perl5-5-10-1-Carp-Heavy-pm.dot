@@ -1,0 +1,31 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::unimport";
+}
+subgraph cluster_Carp {
+	label="Carp";
+	"Carp::BEGIN@301";
+	"Carp::BEGIN@11";
+	"Carp::BEGIN@300";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::unimport";
+}
+subgraph cluster_Moose_Error_Default {
+	label="Moose::Error::Default";
+	"Moose::Error::Default::BEGIN@10";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+"Carp::BEGIN@301" -> "warnings::unimport";
+"Carp::BEGIN@11" -> "Exporter::import";
+"Moose::Error::Default::BEGIN@10" -> "Carp::BEGIN@11";
+"Moose::Error::Default::BEGIN@10" -> "Carp::BEGIN@301";
+"Carp::BEGIN@300" -> "strict::unimport";
+"Moose::Error::Default::BEGIN@10" -> "Carp::BEGIN@300";
+}

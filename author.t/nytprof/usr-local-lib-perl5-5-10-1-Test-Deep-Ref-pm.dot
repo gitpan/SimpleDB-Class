@@ -1,0 +1,57 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Test_Deep_Hash {
+	label="Test::Deep::Hash";
+	"Test::Deep::Hash::BEGIN@6";
+	"Test::Deep::Hash::descend";
+}
+subgraph cluster_Test_Deep_Cmp {
+	label="Test::Deep::Cmp";
+	"Test::Deep::Cmp::import";
+}
+subgraph cluster_Test_Deep_ArrayLength {
+	label="Test::Deep::ArrayLength";
+	"Test::Deep::ArrayLength::descend";
+}
+subgraph cluster_Test_Deep_Ref {
+	label="Test::Deep::Ref";
+	"Test::Deep::Ref::test_class";
+	"Test::Deep::Ref::test_reftype";
+	"Test::Deep::Ref::BEGIN@6";
+	"Test::Deep::Ref::BEGIN@8";
+}
+subgraph cluster_Test_Deep_HashKeys {
+	label="Test::Deep::HashKeys";
+	"Test::Deep::HashKeys::descend";
+}
+subgraph cluster_Scalar_Util {
+	label="Scalar::Util";
+	"Scalar::Util::blessed";
+}
+subgraph cluster_Test_Deep_Array {
+	label="Test::Deep::Array";
+	"Test::Deep::Array::descend";
+}
+subgraph cluster_Test_Deep {
+	label="Test::Deep";
+	"Test::Deep::descend";
+	"Test::Deep::__ANON__[Test/Deep.pm:92]";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+"Test::Deep::Ref::BEGIN@8" -> "Exporter::import";
+"Test::Deep::Hash::BEGIN@6" -> "Test::Deep::Ref::BEGIN@6";
+"Test::Deep::Ref::BEGIN@6" -> "Test::Deep::Cmp::import";
+"Test::Deep::Ref::test_reftype" -> "Test::Deep::__ANON__[Test/Deep.pm:92]";
+"Test::Deep::Ref::test_class" -> "Test::Deep::__ANON__[Test/Deep.pm:92]";
+"Test::Deep::Ref::test_reftype" -> "Test::Deep::descend";
+"Test::Deep::Ref::test_class" -> "Test::Deep::descend";
+"Test::Deep::Ref::test_class" -> "Scalar::Util::blessed";
+"Test::Deep::Hash::BEGIN@6" -> "Test::Deep::Ref::BEGIN@8";
+"Test::Deep::HashKeys::descend" -> "Test::Deep::Ref::test_reftype";
+"Test::Deep::ArrayLength::descend" -> "Test::Deep::Ref::test_reftype";
+"Test::Deep::Array::descend" -> "Test::Deep::Ref::test_class";
+"Test::Deep::Hash::descend" -> "Test::Deep::Ref::test_class";
+}

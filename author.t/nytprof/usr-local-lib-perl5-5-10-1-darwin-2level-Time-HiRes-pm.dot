@@ -1,0 +1,62 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DynaLoader {
+	label="DynaLoader";
+	"DynaLoader::bootstrap";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_SimpleDB_Client {
+	label="SimpleDB::Client";
+	"SimpleDB::Client::BEGIN@56";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_Exporter_Heavy {
+	label="Exporter::Heavy";
+	"Exporter::Heavy::heavy_export_to_level";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::export_to_level";
+}
+subgraph cluster_UUID_Tiny {
+	label="UUID::Tiny";
+	"UUID::Tiny::_generate_clk_seq";
+	"UUID::Tiny::BEGIN@9";
+}
+subgraph cluster_Time_HiRes {
+	label="Time::HiRes";
+	"Time::HiRes::constant";
+	"Time::HiRes::__ANON__[Time/HiRes.pm:43]";
+	"Time::HiRes::time";
+	"Time::HiRes::BEGIN@4";
+	"Time::HiRes::CORE:subst";
+	"Time::HiRes::BEGIN@42";
+	"Time::HiRes::AUTOLOAD";
+	"Time::HiRes::BEGIN@3";
+	"Time::HiRes::import";
+	"Time::HiRes::bootstrap";
+}
+"SimpleDB::Client::BEGIN@56" -> "Time::HiRes::BEGIN@4";
+"Time::HiRes::AUTOLOAD" -> "Time::HiRes::CORE:subst";
+"DynaLoader::bootstrap" -> "Time::HiRes::bootstrap";
+"Time::HiRes::import" -> "Exporter::Heavy::heavy_export_to_level";
+"SimpleDB::Client::BEGIN@56" -> "Time::HiRes::BEGIN@42";
+"Time::HiRes::AUTOLOAD" -> "Time::HiRes::constant";
+"Time::HiRes::import" -> "Exporter::export_to_level";
+"Time::HiRes::BEGIN@42" -> "strict::unimport";
+"SimpleDB::Client::BEGIN@56" -> "Time::HiRes::import";
+"UUID::Tiny::BEGIN@9" -> "Time::HiRes::import";
+"Time::HiRes::import" -> "Time::HiRes::__ANON__[Time/HiRes.pm:43]";
+"Time::HiRes::BEGIN@4" -> "vars::import";
+"UUID::Tiny::_generate_clk_seq" -> "Time::HiRes::time";
+"SimpleDB::Client::BEGIN@56" -> "Time::HiRes::BEGIN@3";
+"Time::HiRes::import" -> "Time::HiRes::AUTOLOAD";
+"Time::HiRes::BEGIN@3" -> "strict::import";
+}

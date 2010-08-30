@@ -1,0 +1,53 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+	"Moose::Exporter::setup_import_methods";
+}
+subgraph cluster_MooseX_AttributeHelpers_Trait_Bool {
+	label="MooseX::AttributeHelpers::Trait::Bool";
+	"MooseX::AttributeHelpers::Trait::Bool::BEGIN@35";
+	"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2";
+	"MooseX::AttributeHelpers::Trait::Bool::BEGIN@3";
+}
+subgraph cluster_MooseX_AttributeHelpers {
+	label="MooseX::AttributeHelpers";
+	"MooseX::AttributeHelpers::BEGIN@13";
+}
+subgraph cluster_Moose_Role {
+	label="Moose::Role";
+	"Moose::Role::BEGIN@2";
+	"Moose::Role::BEGIN@6";
+	"Moose::Role::BEGIN@3";
+	"Moose::Role::BEGIN@17";
+	"Moose::Role::BEGIN@15";
+	"Moose::Role::BEGIN@18";
+	"Moose::Role::BEGIN@14";
+	"Moose::Role::BEGIN@5";
+	"Moose::Role::BEGIN@8";
+	"Moose::Role::BEGIN@19";
+}
+subgraph cluster_MooseX_AttributeHelpers_MethodProvider_Bool {
+	label="MooseX::AttributeHelpers::MethodProvider::Bool";
+	"MooseX::AttributeHelpers::MethodProvider::Bool::BEGIN@3";
+}
+"MooseX::AttributeHelpers::BEGIN@13" -> "MooseX::AttributeHelpers::Trait::Bool::BEGIN@35";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@14";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@35" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:478]";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@2";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@18";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@5";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@3";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@3" -> "MooseX::AttributeHelpers::MethodProvider::Bool::BEGIN@3";
+"MooseX::AttributeHelpers::BEGIN@13" -> "MooseX::AttributeHelpers::Trait::Bool::BEGIN@3";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@17";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Exporter::setup_import_methods";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@19";
+"MooseX::AttributeHelpers::BEGIN@13" -> "MooseX::AttributeHelpers::Trait::Bool::BEGIN@2";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@8";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@6";
+"MooseX::AttributeHelpers::Trait::Bool::BEGIN@2" -> "Moose::Role::BEGIN@15";
+}

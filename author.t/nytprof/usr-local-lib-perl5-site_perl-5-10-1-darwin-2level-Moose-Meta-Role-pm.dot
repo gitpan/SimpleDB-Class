@@ -1,0 +1,274 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Moose_Meta_Role_Application_ToRole {
+	label="Moose::Meta::Role::Application::ToRole";
+	"Moose::Meta::Role::Application::ToRole::apply_override_method_modifiers";
+	"Moose::Meta::Role::Application::ToRole::check_required_methods";
+	"Moose::Meta::Role::Application::ToRole::apply_method_modifiers";
+	"Moose::Meta::Role::Application::ToRole::apply_methods";
+	"Moose::Meta::Role::Application::ToRole::apply_attributes";
+	"Moose::Meta::Role::Application::ToRole::apply";
+}
+subgraph cluster_warnings {
+	label="warnings";
+	"warnings::unimport";
+	"warnings::import";
+}
+subgraph cluster_Class_MOP_Mixin_HasMethods {
+	label="Class::MOP::Mixin::HasMethods";
+	"Class::MOP::Mixin::HasMethods::get_method";
+}
+subgraph cluster_Moose_Meta_Role {
+	label="Moose::Meta::Role";
+	"Moose::Meta::Role::BEGIN@18";
+	"Moose::Meta::Role::_new";
+	"Moose::Meta::Role::get_required_methods_map";
+	"Moose::Meta::Role::BEGIN@16";
+	"Moose::Meta::Role::initialize";
+	"Moose::Meta::Role::get_method_modifier_list";
+	"Moose::Meta::Role::BEGIN@5";
+	"Moose::Meta::Role::add_required_methods";
+	"Moose::Meta::Role::BEGIN@544";
+	"Moose::Meta::Role::add_role";
+	"Moose::Meta::Role::BEGIN@4";
+	"Moose::Meta::Role::add_attribute";
+	"Moose::Meta::Role::conflicting_method_metaclass";
+	"Moose::Meta::Role::required_method_metaclass";
+	"Moose::Meta::Role::BEGIN@23";
+	"Moose::Meta::Role::BEGIN@8";
+	"Moose::Meta::Role::BEGIN@19";
+	"Moose::Meta::Role::find_method_by_name";
+	"Moose::Meta::Role::get_after_method_modifiers_map";
+	"Moose::Meta::Role::__ANON__[Moose/Meta/Role.pm:352]";
+	"Moose::Meta::Role::BEGIN@21";
+	"Moose::Meta::Role::__ANON__[Moose/Meta/Role.pm:301]";
+	"Moose::Meta::Role::BEGIN@20";
+	"Moose::Meta::Role::get_override_method_modifiers_map";
+	"Moose::Meta::Role::BEGIN@523";
+	"Moose::Meta::Role::application_to_role_class";
+	"Moose::Meta::Role::BEGIN@10";
+	"Moose::Meta::Role::BEGIN@17";
+	"Moose::Meta::Role::__ANON__[Moose/Meta/Role.pm:256]";
+	"Moose::Meta::Role::add_conflicting_method";
+	"Moose::Meta::Role::application_to_class_class";
+	"Moose::Meta::Role::apply";
+	"Moose::Meta::Role::BEGIN@559";
+	"Moose::Meta::Role::get_before_method_modifiers_map";
+	"Moose::Meta::Role::BEGIN@6";
+	"Moose::Meta::Role::get_around_method_modifiers_map";
+	"Moose::Meta::Role::get_roles";
+	"Moose::Meta::Role::__ANON__[Moose/Meta/Role.pm:83]";
+	"Moose::Meta::Role::reset_package_cache_flag";
+	"Moose::Meta::Role::BEGIN@9";
+	"Moose::Meta::Role::_attach_attribute";
+}
+subgraph cluster_Moose {
+	label="Moose";
+	"Moose::BEGIN@26";
+}
+subgraph cluster_Moose_Meta_Role_Attribute {
+	label="Moose::Meta::Role::Attribute";
+	"Moose::Meta::Role::Attribute::BEGIN@4";
+	"Moose::Meta::Role::Attribute::BEGIN@7";
+	"Moose::Meta::Role::Attribute::BEGIN@8";
+	"Moose::Meta::Role::Attribute::attach_to_role";
+	"Moose::Meta::Role::Attribute::BEGIN@3";
+	"Moose::Meta::Role::Attribute::BEGIN@6";
+	"Moose::Meta::Role::Attribute::BEGIN@13";
+}
+subgraph cluster_metaclass {
+	label="metaclass";
+	"metaclass::import";
+}
+subgraph cluster_Scalar_Util {
+	label="Scalar::Util";
+	"Scalar::Util::blessed";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+}
+subgraph cluster_Class_MOP_Mixin {
+	label="Class::MOP::Mixin";
+	"Class::MOP::Mixin::meta";
+}
+subgraph cluster_Sub_Exporter {
+	label="Sub::Exporter";
+	"Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+}
+subgraph cluster_base {
+	label="base";
+	"base::import";
+}
+subgraph cluster_Moose_Util {
+	label="Moose::Util";
+	"Moose::Util::_apply_all_roles";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+	"strict::unimport";
+}
+subgraph cluster_Class_MOP {
+	label="Class::MOP";
+	"Class::MOP::get_metaclass_by_name";
+	"Class::MOP::load_class";
+}
+subgraph cluster_Moose_Meta_Role_Method {
+	label="Moose::Meta::Role::Method";
+	"Moose::Meta::Role::Method::BEGIN@11";
+	"Moose::Meta::Role::Method::BEGIN@4";
+	"Moose::Meta::Role::Method::BEGIN@5";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_Moose_Meta_Role_Method_Conflicting {
+	label="Moose::Meta::Role::Method::Conflicting";
+	"Moose::Meta::Role::Method::Conflicting::BEGIN@9";
+	"Moose::Meta::Role::Method::Conflicting::BEGIN@7";
+	"Moose::Meta::Role::Method::Conflicting::BEGIN@5";
+	"Moose::Meta::Role::Method::Conflicting::BEGIN@4";
+}
+subgraph cluster_Moose_Role {
+	label="Moose::Role";
+	"Moose::Role::has";
+	"Moose::Role::requires";
+	"Moose::Role::init_meta";
+}
+subgraph cluster_MooseX_AttributeHelpers_MethodProvider_Hash {
+	label="MooseX::AttributeHelpers::MethodProvider::Hash";
+	"MooseX::AttributeHelpers::MethodProvider::Hash::meta";
+}
+subgraph cluster_Class_MOP_Package {
+	label="Class::MOP::Package";
+	"Class::MOP::Package::initialize";
+}
+subgraph cluster_Moose_Meta_Role_Method_Required {
+	label="Moose::Meta::Role::Method::Required";
+	"Moose::Meta::Role::Method::Required::BEGIN@8";
+	"Moose::Meta::Role::Method::Required::BEGIN@4";
+	"Moose::Meta::Role::Method::Required::BEGIN@5";
+	"Moose::Meta::Role::Method::Required::BEGIN@11";
+	"Moose::Meta::Role::Method::Required::name";
+	"Moose::Meta::Role::Method::Required::meta";
+	"Moose::Meta::Role::Method::Required::new";
+	"Moose::Meta::Role::Method::Required::BEGIN@6";
+}
+subgraph cluster_Class_MOP_Mixin_HasAttributes {
+	label="Class::MOP::Mixin::HasAttributes";
+	"Class::MOP::Mixin::HasAttributes::add_attribute";
+}
+subgraph cluster_Moose_Meta_Role_Application {
+	label="Moose::Meta::Role::Application";
+	"Moose::Meta::Role::Application::new";
+}
+subgraph cluster_Moose_Meta_Role_Application_ToClass {
+	label="Moose::Meta::Role::Application::ToClass";
+	"Moose::Meta::Role::Application::ToClass::apply_override_method_modifiers";
+	"Moose::Meta::Role::Application::ToClass::apply";
+	"Moose::Meta::Role::Application::ToClass::apply_method_modifiers";
+}
+"Moose::Meta::Role::BEGIN@20" -> "Moose::Meta::Role::Method::Conflicting::BEGIN@5";
+"Moose::Meta::Role::BEGIN@21" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Moose::Meta::Role::BEGIN@10" -> "Sub::Exporter::__ANON__[Sub/Exporter.pm:756]";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@544";
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@6";
+"Moose::Meta::Role::apply" -> "Class::MOP::load_class";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@23";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@8";
+"Moose::Meta::Role::BEGIN@19" -> "Moose::Meta::Role::Method::Required::BEGIN@8";
+"Moose::Meta::Role::BEGIN@523" -> "warnings::unimport";
+"Moose::Meta::Role::BEGIN@544" -> "warnings::unimport";
+"Moose::Meta::Role::BEGIN@8" -> "Exporter::import";
+"Moose::Meta::Role::BEGIN@9" -> "Exporter::import";
+"Moose::Meta::Role::_new" -> "Moose::Meta::Role::__ANON__[Moose/Meta/Role.pm:352]";
+"Moose::Meta::Role::find_method_by_name" -> "Class::MOP::Mixin::HasMethods::get_method";
+"Moose::Meta::Role::BEGIN@20" -> "Moose::Meta::Role::Method::Conflicting::BEGIN@7";
+"Moose::Meta::Role::_new" -> "Moose::Meta::Role::__ANON__[Moose/Meta/Role.pm:83]";
+"Moose::Meta::Role::BEGIN@20" -> "Moose::Meta::Role::Method::Required::meta";
+"Moose::Meta::Role::BEGIN@19" -> "Moose::Meta::Role::Method::Required::meta";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@18";
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@3";
+"Moose::Meta::Role::BEGIN@20" -> "Moose::Meta::Role::Method::Conflicting::BEGIN@4";
+"MooseX::AttributeHelpers::MethodProvider::Hash::meta" -> "Moose::Meta::Role::initialize";
+"Moose::Role::init_meta" -> "Moose::Meta::Role::initialize";
+"Moose::Meta::Role::apply" -> "Moose::Meta::Role::Application::ToRole::apply";
+"Moose::Meta::Role::BEGIN@19" -> "Moose::Meta::Role::Method::Required::BEGIN@4";
+"Moose::Meta::Role::BEGIN@19" -> "Moose::Meta::Role::Method::Required::BEGIN@5";
+"Moose::Meta::Role::add_required_methods" -> "Scalar::Util::blessed";
+"Moose::Meta::Role::add_role" -> "Scalar::Util::blessed";
+"Moose::Meta::Role::add_attribute" -> "Scalar::Util::blessed";
+"Moose::Meta::Role::apply" -> "Scalar::Util::blessed";
+"Moose::Meta::Role::Application::ToRole::apply" -> "Moose::Meta::Role::add_role";
+"Moose::Meta::Role::add_conflicting_method" -> "Moose::Meta::Role::conflicting_method_metaclass";
+"Moose::Meta::Role::_new" -> "Moose::Meta::Role::__ANON__[Moose/Meta/Role.pm:301]";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@20";
+"Moose::Meta::Role::BEGIN@6" -> "metaclass::import";
+"Moose::Meta::Role::initialize" -> "Class::MOP::Package::initialize";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@523";
+"Moose::Meta::Role::apply" -> "Moose::Meta::Role::application_to_role_class";
+"Moose::Meta::Role::add_conflicting_method" -> "Moose::Meta::Role::Method::Required::new";
+"Moose::Meta::Role::add_required_methods" -> "Moose::Meta::Role::Method::Required::new";
+"Moose::Meta::Role::BEGIN@18" -> "Moose::Meta::Role::Method::BEGIN@5";
+"Moose::Meta::Role::BEGIN@20" -> "Moose::Meta::Role::Method::Conflicting::BEGIN@9";
+"Moose::Meta::Role::apply" -> "Moose::Meta::Role::application_to_class_class";
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@8";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@6";
+"Moose::Meta::Role::BEGIN@20" -> "Class::MOP::Mixin::HasAttributes::add_attribute";
+"Moose::Meta::Role::BEGIN@17" -> "Class::MOP::Mixin::HasAttributes::add_attribute";
+"Moose::Meta::Role::add_attribute" -> "Class::MOP::Mixin::HasAttributes::add_attribute";
+"Moose::Meta::Role::BEGIN@19" -> "Class::MOP::Mixin::HasAttributes::add_attribute";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@9";
+"Moose::Meta::Role::add_role" -> "Moose::Meta::Role::reset_package_cache_flag";
+"Class::MOP::Mixin::HasAttributes::add_attribute" -> "Moose::Meta::Role::_attach_attribute";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@16";
+"Moose::Meta::Role::Application::ToRole::check_required_methods" -> "Moose::Meta::Role::add_required_methods";
+"Moose::Meta::Role::add_conflicting_method" -> "Moose::Meta::Role::add_required_methods";
+"Moose::Role::requires" -> "Moose::Meta::Role::add_required_methods";
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@7";
+"Moose::Meta::Role::add_required_methods" -> "Moose::Meta::Role::required_method_metaclass";
+"Moose::Meta::Role::apply" -> "Moose::Meta::Role::Application::new";
+"Moose::Meta::Role::add_required_methods" -> "Moose::Meta::Role::Method::Required::name";
+"Moose::Meta::Role::BEGIN@18" -> "Moose::Meta::Role::Method::BEGIN@11";
+"Moose::Meta::Role::BEGIN@559" -> "strict::unimport";
+"Moose::Meta::Role::BEGIN@17" -> "Class::MOP::Mixin::meta";
+"Moose::Meta::Role::BEGIN@23" -> "base::import";
+"Moose::Meta::Role::get_method_modifier_list" -> "Moose::Meta::Role::get_override_method_modifiers_map";
+"Moose::Meta::Role::add_role" -> "UNIVERSAL::isa";
+"Moose::Meta::Role::add_attribute" -> "UNIVERSAL::isa";
+"Moose::Meta::Role::apply" -> "UNIVERSAL::isa";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@10";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@17";
+"Moose::Meta::Role::_new" -> "Moose::Meta::Role::__ANON__[Moose/Meta/Role.pm:256]";
+"Moose::Meta::Role::BEGIN@5" -> "warnings::import";
+"Moose::Meta::Role::get_method_modifier_list" -> "Moose::Meta::Role::get_before_method_modifiers_map";
+"Moose::Meta::Role::_attach_attribute" -> "Moose::Meta::Role::Attribute::attach_to_role";
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@4";
+"Moose::Meta::Role::initialize" -> "Class::MOP::get_metaclass_by_name";
+"Moose::Meta::Role::add_required_methods" -> "Moose::Meta::Role::get_required_methods_map";
+"Moose::Meta::Role::Application::ToRole::apply_override_method_modifiers" -> "Moose::Meta::Role::get_method_modifier_list";
+"Moose::Meta::Role::Application::ToRole::apply_method_modifiers" -> "Moose::Meta::Role::get_method_modifier_list";
+"Moose::Meta::Role::Application::ToClass::apply_override_method_modifiers" -> "Moose::Meta::Role::get_method_modifier_list";
+"Moose::Meta::Role::Application::ToClass::apply_method_modifiers" -> "Moose::Meta::Role::get_method_modifier_list";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@5";
+"Moose::Meta::Role::Application::ToRole::apply_attributes" -> "Moose::Meta::Role::add_attribute";
+"Moose::Role::has" -> "Moose::Meta::Role::add_attribute";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@4";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@19";
+"Moose::Meta::Role::Application::ToRole::check_required_methods" -> "Moose::Meta::Role::find_method_by_name";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@21";
+"Moose::Meta::Role::get_method_modifier_list" -> "Moose::Meta::Role::get_after_method_modifiers_map";
+"Moose::Meta::Role::BEGIN@19" -> "Moose::Meta::Role::Method::Required::BEGIN@11";
+"Moose::Meta::Role::BEGIN@18" -> "Moose::Meta::Role::Method::BEGIN@4";
+"Moose::Meta::Role::Application::ToRole::apply_methods" -> "Moose::Meta::Role::add_conflicting_method";
+"Moose::Meta::Role::apply" -> "Moose::Meta::Role::Application::ToClass::apply";
+"Moose::Util::_apply_all_roles" -> "Moose::Meta::Role::apply";
+"Moose::BEGIN@26" -> "Moose::Meta::Role::BEGIN@559";
+"Moose::Meta::Role::get_method_modifier_list" -> "Moose::Meta::Role::get_around_method_modifiers_map";
+"Moose::Meta::Role::add_role" -> "Moose::Meta::Role::get_roles";
+"Moose::Meta::Role::BEGIN@4" -> "strict::import";
+"Moose::Meta::Role::BEGIN@19" -> "Moose::Meta::Role::Method::Required::BEGIN@6";
+"Moose::Meta::Role::BEGIN@17" -> "Moose::Meta::Role::Attribute::BEGIN@13";
+}

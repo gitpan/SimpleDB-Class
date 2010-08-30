@@ -1,0 +1,124 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_DateTime_Locale_Base {
+	label="DateTime::Locale::Base";
+	"DateTime::Locale::Base::default_time_format";
+	"DateTime::Locale::Base::day_abbreviations";
+	"DateTime::Locale::Base::default_date_format";
+	"DateTime::Locale::Base::month_abbreviations";
+	"DateTime::Locale::Base::month_names";
+	"DateTime::Locale::Base::am_pms";
+	"DateTime::Locale::Base::day_names";
+	"DateTime::Locale::Base::default_datetime_format";
+}
+subgraph cluster_bytes {
+	label="bytes";
+	"bytes::import";
+}
+subgraph cluster_Params_Validate {
+	label="Params::Validate";
+	"Params::Validate::_validate";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_DateTime {
+	label="DateTime";
+	"DateTime::now";
+	"DateTime::strftime";
+	"DateTime::month";
+	"DateTime::new";
+}
+subgraph cluster_DateTime_Format_Strptime {
+	label="DateTime::Format::Strptime";
+	"DateTime::Format::Strptime::parse_datetime";
+	"DateTime::Format::Strptime::new";
+	"DateTime::Format::Strptime::strftime";
+	"DateTime::Format::Strptime::BEGIN@6";
+	"DateTime::Format::Strptime::CORE:sort";
+	"DateTime::Format::Strptime::CORE:match";
+	"DateTime::Format::Strptime::_build_parser";
+	"DateTime::Format::Strptime::BEGIN@9";
+	"DateTime::Format::Strptime::BEGIN@550";
+	"DateTime::Format::Strptime::BEGIN@8";
+	"DateTime::Format::Strptime::BEGIN@3";
+	"DateTime::Format::Strptime::BEGIN@12";
+	"DateTime::Format::Strptime::BEGIN@7";
+	"DateTime::Format::Strptime::CORE:substcont";
+	"DateTime::Format::Strptime::BEGIN@5";
+	"DateTime::Format::Strptime::BEGIN@11";
+	"DateTime::Format::Strptime::strptime";
+	"DateTime::Format::Strptime::CORE:subst";
+	"DateTime::Format::Strptime::BEGIN@540";
+}
+subgraph cluster_DateTime_Locale {
+	label="DateTime::Locale";
+	"DateTime::Locale::load";
+}
+subgraph cluster_SimpleDB_Class_SQL {
+	label="SimpleDB::Class::SQL";
+	"SimpleDB::Class::SQL::BEGIN@20";
+}
+subgraph cluster_SimpleDB_Class_Types {
+	label="SimpleDB::Class::Types";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:185]";
+	"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:152]";
+}
+subgraph cluster_DateTime_TimeZone {
+	label="DateTime::TimeZone";
+	"DateTime::TimeZone::new";
+}
+"DateTime::Format::Strptime::strptime" -> "DateTime::Format::Strptime::parse_datetime";
+"DateTime::Format::Strptime::strftime" -> "DateTime::strftime";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Locale::Base::month_names";
+"DateTime::Format::Strptime::new" -> "DateTime::Format::Strptime::_build_parser";
+"DateTime::Format::Strptime::BEGIN@550" -> "bytes::import";
+"DateTime::Format::Strptime::BEGIN@540" -> "bytes::import";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Locale::Base::default_date_format";
+"SimpleDB::Class::SQL::BEGIN@20" -> "DateTime::Format::Strptime::BEGIN@7";
+"DateTime::Format::Strptime::BEGIN@11" -> "Exporter::import";
+"DateTime::Format::Strptime::BEGIN@9" -> "Exporter::import";
+"DateTime::Format::Strptime::BEGIN@8" -> "Exporter::import";
+"SimpleDB::Class::SQL::BEGIN@20" -> "DateTime::Format::Strptime::BEGIN@3";
+"SimpleDB::Class::SQL::BEGIN@20" -> "DateTime::Format::Strptime::BEGIN@11";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Format::Strptime::CORE:sort";
+"SimpleDB::Class::SQL::BEGIN@20" -> "DateTime::Format::Strptime::BEGIN@550";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Locale::Base::default_datetime_format";
+"DateTime::Format::Strptime::parse_datetime" -> "DateTime::Locale::Base::am_pms";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Locale::Base::am_pms";
+"SimpleDB::Class::SQL::BEGIN@20" -> "DateTime::Format::Strptime::BEGIN@5";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Locale::Base::month_abbreviations";
+"DateTime::Format::Strptime::parse_datetime" -> "DateTime::month";
+"DateTime::Format::Strptime::strptime" -> "DateTime::Format::Strptime::new";
+"DateTime::Format::Strptime::parse_datetime" -> "DateTime::Format::Strptime::CORE:match";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Format::Strptime::CORE:match";
+"DateTime::Format::Strptime::new" -> "DateTime::Format::Strptime::CORE:match";
+"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:152]" -> "DateTime::Format::Strptime::strftime";
+"SimpleDB::Class::SQL::BEGIN@20" -> "DateTime::Format::Strptime::BEGIN@9";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Locale::Base::default_time_format";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Format::Strptime::CORE:substcont";
+"SimpleDB::Class::Types::__ANON__[../lib/SimpleDB/Class/Types.pm:185]" -> "DateTime::Format::Strptime::strptime";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Format::Strptime::CORE:subst";
+"DateTime::Format::Strptime::BEGIN@12" -> "vars::import";
+"DateTime::Format::Strptime::new" -> "DateTime::TimeZone::new";
+"SimpleDB::Class::SQL::BEGIN@20" -> "DateTime::Format::Strptime::BEGIN@540";
+"DateTime::Format::Strptime::new" -> "Params::Validate::_validate";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Locale::Base::day_abbreviations";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::now";
+"DateTime::Format::Strptime::_build_parser" -> "DateTime::Locale::Base::day_names";
+"SimpleDB::Class::SQL::BEGIN@20" -> "DateTime::Format::Strptime::BEGIN@6";
+"DateTime::Format::Strptime::parse_datetime" -> "DateTime::new";
+"SimpleDB::Class::SQL::BEGIN@20" -> "DateTime::Format::Strptime::BEGIN@8";
+"SimpleDB::Class::SQL::BEGIN@20" -> "DateTime::Format::Strptime::BEGIN@12";
+"DateTime::Format::Strptime::new" -> "DateTime::Locale::load";
+"DateTime::Format::Strptime::BEGIN@3" -> "strict::import";
+}

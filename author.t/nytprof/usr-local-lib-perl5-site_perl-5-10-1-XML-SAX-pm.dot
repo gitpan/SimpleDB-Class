@@ -1,0 +1,96 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_Symbol {
+	label="Symbol";
+	"Symbol::gensym";
+}
+subgraph cluster_vars {
+	label="vars";
+	"vars::import";
+}
+subgraph cluster_XML_SAX {
+	label="XML::SAX";
+	"XML::SAX::BEGIN@16";
+	"XML::SAX::BEGIN@20";
+	"XML::SAX::BEGIN@22";
+	"XML::SAX::load_parsers";
+	"XML::SAX::CORE:subst";
+	"XML::SAX::CORE:open";
+	"XML::SAX::parsers";
+	"XML::SAX::BEGIN@15";
+	"XML::SAX::BEGIN@10";
+	"XML::SAX::BEGIN@23";
+	"XML::SAX::BEGIN@6";
+	"XML::SAX::BEGIN@5";
+	"XML::SAX::_parse_ini_file";
+	"XML::SAX::BEGIN@18";
+	"XML::SAX::CORE:match";
+	"XML::SAX::BEGIN@17";
+	"XML::SAX::CORE:readline";
+}
+subgraph cluster_XML_Simple {
+	label="XML::Simple";
+	"XML::Simple::build_tree";
+}
+subgraph cluster_strict {
+	label="strict";
+	"strict::import";
+}
+subgraph cluster_XML_SAX_ParserFactory {
+	label="XML::SAX::ParserFactory";
+	"XML::SAX::ParserFactory::new";
+	"XML::SAX::ParserFactory::BEGIN@5";
+	"XML::SAX::ParserFactory::BEGIN@12";
+	"XML::SAX::ParserFactory::BEGIN@11";
+	"XML::SAX::ParserFactory::BEGIN@10";
+	"XML::SAX::ParserFactory::BEGIN@6";
+}
+subgraph cluster_constant {
+	label="constant";
+	"constant::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_File_Basename {
+	label="File::Basename";
+	"File::Basename::dirname";
+}
+subgraph cluster_File_Spec_Unix {
+	label="File::Spec::Unix";
+	"File::Spec::Unix::catfile";
+}
+"XML::SAX::_parse_ini_file" -> "XML::SAX::CORE:subst";
+"XML::SAX::BEGIN@18" -> "XML::SAX::ParserFactory::BEGIN@10";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@15";
+"XML::SAX::BEGIN@15" -> "Exporter::import";
+"XML::SAX::BEGIN@17" -> "Exporter::import";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@5";
+"XML::SAX::load_parsers" -> "XML::SAX::_parse_ini_file";
+"XML::SAX::BEGIN@18" -> "XML::SAX::ParserFactory::BEGIN@6";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@10";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@16";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@22";
+"XML::SAX::load_parsers" -> "XML::SAX::CORE:open";
+"XML::SAX::ParserFactory::new" -> "XML::SAX::parsers";
+"XML::SAX::BEGIN@18" -> "XML::SAX::ParserFactory::BEGIN@5";
+"XML::SAX::_parse_ini_file" -> "XML::SAX::CORE:readline";
+"XML::SAX::BEGIN@18" -> "XML::SAX::ParserFactory::BEGIN@12";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@20";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@18";
+"XML::SAX::load_parsers" -> "File::Basename::dirname";
+"XML::SAX::BEGIN@22" -> "constant::import";
+"XML::SAX::BEGIN@20" -> "constant::import";
+"XML::SAX::BEGIN@23" -> "constant::import";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@23";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@6";
+"XML::SAX::load_parsers" -> "Symbol::gensym";
+"XML::SAX::_parse_ini_file" -> "XML::SAX::CORE:match";
+"XML::SAX::BEGIN@6" -> "vars::import";
+"XML::Simple::build_tree" -> "XML::SAX::BEGIN@17";
+"XML::SAX::parsers" -> "XML::SAX::load_parsers";
+"XML::SAX::BEGIN@18" -> "XML::SAX::ParserFactory::BEGIN@11";
+"XML::SAX::load_parsers" -> "File::Spec::Unix::catfile";
+"XML::SAX::BEGIN@5" -> "strict::import";
+}

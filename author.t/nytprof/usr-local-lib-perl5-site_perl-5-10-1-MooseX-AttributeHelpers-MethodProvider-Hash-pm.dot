@@ -1,0 +1,48 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_MooseX_AttributeHelpers_Trait_Collection_Hash {
+	label="MooseX::AttributeHelpers::Trait::Collection::Hash";
+	"MooseX::AttributeHelpers::Trait::Collection::Hash::BEGIN@9";
+}
+subgraph cluster_Moose_Exporter {
+	label="Moose::Exporter";
+	"Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+}
+subgraph cluster_Moose_Meta_TypeConstraint_Parameterized {
+	label="Moose::Meta::TypeConstraint::Parameterized";
+	"Moose::Meta::TypeConstraint::Parameterized::type_parameter";
+}
+subgraph cluster_Moose_Meta_Mixin_AttributeCore {
+	label="Moose::Meta::Mixin::AttributeCore";
+	"Moose::Meta::Mixin::AttributeCore::type_constraint";
+	"Moose::Meta::Mixin::AttributeCore::has_type_constraint";
+}
+subgraph cluster_UNIVERSAL {
+	label="UNIVERSAL";
+	"UNIVERSAL::isa";
+}
+subgraph cluster_Class_MOP_Class_ {
+	label="Class::MOP::Class:";
+	"Class::MOP::Class:::after";
+}
+subgraph cluster_MooseX_AttributeHelpers_MethodProvider_Hash {
+	label="MooseX::AttributeHelpers::MethodProvider::Hash";
+	"MooseX::AttributeHelpers::MethodProvider::Hash::set";
+	"MooseX::AttributeHelpers::MethodProvider::Hash::delete";
+	"MooseX::AttributeHelpers::MethodProvider::Hash::BEGIN@2";
+}
+subgraph cluster_Class_MOP_Method {
+	label="Class::MOP::Method";
+	"Class::MOP::Method::__ANON__[Class/MOP/Method.pm:19]";
+}
+"MooseX::AttributeHelpers::MethodProvider::Hash::set" -> "Moose::Meta::Mixin::AttributeCore::has_type_constraint";
+"MooseX::AttributeHelpers::MethodProvider::Hash::set" -> "Moose::Meta::Mixin::AttributeCore::type_constraint";
+"MooseX::AttributeHelpers::MethodProvider::Hash::set" -> "Moose::Meta::TypeConstraint::Parameterized::type_parameter";
+"MooseX::AttributeHelpers::MethodProvider::Hash::set" -> "UNIVERSAL::isa";
+"MooseX::AttributeHelpers::Trait::Collection::Hash::BEGIN@9" -> "MooseX::AttributeHelpers::MethodProvider::Hash::BEGIN@2";
+"MooseX::AttributeHelpers::MethodProvider::Hash::set" -> "Class::MOP::Method::__ANON__[Class/MOP/Method.pm:19]";
+"MooseX::AttributeHelpers::MethodProvider::Hash::delete" -> "Class::MOP::Method::__ANON__[Class/MOP/Method.pm:19]";
+"MooseX::AttributeHelpers::MethodProvider::Hash::BEGIN@2" -> "Moose::Exporter::__ANON__[Moose/Exporter.pm:389]";
+"Class::MOP::Class:::after" -> "MooseX::AttributeHelpers::MethodProvider::Hash::delete";
+"Class::MOP::Class:::after" -> "MooseX::AttributeHelpers::MethodProvider::Hash::set";
+}

@@ -1,0 +1,66 @@
+digraph {
+graph [overlap=false]
+subgraph cluster_DynaLoader {
+	label="DynaLoader";
+	"DynaLoader::BEGIN@97";
+}
+subgraph cluster_XSLoader {
+	label="XSLoader";
+	"XSLoader::load";
+}
+subgraph cluster_JSON_XS_Boolean {
+	label="JSON::XS::Boolean";
+	"JSON::XS::Boolean::BEGIN@1461";
+}
+subgraph cluster_JSON {
+	label="JSON";
+	"JSON::from_json";
+	"JSON::to_json";
+	"JSON::BEGIN@2";
+}
+subgraph cluster_JSON_XS {
+	label="JSON::XS";
+	"JSON::XS::decode";
+	"JSON::XS::encode";
+	"JSON::XS::BEGIN@104";
+	"JSON::XS::new";
+	"JSON::XS::DESTROY";
+	"JSON::XS::BEGIN@121";
+	"JSON::XS::BEGIN@122";
+}
+subgraph cluster_common_sense {
+	label="common::sense";
+	"common::sense::import";
+}
+subgraph cluster_attributes {
+	label="attributes";
+	"attributes::BEGIN@9";
+	"attributes::BEGIN@29";
+	"attributes::import";
+}
+subgraph cluster_Exporter {
+	label="Exporter";
+	"Exporter::import";
+}
+subgraph cluster_overload {
+	label="overload";
+	"overload::import";
+}
+"JSON::BEGIN@2" -> "JSON::XS::BEGIN@104";
+"JSON::XS::BEGIN@121" -> "Exporter::import";
+"JSON::XS::BEGIN@104" -> "common::sense::import";
+"DynaLoader::BEGIN@97" -> "attributes::import";
+"JSON::to_json" -> "JSON::XS::encode";
+"XSLoader::load" -> "DynaLoader::BEGIN@97";
+"JSON::from_json" -> "JSON::XS::DESTROY";
+"JSON::to_json" -> "JSON::XS::DESTROY";
+"JSON::BEGIN@2" -> "JSON::XS::BEGIN@122";
+"DynaLoader::BEGIN@97" -> "attributes::BEGIN@9";
+"JSON::from_json" -> "JSON::XS::new";
+"JSON::to_json" -> "JSON::XS::new";
+"JSON::XS::Boolean::BEGIN@1461" -> "overload::import";
+"JSON::BEGIN@2" -> "JSON::XS::BEGIN@121";
+"JSON::BEGIN@2" -> "JSON::XS::Boolean::BEGIN@1461";
+"JSON::from_json" -> "JSON::XS::decode";
+"DynaLoader::BEGIN@97" -> "attributes::BEGIN@29";
+}
