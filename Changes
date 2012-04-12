@@ -1,3 +1,7 @@
+1.0503 2012-04-11
+ - Fixed a documentation bug.
+ - Fixed a dependency problem.
+
 1.0502 2010-08-30
  - Small fix due to a change in how Moose handles attributes.
 

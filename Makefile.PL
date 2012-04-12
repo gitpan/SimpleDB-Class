@@ -4,7 +4,7 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -13,7 +13,7 @@ my %WriteMakefileArgs = (
   'AUTHOR' => 'JT Smith <RIZEN@cpan.org>',
   'BUILD_REQUIRES' => {},
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'SimpleDB-Class',
   'EXE_FILES' => [],
@@ -28,7 +28,7 @@ my %WriteMakefileArgs = (
     'Memcached::libmemcached' => '0.3102',
     'Module::Find' => '0',
     'Moose' => '0.93',
-    'MooseX::ClassAttribute' => '0.16',
+    'MooseX::ClassAttribute' => '0.26',
     'MooseX::Types' => '0.20',
     'SimpleDB::Client' => '1.0400',
     'Sub::Name' => '0.04',
@@ -36,7 +36,7 @@ my %WriteMakefileArgs = (
     'Test::More' => '0',
     'UUID::Tiny' => '0'
   },
-  'VERSION' => '1.0502',
+  'VERSION' => '1.0503',
   'test' => {
     'TESTS' => 't/*.t'
   }
